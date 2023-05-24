@@ -1,0 +1,40 @@
+$grey-color: #d9d9d9;
+$base-radius: 0.5rem;
+
+.main {
+    padding-block: 1rem;
+    padding-inline: 2rem;
+}
+
+.search {
+    border-radius: $base-radius;
+    border: 0.125rem solid $grey-color;
+    background-color: $grey-color;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+}
+
+.categories {
+    background-color: $grey-color;
+    padding-block: 1rem;
+    padding-left: 1rem;
+    border-radius: $base-radius;
+
+    &__list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding-top: 0.75rem;
+    }
+
+    &__category {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        span {
+            text-transform: capitalize;
+        }
+    }
+}
