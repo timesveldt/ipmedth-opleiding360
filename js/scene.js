@@ -7,7 +7,7 @@ const unlockedAchievementTitle = document.getElementById('unlocked--achievement-
 const myInfoSpot1 = document.getElementById('infospot--1');
 
 const infoSpot1 = new PANOLENS.Infospot();
-infoSpot1.position.set(0, 0, -2500);
+infoSpot1.position.set(3000, 0, 0);
 infoSpot1.addHoverElement(myInfoSpot1, 150);
 
 const vrbutton = document.getElementById('vr-button');
@@ -19,12 +19,12 @@ const information = ["dit is buiten voor de hoofdingang", "dit is waar je binnen
 
 //init externat constances
 const pan = document.querySelector('.pan');
-const img = './img/img8_panorama.jpg';
-const img2 = './img/img7_panorama.jpg';
-const img3 = './img/img6_panorama.jpg';
-const img4 = './img/img3_panorama.jpg';
-const img5 = './img/img5_panorama.jpg';
-const img6 = './img/img4_panorama.jpg';
+const img = './img/Buiten.jpg';
+const img2 = './img/Hoofdingang.jpg';
+const img3 = './img/café.jpg';
+const img4 = './img/Hal.jpg';
+const img5 = './img/Studieruimte.jpg';
+const img6 = './img/Klaslokaal.jpg';
 
 //init panorama + viewer
 const panorama = new PANOLENS.ImagePanorama(img);
@@ -35,8 +35,22 @@ const panorama5 = new PANOLENS.ImagePanorama(img5);
 const panorama6 = new PANOLENS.ImagePanorama(img6);
 const viewer = new PANOLENS.Viewer({
     container: pan,
+    output: 'console',
 });
 
+// roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
+panorama.addEventListener( 'enter-fade-start', function(){
+    viewer.tweenControlCenter( new THREE.Vector3(5000,0,0), 0 );
+  } );
+panorama2.addEventListener( 'enter-fade-start', function(){
+    viewer.tweenControlCenter( new THREE.Vector3(-5000,0,0), 0 );
+  } );
+panorama5.addEventListener( 'enter-fade-start', function(){
+    viewer.tweenControlCenter( new THREE.Vector3(5000,0,1500), 0 );
+  } );
+panorama6.addEventListener( 'enter-fade-start', function(){
+    viewer.tweenControlCenter( new THREE.Vector3(5000,0,2500), 0 );
+  } );
 
 var vrtoggled = false;
 
@@ -55,84 +69,88 @@ function vrtoggle() {
 
 vrbutton.addEventListener('click', vrtoggle);
 
-const panoramas = [
-    'panorama 1',
-    'panorama 2',
-    'panorama 3',
-    'panorama 4',
-    'panorama 5',
-    'panorama 6',
-];
-const visitedPanoramas = [];
+// const panoramas = [
+//     'panorama 1',
+//     'panorama 2',
+//     'panorama 3',
+//     'panorama 4',
+//     'panorama 5',
+//     'panorama 6',
+// ];
+// const visitedPanoramas = [];
 
-panorama.addEventListener('click', () => {
-    const date = new Date();
-    console.log(`[${date.toLocaleString()}]: click event panorama 1`);
-    visitedPanoramas.push('panorama 1');
-});
+// panorama.addEventListener('click', () => {
+//     const date = new Date();
+//     console.log(`[${date.toLocaleString()}]: click event panorama 1`);
+//     visitedPanoramas.push('panorama 1');
+// });
 
-panorama2.addEventListener('click', () => {
-    const date = new Date();
-    console.log(`[${date.toLocaleString()}]: click event panorama 2`);
-    visitedPanoramas.push('panorama 2');
-});
+// panorama2.addEventListener('click', () => {
+//     const date = new Date();
+//     console.log(`[${date.toLocaleString()}]: click event panorama 2`);
+//     visitedPanoramas.push('panorama 2');
+// });
 
-panorama3.addEventListener('click', () => {
-    const date = new Date();
-    console.log(`[${date.toLocaleString()}]: click event panorama 3`);
+// panorama3.addEventListener('click', () => {
+//     const date = new Date();
+//     console.log(`[${date.toLocaleString()}]: click event panorama 3`);
 
-    unlockedAchievementTitle.textContent = 'Prestatie 2 ontgrendeld!';
-    unlockedAchievement.classList.add('achievement--unlocked');
-    setTimeout(() => {
-        unlockedAchievement.classList.remove('achievement--unlocked');
-    }, 3000);
+//     unlockedAchievementTitle.textContent = 'Prestatie 2 ontgrendeld!';
+//     unlockedAchievement.classList.add('achievement--unlocked');
+//     setTimeout(() => {
+//         unlockedAchievement.classList.remove('achievement--unlocked');
+//     }, 3000);
 
-    achievementTwo.classList.add('achievements__achievement--unlocked');
-    visitedPanoramas.push('panorama 3');
-});
+//     achievementTwo.classList.add('achievements__achievement--unlocked');
+//     visitedPanoramas.push('panorama 3');
+// });
 
-panorama4.addEventListener('click', () => {
-    const date = new Date();
-    console.log(`[${date.toLocaleString()}]: click event panorama 4`);
-    visitedPanoramas.push('panorama 4');
-});
+// panorama4.addEventListener('click', () => {
+//     const date = new Date();
+//     console.log(`[${date.toLocaleString()}]: click event panorama 4`);
+//     visitedPanoramas.push('panorama 4');
+// });
 
-panorama5.addEventListener('click', () => {
-    const date = new Date();
-    console.log(`[${date.toLocaleString()}]: click event panorama 5`);
-    visitedPanoramas.push('panorama 5');
-});
+// panorama5.addEventListener('click', () => {
+//     const date = new Date();
+//     console.log(`[${date.toLocaleString()}]: click event panorama 5`);
+//     visitedPanoramas.push('panorama 5');
+// });
 
-panorama6.addEventListener('click', () => {
-    const date = new Date();
-    console.log(`[${date.toLocaleString()}]: click even panorama 6`);
-    visitedPanoramas.push('panorama 6');
+// panorama6.addEventListener('click', () => {
+//     const date = new Date();
+//     console.log(`[${date.toLocaleString()}]: click even panorama 6`);
+//     visitedPanoramas.push('panorama 6');
 
-    visitedPanoramas.every((visitedPanorama) => {
-        if (panoramas.indexOf(visitedPanorama, -1)) {
-            unlockedAchievementTitle.textContent = 'Prestatie 1 ontgrendeld!';
-            unlockedAchievement.classList.add('achievement--unlocked');
-            setTimeout(() => {
-                unlockedAchievement.classList.remove('achievement--unlocked');
-            }, 3000);
+//     visitedPanoramas.every((visitedPanorama) => {
+//         if (panoramas.indexOf(visitedPanorama, -1)) {
+//             unlockedAchievementTitle.textContent = 'Prestatie 1 ontgrendeld!';
+//             unlockedAchievement.classList.add('achievement--unlocked');
+//             setTimeout(() => {
+//                 unlockedAchievement.classList.remove('achievement--unlocked');
+//             }, 3000);
 
-            achievementOne.classList.add('achievements__achievement--unlocked');
-        }
-    });
-});
+//             achievementOne.classList.add('achievements__achievement--unlocked');
+//         }
+//     });
+// });
+
+
 //linking between panorama's
-panorama.link(panorama2, new THREE.Vector3(5000, 200, -400), 500);
-panorama2.link(panorama, new THREE.Vector3(-5000, 100, 0), 500);
-panorama2.link(panorama3, new THREE.Vector3(5000, 200, -2000), 500);
-panorama2.link(panorama4, new THREE.Vector3(5000, 200, 3000), 500);
-panorama3.link(panorama4, new THREE.Vector3(0, 200, 5000), 500);
-panorama3.link(panorama2, new THREE.Vector3(-5000, 100, -1000), 500);
-panorama4.link(panorama2, new THREE.Vector3(-5000, 100, -1000), 500);
-panorama4.link(panorama3, new THREE.Vector3(-2000, 100, -2000), 500);
-panorama4.link(panorama5, new THREE.Vector3(5000, 3000, 4000), 500);
-panorama5.link(panorama6, new THREE.Vector3(-5000, -100, 0), 500);
-panorama5.link(panorama4, new THREE.Vector3(-5000, -300, -4000), 500);
+panorama.link(panorama2, new THREE.Vector3(3000, 0, -3000), 500);
+panorama2.link(panorama, new THREE.Vector3(5000, 100, 0), 500);
+panorama2.link(panorama3, new THREE.Vector3(-5000, 200, 3000), 500);
+panorama2.link(panorama4, new THREE.Vector3(-5000, 200, -2000), 500);
+panorama3.link(panorama4, new THREE.Vector3(-3000, 200, -3000), 500);
+panorama3.link(panorama2, new THREE.Vector3(5000, 0, -2000), 500);
+panorama4.link(panorama2, new THREE.Vector3(5000, 100, 0), 500);
+panorama4.link(panorama3, new THREE.Vector3(500, 0, 5000), 500);
+panorama4.link(panorama5, new THREE.Vector3(-5000, 1000, -1000), 500);
+panorama5.link(panorama6, new THREE.Vector3(2500, -100, -5000), 500);
+panorama5.link(panorama4, new THREE.Vector3(5000, -600, -1300), 500);
 panorama6.link(panorama5, new THREE.Vector3(-5000, 100, -1000), 500);
+
+//infospots of the panorama's
 panorama.add(infoSpot1);
 
 //adding to objects
