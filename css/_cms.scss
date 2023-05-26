@@ -1,17 +1,29 @@
+$white-color: #fff;
 $grey-color: #d9d9d9;
+$green-color: #45bccb;
 $base-radius: 0.5rem;
 
 .main {
     padding-block: 1rem;
-    padding-inline: 2rem;
+    max-width: 75rem;
+    margin-inline: auto;
 }
 
 .search {
+    display: block;
+    width: 100%;
     border-radius: $base-radius;
     border: 0.125rem solid $grey-color;
     background-color: $grey-color;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
+    background-image: url(../icons/search_icon.svg);
+    background-repeat: no-repeat;
+    background-position: 0.75rem center;
+    margin-bottom: 2rem;
+    padding-block: 1rem;
+    padding-left: 3rem;
+    padding-right: 1rem;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 .filters {
@@ -20,6 +32,7 @@ $base-radius: 0.5rem;
     background-color: $grey-color;
     padding-block: 1rem;
     padding-left: 1rem;
+    margin-bottom: 2rem;
     border-radius: $base-radius;
 }
 
@@ -37,7 +50,7 @@ $base-radius: 0.5rem;
         align-items: center;
         gap: 0.5rem;
 
-        span {
+        label {
             text-transform: capitalize;
         }
     }
@@ -56,5 +69,39 @@ $base-radius: 0.5rem;
         display: flex;
         align-items: center;
         gap: 0.5rem;
+    }
+}
+
+.educations {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 1rem;
+
+    &__education {
+        background-color: $green-color;
+        border-radius: $base-radius;
+        transform: scale(1);
+        transition: transform 0.2s ease-in-out;
+
+        &:hover {
+            transform: scale(1.025);
+        }
+
+        &__img {
+            display: block;
+            max-width: 100%;
+            border-top-left-radius: $base-radius;
+            border-top-right-radius: $base-radius;
+        }
+
+        &__school {
+            font-weight: 400;
+            color: $white-color;
+        }
+
+        &__info {
+            padding: 1rem;
+        }
     }
 }
