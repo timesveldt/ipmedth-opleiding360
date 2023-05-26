@@ -181,26 +181,6 @@ body {
   justify-content: space-between;
 }
 
-/* h1 {
-    font-size: 2rem;
-    margin-top: 1.5rem;
-    color: orange;
-    text-align: center;
-} */
-/* .vr-button {
-    padding: 10px;
-    border-radius: 100%;
-    background-color: #45bccb;
-    color: white;
-    position: fixed;
-    left: 5%;
-    top: 5%;
-    font-size: 1rem;
-    border: none;
-}
-.vr-button:hover {
-    cursor: pointer;
-} */
 .infospot {
   border-radius: black;
   background-color: white;
@@ -316,7 +296,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* flex-direction: row-reverse; */
 }
 
 .header__buttons {
@@ -329,7 +308,6 @@ body {
 
 .header__title {
   display: flex;
-  /* justify-content: flex-start; */
   font-size: 2rem;
   color: #ffa500;
   padding: 1rem;
@@ -405,91 +383,6 @@ body {
 
 .infospot__content {
   color: #45bccb;
-}
-
-/* Achievements Styling Rules */
-.achievements {
-  opacity: 0;
-  display: none;
-  width: 36rem;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 1rem;
-  background-color: #fff;
-  box-shadow: var(--subtle-shadow);
-  transition: opacity 0.2s ease-in-out;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-}
-
-.achievements--open {
-  opacity: 1;
-  display: block;
-  -webkit-user-select: all;
-     -moz-user-select: all;
-          user-select: all;
-}
-
-.achievements__title {
-  margin-bottom: 0.25rem;
-}
-
-.achievements__list {
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.achievements__achievement {
-  border: 0.1rem solid #45bccb;
-  padding: 0.5rem;
-}
-
-.achievements__achievement--unlocked {
-  background-color: #45bccb;
-}
-
-.achievements__achievement__title {
-  margin-bottom: 0.25rem;
-}
-
-.achievements__achievement__text {
-  font-style: italic;
-}
-
-.achievements__achievement__text::before {
-  content: open-quote;
-}
-
-.achievements__achievement__text::after {
-  content: close-quote;
-}
-
-/* Achievement Pop-up Rules */
-.achievement {
-  display: block;
-  width: 36rem;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%) translateY(-100%);
-  background-color: #fff;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
-}
-
-.achievement--unlocked {
-  transform: translateX(-50%) translateY(0);
-}
-
-.achievement__title {
-  text-align: center;
-  padding: 1rem 0;
 }
 
 @keyframes mousemove {
