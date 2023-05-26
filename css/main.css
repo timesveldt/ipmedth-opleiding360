@@ -402,4 +402,54 @@ body {
   100% {
     margin-right: 0;
   }
+}
+.main {
+  padding-block: 1rem;
+  padding-inline: 2rem;
+}
+
+.search {
+  border-radius: 0.5rem;
+  border: 0.125rem solid #d9d9d9;
+  background-color: #d9d9d9;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.filters {
+  display: flex;
+  gap: 1rem;
+  background-color: #d9d9d9;
+  padding-block: 1rem;
+  padding-left: 1rem;
+  border-radius: 0.5rem;
+}
+
+.categories__list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.75rem;
+}
+.categories__category {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.categories__category span {
+  text-transform: capitalize;
+}
+
+.schools__list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 0.75rem;
+}
+.schools__school {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }/*# sourceMappingURL=main.css.map */
