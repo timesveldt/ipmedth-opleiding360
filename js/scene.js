@@ -6,7 +6,7 @@ const unlockedAchievementTitle = document.getElementById('unlocked--achievement-
 
 const myInfoSpot1 = document.getElementById('infospot--1');
 
-const infoSpot1 = new PANOLENS.Infospot();
+const infoSpot1 = new PANOLENS.Infospot(500 , './img/kat.webp');
 infoSpot1.position.set(3000, 0, 0);
 infoSpot1.addHoverElement(myInfoSpot1, 150);
 
@@ -19,12 +19,13 @@ const information = ["dit is buiten voor de hoofdingang", "dit is waar je binnen
 
 //init externat constances
 const pan = document.querySelector('.pan');
-const img = './img/Buiten.jpg';
-const img2 = './img/Hoofdingang.jpg';
-const img3 = './img/café.jpg';
-const img4 = './img/Hal.jpg';
+const img = './img/PANO_20230524_131709_2_blurred.jpg';
+const img2 = './img/PANO_20230524_131209_1_blurred.jpg';
+const img3 = './img/PANO_20230524_130621_0_blurred.jpg';
+const img4 = './img/PANO_20230524_125948_2_blurred.jpg';
 const img5 = './img/Studieruimte.jpg';
 const img6 = './img/Klaslokaal.jpg';
+const img7 = './img/Lab.jpg'
 
 //init panorama + viewer
 const panorama = new PANOLENS.ImagePanorama(img);
@@ -33,6 +34,7 @@ const panorama3 = new PANOLENS.ImagePanorama(img3);
 const panorama4 = new PANOLENS.ImagePanorama(img4);
 const panorama5 = new PANOLENS.ImagePanorama(img5);
 const panorama6 = new PANOLENS.ImagePanorama(img6);
+const panorama7 = new PANOLENS.ImagePanorama(img7);
 const viewer = new PANOLENS.Viewer({
     container: pan,
     output: 'console',
@@ -54,7 +56,7 @@ panorama6.addEventListener( 'enter-fade-start', function(){
 
 var vrtoggled = false;
 
-// panorama2.setLinkingImage('./img/img1.png');
+
 
 //toggle on/off vr mode
 function vrtoggle() {
@@ -135,6 +137,8 @@ vrbutton.addEventListener('click', vrtoggle);
 //     });
 // });
 
+//linking foto's van de panorama's deze moeten boven de links staan anders werken ze niet.
+panorama2.setLinkingImage('./img/Hoofdingang.jpg');
 
 //linking between panorama's
 panorama.link(panorama2, new THREE.Vector3(3000, 0, -3000), 500);
@@ -146,15 +150,17 @@ panorama3.link(panorama2, new THREE.Vector3(5000, 0, -2000), 500);
 panorama4.link(panorama2, new THREE.Vector3(5000, 100, 0), 500);
 panorama4.link(panorama3, new THREE.Vector3(500, 0, 5000), 500);
 panorama4.link(panorama5, new THREE.Vector3(-5000, 1000, -1000), 500);
-panorama5.link(panorama6, new THREE.Vector3(2500, -100, -5000), 500);
+panorama5.link(panorama6, new THREE.Vector3(3000, 0, -5000), 500);
+panorama5.link(panorama7, new THREE.Vector3(2000, 0, -5000), 500);
 panorama5.link(panorama4, new THREE.Vector3(5000, -600, -1300), 500);
 panorama6.link(panorama5, new THREE.Vector3(-5000, 100, -1000), 500);
+panorama7.link(panorama5, new THREE.Vector3(-2000, 100, 5000), 500);
 
 //infospots of the panorama's
 panorama.add(infoSpot1);
 
 //adding to objects
-viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6);
+viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
 
 console.log(viewer);
 
