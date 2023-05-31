@@ -1,11 +1,40 @@
+const uploadForm = document.getElementById('js--upload--form');
+const file = document.getElementById('file');
+
 const categoriesList = document.getElementById('js--categories--list');
 const schoolsList = document.getElementById('js--schools--list');
 
-const filterHogeschoolLeidenEl = document.querySelector('[data-school="hogeschool-leiden"]');
-const filterHogeschoolUtrechtEl = document.querySelector('[data-school="hogeschool-utrecht"]');
-const filterHaagseHogeschoolEl = document.querySelector('[data-school="haagse-hogeschool"]');
+const filterHogeschoolLeidenEl = document.querySelector(
+    '[data-school="hogeschool-leiden"]'
+);
+const filterHogeschoolUtrechtEl = document.querySelector(
+    '[data-school="hogeschool-utrecht"]'
+);
+const filterHaagseHogeschoolEl = document.querySelector(
+    '[data-school="haagse-hogeschool"]'
+);
 
 const BASE_URL = 'http://127.0.0.1:8000/api';
+
+uploadForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    try {
+        const response = await fetch(`${BASE_URL}/education/store`, {
+            method: 'POST',
+            body: JSON.stringify({
+                file: file.value
+            }),
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log('The file', file.value);
+        console.log('The response', response);
+    } catch (error) {
+        console.log('There was an error', error);
+    }
+});
 
 const getCategories = async () => {
     const response = await fetch(`${BASE_URL}/categories`);
@@ -17,6 +46,34 @@ const getSchools = async () => {
     const response = await fetch(`${BASE_URL}/schools`);
     const data = await response.json();
     renderSchools(data.schools);
+};
+
+const getEducation = async () => {
+    try {
+        const response = await fetch(`${BASE_URL}/education`);
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log('Error:', error);
+    }
+};
+
+const uploadFile = async () => {
+    try {
+        const response = await fetch(`${BASE_URL}/educations/store`, {
+            method: 'POST',
+            body: JSON.stringify({
+                file: file
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.log('Error', error);
+    }
 };
 
 const renderCategories = (categories) => {
@@ -66,4 +123,5 @@ function slugify(str) {
 window.addEventListener('load', () => {
     getCategories();
     getSchools();
+    getEducation();
 });
