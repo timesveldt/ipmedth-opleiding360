@@ -385,6 +385,7 @@
   background-color: #fff;
   padding: 1rem;
   box-shadow: var(--subtle-shadow);
+  left: 300px;
 }
 
 .infospot__title {

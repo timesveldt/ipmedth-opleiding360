@@ -6,8 +6,8 @@ const unlockedAchievementTitle = document.getElementById('unlocked--achievement-
 
 const myInfoSpot1 = document.getElementById('infospot--1');
 
-const infoSpot1 = new PANOLENS.Infospot(500 , './img/kat.webp');
-infoSpot1.position.set(3000, 0, 0);
+const infoSpot1 = new PANOLENS.Infospot(2000 , './img/gijs.png', false);
+infoSpot1.position.set(3000, -300, 0);
 infoSpot1.addHoverElement(myInfoSpot1, 150);
 
 const vrbutton = document.getElementById('vr-button');
