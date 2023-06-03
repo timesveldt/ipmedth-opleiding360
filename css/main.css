@@ -488,6 +488,7 @@ body {
   max-width: 100%;
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
+  aspect-ratio: 16/9;
 }
 .educations__education__school {
   font-weight: 400;

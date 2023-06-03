@@ -93,6 +93,7 @@ $base-radius: 0.5rem;
             max-width: 100%;
             border-top-left-radius: $base-radius;
             border-top-right-radius: $base-radius;
+            aspect-ratio: 16 / 9;
         }
 
         &__school {
