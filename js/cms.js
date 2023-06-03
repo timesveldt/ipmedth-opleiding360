@@ -3,16 +3,11 @@ const file = document.getElementById('file');
 
 const categoriesList = document.getElementById('js--categories--list');
 const schoolsList = document.getElementById('js--schools--list');
+const educationsList = document.getElementById('js--educations');
 
-const filterHogeschoolLeidenEl = document.querySelector(
-    '[data-school="hogeschool-leiden"]'
-);
-const filterHogeschoolUtrechtEl = document.querySelector(
-    '[data-school="hogeschool-utrecht"]'
-);
-const filterHaagseHogeschoolEl = document.querySelector(
-    '[data-school="haagse-hogeschool"]'
-);
+const filterHogeschoolLeidenEl = document.querySelector('[data-filter="hogeschool-leiden"]');
+const filterHogeschoolUtrechtEl = document.querySelector('[data-filter="hogeschool-utrecht"]');
+const filterHaagseHogeschoolEl = document.querySelector('[data-filter="haagse-hogeschool"]');
 
 const BASE_URL = 'http://127.0.0.1:8000/api';
 
@@ -23,11 +18,11 @@ uploadForm.addEventListener('submit', async (event) => {
         const response = await fetch(`${BASE_URL}/education/store`, {
             method: 'POST',
             body: JSON.stringify({
-                file: file.value
+                file: file.value,
             }),
             headers: {
-                'Content-Type': 'multipart/form-data'
-            }
+                'Content-Type': 'multipart/form-data',
+            },
         });
         console.log('The file', file.value);
         console.log('The response', response);
@@ -63,11 +58,11 @@ const uploadFile = async () => {
         const response = await fetch(`${BASE_URL}/educations/store`, {
             method: 'POST',
             body: JSON.stringify({
-                file: file
+                file: file,
             }),
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+            },
         });
         const data = await response.json();
         console.log(data);
