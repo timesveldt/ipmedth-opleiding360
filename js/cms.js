@@ -9,6 +9,10 @@ const filterHogeschoolLeidenEl = document.querySelector('[data-filter="hogeschoo
 const filterHogeschoolUtrechtEl = document.querySelector('[data-filter="hogeschool-utrecht"]');
 const filterHaagseHogeschoolEl = document.querySelector('[data-filter="haagse-hogeschool"]');
 
+const zorgFilterEl = document.querySelector('[data-filter="zorg"]');
+const onderwijsFilterEl = document.querySelector('[data-filter="onderwijs"]');
+const techniekFilterEl = document.querySelector('[data-filter="techniek"]');
+
 filterHogeschoolLeidenEl.addEventListener('click', () => {
     if (filterHogeschoolLeidenEl.checked) {
         Array.from(educationsList.children).forEach((education) => {
@@ -41,6 +45,48 @@ filterHaagseHogeschoolEl.addEventListener('click', () => {
     if (filterHaagseHogeschoolEl.checked) {
         Array.from(educationsList.children).forEach((education) => {
             if (education.dataset.school !== 'haagse-hogeschool') {
+                education.style.display = 'none';
+            }
+        });
+    } else {
+        Array.from(educationsList.children).forEach((education) => {
+            education.style.display = 'block';
+        });
+    }
+});
+
+zorgFilterEl.addEventListener('click', () => {
+    if (zorgFilterEl.checked) {
+        Array.from(educationsList.children).forEach((education) => {
+            if (education.dataset.label !== 'zorg') {
+                education.style.display = 'none';
+            }
+        });
+    } else {
+        Array.from(educationsList.children).forEach((education) => {
+            education.style.display = 'block';
+        });
+    }
+});
+
+onderwijsFilterEl.addEventListener('click', () => {
+    if (onderwijsFilterEl.checked) {
+        Array.from(educationsList.children).forEach((education) => {
+            if (education.dataset.label !== 'onderwijs') {
+                education.style.display = 'none';
+            }
+        });
+    } else {
+        Array.from(educationsList.children).forEach((education) => {
+            education.style.display = 'block';
+        });
+    }
+});
+
+techniekFilterEl.addEventListener('click', () => {
+    if (techniekFilterEl.checked) {
+        Array.from(educationsList.children).forEach((education) => {
+            if (education.dataset.label !== 'techniek') {
                 education.style.display = 'none';
             }
         });

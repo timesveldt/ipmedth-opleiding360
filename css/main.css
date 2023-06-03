@@ -495,5 +495,15 @@ body {
   color: #fff;
 }
 .educations__education__info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 1rem;
+}
+.educations__education__label {
+  display: inline-block;
+  padding: 0.5rem;
+  background-color: #e76f51;
+  color: #fff;
+  border-radius: 0.5rem;
 }/*# sourceMappingURL=main.css.map */
