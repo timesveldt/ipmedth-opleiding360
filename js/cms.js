@@ -9,6 +9,48 @@ const filterHogeschoolLeidenEl = document.querySelector('[data-filter="hogeschoo
 const filterHogeschoolUtrechtEl = document.querySelector('[data-filter="hogeschool-utrecht"]');
 const filterHaagseHogeschoolEl = document.querySelector('[data-filter="haagse-hogeschool"]');
 
+filterHogeschoolLeidenEl.addEventListener('click', () => {
+    if (filterHogeschoolLeidenEl.checked) {
+        Array.from(educationsList.children).forEach((education) => {
+            if (education.dataset.school !== 'hogeschool-leiden') {
+                education.style.display = 'none';
+            }
+        });
+    } else {
+        Array.from(educationsList.children).forEach((education) => {
+            education.style.display = 'block';
+        });
+    }
+});
+
+filterHogeschoolUtrechtEl.addEventListener('click', () => {
+    if (filterHogeschoolUtrechtEl.checked) {
+        Array.from(educationsList.children).forEach((education) => {
+            if (education.dataset.school !== 'hogeschool-utrecht') {
+                education.style.display = 'none';
+            }
+        });
+    } else {
+        Array.from(educationsList.children).forEach((education) => {
+            education.style.display = 'block';
+        });
+    }
+});
+
+filterHaagseHogeschoolEl.addEventListener('click', () => {
+    if (filterHaagseHogeschoolEl.checked) {
+        Array.from(educationsList.children).forEach((education) => {
+            if (education.dataset.school !== 'haagse-hogeschool') {
+                education.style.display = 'none';
+            }
+        });
+    } else {
+        Array.from(educationsList.children).forEach((education) => {
+            education.style.display = 'block';
+        });
+    }
+});
+
 const BASE_URL = 'http://127.0.0.1:8000/api';
 
 uploadForm.addEventListener('submit', async (event) => {
@@ -34,20 +76,20 @@ uploadForm.addEventListener('submit', async (event) => {
 const getCategories = async () => {
     const response = await fetch(`${BASE_URL}/categories`);
     const data = await response.json();
-    renderCategories(data.categories);
+    // renderCategories(data.categories);
 };
 
 const getSchools = async () => {
     const response = await fetch(`${BASE_URL}/schools`);
     const data = await response.json();
-    renderSchools(data.schools);
+    // renderSchools(data.schools);
 };
 
 const getEducation = async () => {
     try {
         const response = await fetch(`${BASE_URL}/education`);
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
     } catch (error) {
         console.log('Error:', error);
     }

@@ -30,7 +30,7 @@
                 class="search"
                 placeholder="Zoek naar een opleiding"
             />
-            <section class="filters">
+            <!-- <section class="filters">
                 <article class="categories">
                     <h3 class="categories__title">Gebied</h3>
                     <ul class="categories__list" id="js--categories--list"></ul>
@@ -39,8 +39,68 @@
                     <h3 class="schools__title">School</h3>
                     <ul class="schools__list" id="js--schools--list"></ul>
                 </article>
+            </section> -->
+            <section class="filters">
+                <article class="categories">
+                    <h3 class="categories__title">Gebied</h3>
+                    <ul class="categories__list" id="js--categories--list">
+                        <li class="categories__category">
+                            <label for="zorg">
+                                <input type="checkbox" id="zorg" />
+                                Zorg
+                            </label>
+                        </li>
+                        <li class="categories__category">
+                            <label for="onderwijs">
+                                <input type="checkbox" id="onderwijs" />
+                                Onderwijs
+                            </label>
+                        </li>
+                        <li class="categories__category">
+                            <label for="techniek">
+                                <input type="checkbox" id="techniek" />
+                                Techniek
+                            </label>
+                        </li>
+                    </ul>
+                </article>
+                <article class="schools">
+                    <h3 class="schools__title">School</h3>
+                    <ul class="schools__list" id="js--schools--list">
+                        <li class="schools__school">
+                            <label for="hogeschool-leiden">
+                                <input
+                                    type="checkbox"
+                                    id="hogeschool-leiden"
+                                    data-filter="hogeschool-leiden"
+                                />
+                                Hogeschool Leiden
+                            </label>
+                        </li>
+                        <li class="schools__school">
+                            <label for="hogeschool-utrecht">
+                                <input
+                                    type="checkbox"
+                                    id="hogeschool-utrecht"
+                                    data-filter="hogeschool-utrecht"
+                                />
+                                Hogeschool Utrecht
+                            </label>
+                        </li>
+                        <li class="schools__school">
+                            <label for="haagse-hogeschool">
+                                <input
+                                    type="checkbox"
+                                    id="haagse-hogeschool"
+                                    data-filter="haagse-hogeschool"
+                                />
+                                Haagse Hogeschool
+                            </label>
+                        </li>
+                    </ul>
+                </article>
             </section>
-            <section class="educations">
+            <section class="educations" id="js--educations">
                 <article class="educations__education" data-school="hogeschool-leiden">
                     <img
                         src="img/hogeschool_leiden.jpg"
