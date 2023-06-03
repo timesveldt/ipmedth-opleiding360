@@ -1,6 +1,3 @@
-const uploadForm = document.getElementById('js--upload--form');
-const file = document.getElementById('file');
-
 const categoriesList = document.getElementById('js--categories--list');
 const schoolsList = document.getElementById('js--schools--list');
 const educationsList = document.getElementById('js--educations');
@@ -86,8 +83,8 @@ onderwijsFilterEl.addEventListener('click', () => {
 techniekFilterEl.addEventListener('click', () => {
     if (techniekFilterEl.checked) {
         Array.from(educationsList.children).forEach((education) => {
-            if (education.dataset.label !== 'techniek') {
-                education.style.display = 'none';
+            if (education.dataset.label !== 'zorg') {
+                education.style.display = 'techniek';
             }
         });
     } else {
@@ -98,26 +95,6 @@ techniekFilterEl.addEventListener('click', () => {
 });
 
 const BASE_URL = 'http://127.0.0.1:8000/api';
-
-uploadForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    try {
-        const response = await fetch(`${BASE_URL}/education/store`, {
-            method: 'POST',
-            body: JSON.stringify({
-                file: file.value,
-            }),
-            headers: {
-                'Content-Type': 'multipart/form-data',
-            },
-        });
-        console.log('The file', file.value);
-        console.log('The response', response);
-    } catch (error) {
-        console.log('There was an error', error);
-    }
-});
 
 const getCategories = async () => {
     const response = await fetch(`${BASE_URL}/categories`);
