@@ -140,24 +140,6 @@ const getEducation = async () => {
     }
 };
 
-const uploadFile = async () => {
-    try {
-        const response = await fetch(`${BASE_URL}/educations/store`, {
-            method: 'POST',
-            body: JSON.stringify({
-                file: file,
-            }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const data = await response.json();
-        console.log(data);
-    } catch (error) {
-        console.log('Error', error);
-    }
-};
-
 const renderCategories = (categories) => {
     categories.forEach((category) => {
         const categoryListItem = document.createElement('li');
