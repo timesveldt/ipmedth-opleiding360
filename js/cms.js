@@ -1,6 +1,9 @@
 const categoriesList = document.getElementById('js--categories--list');
 const schoolsList = document.getElementById('js--schools--list');
 const educationsList = document.getElementById('js--educations');
+const educationsTitles = document.getElementsByClassName('educations__education__title');
+
+const searchBar = document.getElementById('js--search--bar');
 
 const filterHogeschoolLeidenEl = document.querySelector('[data-filter="hogeschool-leiden"]');
 const filterHogeschoolUtrechtEl = document.querySelector('[data-filter="hogeschool-utrecht"]');
@@ -94,6 +97,25 @@ techniekFilterEl.addEventListener('click', () => {
     }
 });
 
+const titles = [...educationsTitles];
+
+searchBar.addEventListener('keyup', (event) => {
+    event.preventDefault();
+
+    const searchTerm = event.target.value.toLowerCase();
+
+    for (let i = 0; i < titles.length; i++) {
+        if (titles[i].textContent.toLowerCase().indexOf(searchTerm) !== -1) {
+            // Ugly way to get parentElement :/
+            // Have to think of something better!
+            titles[i].parentElement.parentElement.parentElement.style.display = 'block';
+            titles[i].parentElement.parentElement.parentElement;
+        } else {
+            titles[i].parentElement.parentElement.parentElement.style.display = 'none';
+        }
+    }
+});
+
 const BASE_URL = 'http://127.0.0.1:8000/api';
 
 const getCategories = async () => {
@@ -181,7 +203,7 @@ function slugify(str) {
 }
 
 window.addEventListener('load', () => {
-    getCategories();
-    getSchools();
-    getEducation();
+    //getCategories();
+    //getSchools();
+    //getEducation();
 });
