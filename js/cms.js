@@ -119,22 +119,30 @@ searchBar.addEventListener('keyup', (event) => {
 const BASE_URL = 'http://127.0.0.1:8000/api';
 
 const getCategories = async () => {
-    const response = await fetch(`${BASE_URL}/categories`);
-    const data = await response.json();
-    // renderCategories(data.categories);
+    try {
+        const response = await fetch(`${BASE_URL}/categories`);
+        const data = await response.json();
+        renderCategories(data.categories);
+    } catch (error) {
+        console.log('Error', error);
+    }
 };
 
 const getSchools = async () => {
-    const response = await fetch(`${BASE_URL}/schools`);
-    const data = await response.json();
-    // renderSchools(data.schools);
+    try {
+        const response = await fetch(`${BASE_URL}/schools`);
+        const data = await response.json();
+        renderSchools(data.schools);
+    } catch (error) {
+        console.log('Error', error);
+    }
 };
 
 const getEducation = async () => {
     try {
         const response = await fetch(`${BASE_URL}/education`);
         const data = await response.json();
-        // console.log(data);
+        renderEducations(data.educations);
     } catch (error) {
         console.log('Error:', error);
     }
@@ -175,6 +183,39 @@ const renderSchools = (schools) => {
     });
 };
 
+const renderEducations = (educations) => {
+    educations.forEach((education) => {
+        const educationArticle = document.createElement('article');
+        const educationImg = document.createElement('img');
+        const educationInfo = document.createElement('div');
+        const educationDetails = document.createElement('div');
+        const educationTitle = document.createElement('h3');
+        const educationSchool = document.createElement('h4');
+        const educationLabel = document.createElement('span');
+
+        educationArticle.classList.add('educations__education');
+        educationImg.classList.add('educations__education__img');
+        educationInfo.classList.add('educations__education__info');
+        educationDetails.classList.add('educations__education__details');
+        educationTitle.classList.add('educations__education__title');
+        educationSchool.classList.add('educations__education__school');
+        educationLabel.classList.add('educations__education__label');
+
+        educationsList.appendChild(educationArticle);
+        educationArticle.appendChild(educationImg);
+        educationArticle.appendChild(educationInfo);
+        educationInfo.appendChild(educationDetails);
+        educationInfo.appendChild(educationLabel);
+        educationDetails.appendChild(educationTitle);
+        educationDetails.appendChild(educationSchool);
+
+        educationImg.src = education.path;
+        educationTitle.textContent = education.name;
+        educationSchool.textContent = education.school.name;
+        educationLabel.textContent = education.category.name;
+    });
+};
+
 function slugify(str) {
     return str
         .toLowerCase()
@@ -187,5 +228,5 @@ function slugify(str) {
 window.addEventListener('load', () => {
     //getCategories();
     //getSchools();
-    //getEducation();
+    getEducation();
 });

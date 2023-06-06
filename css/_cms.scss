@@ -4,6 +4,10 @@ $green-color: #45bccb;
 $red-color: #e76f51;
 $base-radius: 0.5rem;
 
+body {
+    overflow: initial;
+}
+
 .main {
     padding-block: 1rem;
     max-width: 75rem;
@@ -74,10 +78,13 @@ $base-radius: 0.5rem;
 }
 
 .educations {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    gap: 1rem;
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+        gap: 1rem;
+        margin-block: 2rem;
+    }
 
     &__education {
         background-color: $green-color;
@@ -107,6 +114,7 @@ $base-radius: 0.5rem;
             justify-content: space-between;
             align-items: center;
             padding: 1rem;
+            text-transform: capitalize;
         }
 
         &__label {
