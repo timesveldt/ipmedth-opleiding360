@@ -6,9 +6,14 @@ const unlockedAchievementTitle = document.getElementById('unlocked--achievement-
 
 const myInfoSpot1 = document.getElementById('infospot--1');
 
-const infoSpot1 = new PANOLENS.Infospot(2000 , './img/gijs.png', false);
+
+//infospots
+const infoSpot1 = new PANOLENS.Infospot(2000 , './img/Gijs_Zwaait.png', false);
 infoSpot1.position.set(3000, -300, 0);
 infoSpot1.addHoverElement(myInfoSpot1, 150);
+
+const infoSpot2 = new PANOLENS.Infospot(2000 , './img/Gijs_duimpje.png', false);
+infoSpot2.position.set(-1000, -300, 3000);
 
 const vrbutton = document.getElementById('vr-button');
 
@@ -45,7 +50,7 @@ panorama.addEventListener( 'enter-fade-start', function(){
     viewer.tweenControlCenter( new THREE.Vector3(5000,0,0), 0 );
   } );
 panorama2.addEventListener( 'enter-fade-start', function(){
-    viewer.tweenControlCenter( new THREE.Vector3(-5000,0,0), 0 );
+    viewer.tweenControlCenter( new THREE.Vector3(-1000,0,5000), 0 );
   } );
 panorama5.addEventListener( 'enter-fade-start', function(){
     viewer.tweenControlCenter( new THREE.Vector3(5000,0,1500), 0 );
@@ -71,73 +76,8 @@ function vrtoggle() {
 
 vrbutton.addEventListener('click', vrtoggle);
 
-// const panoramas = [
-//     'panorama 1',
-//     'panorama 2',
-//     'panorama 3',
-//     'panorama 4',
-//     'panorama 5',
-//     'panorama 6',
-// ];
-// const visitedPanoramas = [];
-
-// panorama.addEventListener('click', () => {
-//     const date = new Date();
-//     console.log(`[${date.toLocaleString()}]: click event panorama 1`);
-//     visitedPanoramas.push('panorama 1');
-// });
-
-// panorama2.addEventListener('click', () => {
-//     const date = new Date();
-//     console.log(`[${date.toLocaleString()}]: click event panorama 2`);
-//     visitedPanoramas.push('panorama 2');
-// });
-
-// panorama3.addEventListener('click', () => {
-//     const date = new Date();
-//     console.log(`[${date.toLocaleString()}]: click event panorama 3`);
-
-//     unlockedAchievementTitle.textContent = 'Prestatie 2 ontgrendeld!';
-//     unlockedAchievement.classList.add('achievement--unlocked');
-//     setTimeout(() => {
-//         unlockedAchievement.classList.remove('achievement--unlocked');
-//     }, 3000);
-
-//     achievementTwo.classList.add('achievements__achievement--unlocked');
-//     visitedPanoramas.push('panorama 3');
-// });
-
-// panorama4.addEventListener('click', () => {
-//     const date = new Date();
-//     console.log(`[${date.toLocaleString()}]: click event panorama 4`);
-//     visitedPanoramas.push('panorama 4');
-// });
-
-// panorama5.addEventListener('click', () => {
-//     const date = new Date();
-//     console.log(`[${date.toLocaleString()}]: click event panorama 5`);
-//     visitedPanoramas.push('panorama 5');
-// });
-
-// panorama6.addEventListener('click', () => {
-//     const date = new Date();
-//     console.log(`[${date.toLocaleString()}]: click even panorama 6`);
-//     visitedPanoramas.push('panorama 6');
-
-//     visitedPanoramas.every((visitedPanorama) => {
-//         if (panoramas.indexOf(visitedPanorama, -1)) {
-//             unlockedAchievementTitle.textContent = 'Prestatie 1 ontgrendeld!';
-//             unlockedAchievement.classList.add('achievement--unlocked');
-//             setTimeout(() => {
-//                 unlockedAchievement.classList.remove('achievement--unlocked');
-//             }, 3000);
-
-//             achievementOne.classList.add('achievements__achievement--unlocked');
-//         }
-//     });
-// });
-
 //linking foto's van de panorama's deze moeten boven de links staan anders werken ze niet.
+panorama.setLinkingImage('./img/buiten.jpg');
 panorama2.setLinkingImage('./img/Hoofdingang.jpg');
 
 //linking between panorama's
@@ -158,6 +98,7 @@ panorama7.link(panorama5, new THREE.Vector3(-2000, 100, 5000), 500);
 
 //infospots of the panorama's
 panorama.add(infoSpot1);
+panorama2.add(infoSpot2);
 
 //adding to objects
 viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
@@ -184,6 +125,9 @@ for (let index = 0; index < viewer.scene.children.length; index++) {
             break;
         case 5:
             viewer.scene.children[index].name = "Lokalen";
+            break;
+        case 6:
+            viewer.scene.children[index].name = "Lab";
             break;
         default:
             break;
