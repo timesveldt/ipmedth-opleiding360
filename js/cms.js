@@ -1,5 +1,6 @@
 const categoriesList = document.getElementById('js--categories--list');
 const schoolsList = document.getElementById('js--schools--list');
+const featuredEducationsList = document.getElementById('js--featured--educations');
 const educationsList = document.getElementById('js--educations');
 const educationsTitles = document.getElementsByClassName('educations__education__title');
 
@@ -15,13 +16,13 @@ const techniekFilterEl = document.querySelector('[data-filter="techniek"]');
 
 filterHogeschoolLeidenEl.addEventListener('click', () => {
     if (filterHogeschoolLeidenEl.checked) {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             if (education.dataset.school !== 'hogeschool-leiden') {
                 education.style.display = 'none';
             }
         });
     } else {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             education.style.display = 'block';
         });
     }
@@ -29,13 +30,13 @@ filterHogeschoolLeidenEl.addEventListener('click', () => {
 
 filterHogeschoolUtrechtEl.addEventListener('click', () => {
     if (filterHogeschoolUtrechtEl.checked) {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             if (education.dataset.school !== 'hogeschool-utrecht') {
                 education.style.display = 'none';
             }
         });
     } else {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             education.style.display = 'block';
         });
     }
@@ -43,13 +44,13 @@ filterHogeschoolUtrechtEl.addEventListener('click', () => {
 
 filterHaagseHogeschoolEl.addEventListener('click', () => {
     if (filterHaagseHogeschoolEl.checked) {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             if (education.dataset.school !== 'haagse-hogeschool') {
                 education.style.display = 'none';
             }
         });
     } else {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             education.style.display = 'block';
         });
     }
@@ -57,13 +58,13 @@ filterHaagseHogeschoolEl.addEventListener('click', () => {
 
 zorgFilterEl.addEventListener('click', () => {
     if (zorgFilterEl.checked) {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             if (education.dataset.label !== 'zorg') {
                 education.style.display = 'none';
             }
         });
     } else {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             education.style.display = 'block';
         });
     }
@@ -71,13 +72,13 @@ zorgFilterEl.addEventListener('click', () => {
 
 onderwijsFilterEl.addEventListener('click', () => {
     if (onderwijsFilterEl.checked) {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             if (education.dataset.label !== 'onderwijs') {
                 education.style.display = 'none';
             }
         });
     } else {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             education.style.display = 'block';
         });
     }
@@ -85,13 +86,14 @@ onderwijsFilterEl.addEventListener('click', () => {
 
 techniekFilterEl.addEventListener('click', () => {
     if (techniekFilterEl.checked) {
-        Array.from(educationsList.children).forEach((education) => {
-            if (education.dataset.label !== 'zorg') {
-                education.style.display = 'techniek';
+        Array.from(featuredEducationsList.children).forEach((education) => {
+            console.log(education.dataset.label);
+            if (education.dataset.label !== 'techniek') {
+                education.style.display = 'none';
             }
         });
     } else {
-        Array.from(educationsList.children).forEach((education) => {
+        Array.from(featuredEducationsList.children).forEach((education) => {
             education.style.display = 'block';
         });
     }
