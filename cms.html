@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/main.css" />
+        <title>Opleiding360 CMS</title>
+    </head>
+    <body>
+        <main class="main">
+            <input
+                type="search"
+                name="search"
+                id="js--search--bar"
+                class="search"
+                placeholder="Zoek naar een opleiding"
+            />
+            <!-- <section class="filters">
+                <article class="categories">
+                    <h3 class="categories__title">Gebied</h3>
+                    <ul class="categories__list" id="js--categories--list"></ul>
+                </article>
+                <article class="schools">
+                    <h3 class="schools__title">School</h3>
+                    <ul class="schools__list" id="js--schools--list"></ul>
+                </article>
+            </section> -->
+            <section class="filters">
+                <article class="categories">
+                    <h3 class="categories__title">Gebied</h3>
+                    <ul class="categories__list" id="js--categories--list">
+                        <li class="categories__category">
+                            <label for="zorg">
+                                <input type="checkbox" id="zorg" data-filter="zorg" />
+                                Zorg
+                            </label>
+                        </li>
+                        <li class="categories__category">
+                            <label for="onderwijs">
+                                <input type="checkbox" id="onderwijs" data-filter="onderwijs" />
+                                Onderwijs
+                            </label>
+                        </li>
+                        <li class="categories__category">
+                            <label for="techniek">
+                                <input type="checkbox" id="techniek" data-filter="techniek" />
+                                Techniek
+                            </label>
+                        </li>
+                    </ul>
+                </article>
+                <article class="schools">
+                    <h3 class="schools__title">School</h3>
+                    <ul class="schools__list" id="js--schools--list">
+                        <li class="schools__school">
+                            <label for="hogeschool-leiden">
+                                <input
+                                    type="checkbox"
+                                    id="hogeschool-leiden"
+                                    data-filter="hogeschool-leiden"
+                                />
+                                Hogeschool Leiden
+                            </label>
+                        </li>
+                        <li class="schools__school">
+                            <label for="hogeschool-utrecht">
+                                <input
+                                    type="checkbox"
+                                    id="hogeschool-utrecht"
+                                    data-filter="hogeschool-utrecht"
+                                />
+                                Hogeschool Utrecht
+                            </label>
+                        </li>
+                        <li class="schools__school">
+                            <label for="haagse-hogeschool">
+                                <input
+                                    type="checkbox"
+                                    id="haagse-hogeschool"
+                                    data-filter="haagse-hogeschool"
+                                />
+                                Haagse Hogeschool
+                            </label>
+                        </li>
+                    </ul>
+                </article>
+            </section>
+            <section class="educations educations--featured">
+                <h2 class="educations__title">Uitgelichte opleidingen</h2>
+                <div class="educations__grid">
+                    <a
+                        href="index.html"
+                        class="educations__education"
+                        data-school="hogeschool-leiden"
+                        data-label="techniek"
+                    >
+                        <img
+                            src="img/hogeschool_leiden.jpg"
+                            alt=""
+                            class="educations__education__img"
+                        />
+                        <div class="educations__education__info">
+                            <div class="educations__education__details">
+                                <h3 class="educations__education__title">Informatica</h3>
+                                <h4 class="educations__education__school">Hogeschool Leiden</h4>
+                            </div>
+                            <span class="educations__education__label">Techniek</span>
+                        </div>
+                    </a>
+                    <article
+                        class="educations__education"
+                        data-school="hogeschool-utrecht"
+                        data-label="zorg"
+                    >
+                        <img
+                            src="img/hogeschool_utrecht.jpg"
+                            alt=""
+                            class="educations__education__img"
+                        />
+                        <div class="educations__education__info">
+                            <div class="educations__education__details">
+                                <h3 class="educations__education__title">Fysiotherapie</h3>
+                                <h4 class="educations__education__school">Hogeschool Utrecht</h4>
+                            </div>
+                            <span class="educations__education__label">Zorg</span>
+                        </div>
+                    </article>
+                    <article
+                        class="educations__education"
+                        data-school="haagse-hogeschool"
+                        data-label="onderwijs"
+                    >
+                        <img
+                            src="img/haagse_hogeschool.jpg"
+                            alt=""
+                            class="educations__education__img"
+                        />
+                        <div class="educations__education__info">
+                            <div class="educations__education__details">
+                                <h3 class="educations__education__title">HALO</h3>
+                                <h4 class="educations__education__school">Haagse Hogeschool</h4>
+                            </div>
+                            <span class="educations__education__label">Onderwijs</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <section class="educations educations--all">
+                <h2 class="educations__title">Alle opleidingen</h2>
+                <div class="educations__grid" id="js--educations"></div>
+            </section>
+        </main>
+        <script src="js/cms.js"></script>
+    </body>
+</html>
