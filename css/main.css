@@ -406,7 +406,7 @@ body {
     margin-right: 0;
   }
 }
-body {
+body.u-overflow {
   overflow: initial;
 }
 

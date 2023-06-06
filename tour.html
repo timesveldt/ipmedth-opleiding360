@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/main.css" />
+        <title>Opleiding360</title>
+    </head>
+    <body>
+        <!-- startscherm -->
+        <div class="startScherm" id="startScherm">
+            <button id="startButton" class="startButton">Start!</button>
+            <div class="startIntructions">
+                <h3 class="startTitle">Rondkijken:</h3>
+                <p class="startTekst">
+                    klik en sleep de muis om de camera te draaien en rond te kijken.
+                </p>
+                <div class="startImage"></div>
+            </div>
+            <div class="startFooter">
+                <h3 class="startFooterTekst">
+                    Hieronder is te vinden waar in de omgeving u zich nu bevind
+                </h3>
+                <img class="startFooterImage" src="img/img1.png" alt="" />
+            </div>
+            <div class="startSettings">
+                <h3 class="startFooterTekst">Instellingen</h3>
+                <h3>Fullscreen</h3>
+                <img class="startSettingsImage" src="img/img1.png" alt="" />
+            </div>
+
+            <div class="startOptions">
+                <img class="startOptionsImage" src="img/img1.png" alt="" />
+                <h3>VR modus</h3>
+                <h3>Prestaties</h3>
+            </div>
+        </div>
+
+        <!-- main panorama -->
+        <main class="pan">
+            <header class="header">
+                <div class="header__container">
+                    <h1 class="header__title">Opleiding360</h1>
+
+                    <div class="progress__container">
+                        <div class="progress">
+                            <div id="progress--bar" class="progress__bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="header__buttons">
+                        <button id="vr-button" class="button">VR</button>
+                        <button class="button" id="achievement--button">
+                            <img src="img/achievement_icon.svg" alt="" />
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- infospots -->
+            <article class="infospot" id="infospot--1" style="display: none">
+                <h2 class="infospot__title">Welkom!</h2>
+                <p class="infospot__content">
+                    Deze experience is bedoeld om mensen een indruk te geven van een school en een
+                    opleiding. Dit wordt gedaan met het gebruik van 360° camera- en videobeelden.
+                </p>
+            </article>
+
+            <!-- footer -->
+            <div class="bottomBar">
+                <div class="progressBar">
+                    <h2 class="footerTitle">je bevindt je:</h2>
+                    <h2 id="place">Buiten</h2>
+                    <div class="locatieInformatie">
+                        <button class="infoBtn">?</button>
+                        <div class="informatie"><p id="informatie"></p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- scripts -->
+            <script src="js/three.min.js"></script>
+            <script src="js/panolens.min.js"></script>
+            <script src="js/scene.js"></script>
+            <script src="js/main.js"></script>
+        </main>
+    </body>
+</html>
