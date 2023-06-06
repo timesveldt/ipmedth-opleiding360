@@ -25,13 +25,13 @@ const information = [
 
 //init externat constances
 const pan = document.querySelector('.pan');
-const img = './img/PANO_20230524_131709_2_blurred.jpg';
-const img2 = './img/PANO_20230524_131209_1_blurred.jpg';
-const img3 = './img/PANO_20230524_130621_0_blurred.jpg';
-const img4 = './img/PANO_20230524_125948_2_blurred.jpg';
-const img5 = './img/Studieruimte.jpg';
-const img6 = './img/Klaslokaal.jpg';
-const img7 = './img/Lab.jpg'
+const img = './img/PANO_buiten.jpg';
+const img2 = './img/PANO_hoofdingang.jpg';
+const img3 = './img/PANO_cafe.jpg';
+const img4 = './img/PANO_hal.jpg';
+const img5 = './img/PANO_studieruimte.jpg';
+const img6 = './img/PANO_klaslokaal.jpg';
+const img7 = './img/PANO_lab.jpg'
 
 //init panorama + viewer
 const panorama = new PANOLENS.ImagePanorama(img);
@@ -78,24 +78,29 @@ function vrtoggle() {
 vrbutton.addEventListener('click', vrtoggle);
 
 //linking foto's van de panorama's deze moeten boven de links staan anders werken ze niet.
-panorama.setLinkingImage('./img/buiten.jpg');
-panorama2.setLinkingImage('./img/Hoofdingang.jpg');
+panorama.setLinkingImage('./img/buitenIcoon.png', 500);
+panorama2.setLinkingImage('./img/hoofdingangIcoon.png', 500);
+panorama3.setLinkingImage('./img/cafeIcoon.png', 500);
+panorama4.setLinkingImage('./img/halIcoon.png', 500);
+panorama5.setLinkingImage('./img/studieruimteIcoon.png', 500);
+panorama6.setLinkingImage('./img/lokaalIcoon.png', 500);
+panorama7.setLinkingImage('./img/labIcoon.png', 500);
 
 //linking between panorama's
-panorama.link(panorama2, new THREE.Vector3(3000, 0, -3000), 500);
-panorama2.link(panorama, new THREE.Vector3(5000, 100, 0), 500);
-panorama2.link(panorama3, new THREE.Vector3(-5000, 200, 3000), 500);
-panorama2.link(panorama4, new THREE.Vector3(-5000, 200, -2000), 500);
-panorama3.link(panorama4, new THREE.Vector3(-3000, 200, -3000), 500);
-panorama3.link(panorama2, new THREE.Vector3(5000, 0, -2000), 500);
-panorama4.link(panorama2, new THREE.Vector3(5000, 100, 0), 500);
-panorama4.link(panorama3, new THREE.Vector3(500, 0, 5000), 500);
-panorama4.link(panorama5, new THREE.Vector3(-5000, 1000, -1000), 500);
-panorama5.link(panorama6, new THREE.Vector3(3000, 0, -5000), 500);
-panorama5.link(panorama7, new THREE.Vector3(2000, 0, -5000), 500);
-panorama5.link(panorama4, new THREE.Vector3(5000, -600, -1300), 500);
-panorama6.link(panorama5, new THREE.Vector3(-5000, 100, -1000), 500);
-panorama7.link(panorama5, new THREE.Vector3(-2000, 100, 5000), 500);
+panorama.link(panorama2, new THREE.Vector3(3000, 0, -3000));
+panorama2.link(panorama, new THREE.Vector3(5000, 100, 0));
+panorama2.link(panorama3, new THREE.Vector3(-5000, 200, 3000));
+panorama2.link(panorama4, new THREE.Vector3(-5000, 200, -2000));
+panorama3.link(panorama4, new THREE.Vector3(-3000, 200, -3000));
+panorama3.link(panorama2, new THREE.Vector3(5000, 0, -2000));
+panorama4.link(panorama2, new THREE.Vector3(5000, 100, 0));
+panorama4.link(panorama3, new THREE.Vector3(500, 0, 5000));
+panorama4.link(panorama5, new THREE.Vector3(-5000, 1000, -1000));
+panorama5.link(panorama6, new THREE.Vector3(3000, 0, -5000));
+panorama5.link(panorama7, new THREE.Vector3(2000, 0, -5000));
+panorama5.link(panorama4, new THREE.Vector3(5000, -600, -1300));
+panorama6.link(panorama5, new THREE.Vector3(-5000, 100, -1000));
+panorama7.link(panorama5, new THREE.Vector3(-2000, 100, 5000));
 
 //infospots of the panorama's
 panorama.add(infoSpot1);
