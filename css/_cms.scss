@@ -1,4 +1,5 @@
 $white-color: #fff;
+$black-color: #000;
 $grey-color: #d9d9d9;
 $green-color: #45bccb;
 $red-color: #e76f51;
@@ -87,6 +88,7 @@ body {
     }
 
     &__education {
+        text-decoration: none;
         background-color: $green-color;
         border-radius: $base-radius;
         transform: scale(1);
@@ -102,6 +104,10 @@ body {
             border-top-left-radius: $base-radius;
             border-top-right-radius: $base-radius;
             aspect-ratio: 16 / 9;
+        }
+
+        &__title {
+            color: $black-color;
         }
 
         &__school {

@@ -480,6 +480,7 @@ body {
   margin-block: 2rem;
 }
 .educations__education {
+  text-decoration: none;
   background-color: #45bccb;
   border-radius: 0.5rem;
   transform: scale(1);
@@ -494,6 +495,9 @@ body {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   aspect-ratio: 16/9;
+}
+.educations__education__title {
+  color: #000;
 }
 .educations__education__school {
   font-weight: 400;
