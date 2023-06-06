@@ -1,9 +1,3 @@
-
-const achievementOne = document.getElementById('achievement--1');
-const achievementTwo = document.getElementById('achievement--2');
-const unlockedAchievement = document.getElementById('unlocked--achievement');
-const unlockedAchievementTitle = document.getElementById('unlocked--achievement--title');
-
 const myInfoSpot1 = document.getElementById('infospot--1');
 
 
@@ -18,8 +12,15 @@ infoSpot2.position.set(-1000, -300, 3000);
 const vrbutton = document.getElementById('vr-button');
 
 var place = document.getElementById('place');
-const locationInfo = document.getElementById("informatie");
-const information = ["dit is buiten voor de hoofdingang", "dit is waar je binnenkomt via de hoofdingang, Links zit de kantine", "Hier zit het Café waar je wat drinken kan bestellen", "Dit is de grote hal van de nieuwbouw", "dit is een studieruimte", "hier zitten de lokalen van de opleiding informatica"]
+const locationInfo = document.getElementById('informatie');
+const information = [
+    'dit is buiten voor de hoofdingang',
+    'dit is waar je binnenkomt via de hoofdingang, Links zit de kantine',
+    'Hier zit het Café waar je wat drinken kan bestellen',
+    'Dit is de grote hal van de nieuwbouw',
+    'dit is een studieruimte',
+    'hier zitten de lokalen van de opleiding informatica',
+];
 //panolens select container
 
 //init externat constances
@@ -109,22 +110,22 @@ console.log(viewer);
 for (let index = 0; index < viewer.scene.children.length; index++) {
     switch (index) {
         case 0:
-            viewer.scene.children[index].name = "Buiten";
+            viewer.scene.children[index].name = 'Buiten';
             break;
         case 1:
-            viewer.scene.children[index].name = "Hoofdingang";
+            viewer.scene.children[index].name = 'Hoofdingang';
             break;
         case 2:
-            viewer.scene.children[index].name = "Café";
+            viewer.scene.children[index].name = 'Café';
             break;
         case 3:
-            viewer.scene.children[index].name = "Hal";
+            viewer.scene.children[index].name = 'Hal';
             break;
         case 4:
-            viewer.scene.children[index].name = "Studie ruimte";
+            viewer.scene.children[index].name = 'Studie ruimte';
             break;
         case 5:
-            viewer.scene.children[index].name = "Lokalen";
+            viewer.scene.children[index].name = 'Lokalen';
             break;
         case 6:
             viewer.scene.children[index].name = "Lab";
@@ -146,9 +147,6 @@ this.setInterval(() => {
 const startButton = document.querySelector('#startButton');
 const startScherm = document.querySelector('#startScherm');
 
-
 startButton.addEventListener('click', () => {
-    startScherm.classList.add("hidden");
-  })
-
-
+    startScherm.classList.add('hidden');
+});
