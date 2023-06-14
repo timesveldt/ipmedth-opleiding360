@@ -26,9 +26,10 @@ achievemensButton.addEventListener('click', () => {
 });
 
 const renderAchievements = () => {
-    DUMMY_ACHIEVEMENTS.forEach((achievement) => {
+    DUMMY_ACHIEVEMENTS.forEach((achievement, index) => {
         const achievementEl = document.createElement('li');
         achievementEl.classList.add('achievements__achievement');
+        achievementEl.id = `js--achievement--${index}`;
         achievementEl.textContent = achievement.title;
 
         achievementsList.appendChild(achievementEl);
@@ -155,17 +156,6 @@ viewer.add(
 
 console.log(viewer);
 
-const visitedScenes = [];
-
-const allScenes = viewer.scene.children.map((scene) => {
-    return scene.name;
-});
-
-const setVisitedScenes = (name) => {
-    visitedScenes.push(name);
-    console.log(visitedScenes);
-};
-
 //navigation indexing
 for (let index = 0; index < viewer.scene.children.length; index++) {
     switch (index) {
@@ -195,6 +185,16 @@ for (let index = 0; index < viewer.scene.children.length; index++) {
     }
 }
 
+const visitedScenes = [];
+
+const allScenes = viewer.scene.children.map((scene) => {
+    return scene.name;
+});
+
+const setVisitedScenes = (name) => {
+    visitedScenes.push(name);
+};
+
 this.setInterval(() => {
     for (let index = 0; index < viewer.scene.children.length; index++) {
         if (viewer.scene.children[index].active === true) {
@@ -202,6 +202,16 @@ this.setInterval(() => {
             locationInfo.textContent = information[index];
             if (!visitedScenes.includes(viewer.scene.children[index].name)) {
                 setVisitedScenes(viewer.scene.children[index].name);
+            }
+
+            const isArrayEqual = arrayEquals(allScenes, visitedScenes);
+            if (isArrayEqual === true) {
+                DUMMY_ACHIEVEMENTS[1].unlocked = true;
+                const achievementTwo =
+                    document.getElementById('js--achievement--1');
+                achievementTwo.classList.add(
+                    'achievements__achievement--unlocked'
+                );
             }
         }
     }
@@ -213,3 +223,7 @@ const startScherm = document.querySelector('#startScherm');
 startButton.addEventListener('click', () => {
     startScherm.classList.add('hidden');
 });
+
+function arrayEquals(arr1, arr2) {
+    return JSON.stringify(arr1.sort()) === JSON.stringify(arr2.sort());
+}
