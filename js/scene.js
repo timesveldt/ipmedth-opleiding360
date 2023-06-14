@@ -1,12 +1,50 @@
+const DUMMY_ACHIEVEMENTS = [
+    {
+        title: 'Voltooi de tour',
+        unlocked: false
+    },
+    {
+        title: 'Bezoek alle ruimtes',
+        unlocked: false
+    },
+    {
+        title: 'Vind drie voorwerpen',
+        unlocked: false
+    },
+    {
+        title: 'Vind alle voorwerpen',
+        unlocked: false
+    }
+];
+
+const achievements = document.getElementById('js--achievements');
+const achievementsList = document.getElementById('js--achievements--list');
+const achievemensButton = document.getElementById('js--achievements--button');
+
+achievemensButton.addEventListener('click', () => {
+    achievements.classList.toggle('achievements--open');
+});
+
+const renderAchievements = () => {
+    DUMMY_ACHIEVEMENTS.forEach((achievement) => {
+        const achievementEl = document.createElement('li');
+        achievementEl.classList.add('achievements__achievement');
+        achievementEl.textContent = achievement.title;
+
+        achievementsList.appendChild(achievementEl);
+    });
+};
+
+renderAchievements();
+
 const myInfoSpot1 = document.getElementById('infospot--1');
 
-
 //infospots
-const infoSpot1 = new PANOLENS.Infospot(2000 , './img/Gijs_Zwaait.png', false);
+const infoSpot1 = new PANOLENS.Infospot(2000, './img/Gijs_Zwaait.png', false);
 infoSpot1.position.set(3000, -300, 0);
 infoSpot1.addHoverElement(myInfoSpot1, 150);
 
-const infoSpot2 = new PANOLENS.Infospot(2000 , './img/Gijs_duimpje.png', false);
+const infoSpot2 = new PANOLENS.Infospot(2000, './img/Gijs_duimpje.png', false);
 infoSpot2.position.set(-1000, -300, 3000);
 
 const vrbutton = document.getElementById('vr-button');
@@ -19,7 +57,7 @@ const information = [
     'Hier zit het Café waar je wat drinken kan bestellen',
     'Dit is de grote hal van de nieuwbouw',
     'dit is een studieruimte',
-    'hier zitten de lokalen van de opleiding informatica',
+    'hier zitten de lokalen van de opleiding informatica'
 ];
 //panolens select container
 
@@ -31,7 +69,7 @@ const img3 = './img/PANO_cafe.jpg';
 const img4 = './img/PANO_hal.jpg';
 const img5 = './img/PANO_studieruimte.jpg';
 const img6 = './img/PANO_klaslokaal.jpg';
-const img7 = './img/PANO_lab.jpg'
+const img7 = './img/PANO_lab.jpg';
 
 //init panorama + viewer
 const panorama = new PANOLENS.ImagePanorama(img);
@@ -43,26 +81,24 @@ const panorama6 = new PANOLENS.ImagePanorama(img6);
 const panorama7 = new PANOLENS.ImagePanorama(img7);
 const viewer = new PANOLENS.Viewer({
     container: pan,
-    output: 'console',
+    output: 'console'
 });
 
 // roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
-panorama.addEventListener( 'enter-fade-start', function(){
-    viewer.tweenControlCenter( new THREE.Vector3(5000,0,0), 0 );
-  } );
-panorama2.addEventListener( 'enter-fade-start', function(){
-    viewer.tweenControlCenter( new THREE.Vector3(-1000,0,5000), 0 );
-  } );
-panorama5.addEventListener( 'enter-fade-start', function(){
-    viewer.tweenControlCenter( new THREE.Vector3(5000,0,1500), 0 );
-  } );
-panorama6.addEventListener( 'enter-fade-start', function(){
-    viewer.tweenControlCenter( new THREE.Vector3(5000,0,2500), 0 );
-  } );
+panorama.addEventListener('enter-fade-start', function () {
+    viewer.tweenControlCenter(new THREE.Vector3(5000, 0, 0), 0);
+});
+panorama2.addEventListener('enter-fade-start', function () {
+    viewer.tweenControlCenter(new THREE.Vector3(-1000, 0, 5000), 0);
+});
+panorama5.addEventListener('enter-fade-start', function () {
+    viewer.tweenControlCenter(new THREE.Vector3(5000, 0, 1500), 0);
+});
+panorama6.addEventListener('enter-fade-start', function () {
+    viewer.tweenControlCenter(new THREE.Vector3(5000, 0, 2500), 0);
+});
 
 var vrtoggled = false;
-
-
 
 //toggle on/off vr mode
 function vrtoggle() {
@@ -107,7 +143,15 @@ panorama.add(infoSpot1);
 panorama2.add(infoSpot2);
 
 //adding to objects
-viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
+viewer.add(
+    panorama,
+    panorama2,
+    panorama3,
+    panorama4,
+    panorama5,
+    panorama6,
+    panorama7
+);
 
 console.log(viewer);
 
@@ -133,7 +177,7 @@ for (let index = 0; index < viewer.scene.children.length; index++) {
             viewer.scene.children[index].name = 'Lokalen';
             break;
         case 6:
-            viewer.scene.children[index].name = "Lab";
+            viewer.scene.children[index].name = 'Lab';
             break;
         default:
             break;
