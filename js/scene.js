@@ -1,3 +1,5 @@
+localStorage.setItem('progress', '50');
+
 const DUMMY_ACHIEVEMENTS = [
     {
         title: 'Voltooi de tour',
@@ -37,6 +39,12 @@ const renderAchievements = () => {
 };
 
 renderAchievements();
+
+const progressBar = document.getElementById('js--progress--bar');
+const amountOfProgress = localStorage.getItem('progress');
+
+progressBar.textContent = `${amountOfProgress}%`;
+progressBar.style.width = `${amountOfProgress}%`;
 
 const myInfoSpot1 = document.getElementById('infospot--1');
 
