@@ -155,6 +155,17 @@ viewer.add(
 
 console.log(viewer);
 
+const visitedScenes = [];
+
+const allScenes = viewer.scene.children.map((scene) => {
+    return scene.name;
+});
+
+const setVisitedScenes = (name) => {
+    visitedScenes.push(name);
+    console.log(visitedScenes);
+};
+
 //navigation indexing
 for (let index = 0; index < viewer.scene.children.length; index++) {
     switch (index) {
@@ -183,12 +194,15 @@ for (let index = 0; index < viewer.scene.children.length; index++) {
             break;
     }
 }
+
 this.setInterval(() => {
     for (let index = 0; index < viewer.scene.children.length; index++) {
         if (viewer.scene.children[index].active === true) {
-            place.innerHTML = viewer.scene.children[index].name;
-            locationInfo.innerHTML = information[index];
-            // console.log (viewer.scene.children[index].name);
+            place.textContent = viewer.scene.children[index].name;
+            locationInfo.textContent = information[index];
+            if (!visitedScenes.includes(viewer.scene.children[index].name)) {
+                setVisitedScenes(viewer.scene.children[index].name);
+            }
         }
     }
 }, 1000);
