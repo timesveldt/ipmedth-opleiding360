@@ -1,3 +1,9 @@
+const progressBar = document.getElementById('js--progress--bar');
+const amountOfProgress = localStorage.getItem('progress');
+
+progressBar.style.width = `${amountOfProgress}%`;
+progressBar.textContent = `${amountOfProgress}%`;
+
 const DUMMY_ACHIEVEMENTS = [
     {
         title: 'Voltooi de tour',
@@ -232,3 +238,7 @@ startButton.addEventListener('click', () => {
 function arrayEquals(arr1, arr2) {
     return JSON.stringify(arr1.sort()) === JSON.stringify(arr2.sort());
 }
+
+window.addEventListener('load', () => {
+    localStorage.setItem('progress', '0');
+});
