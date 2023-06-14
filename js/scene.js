@@ -195,6 +195,27 @@ const setVisitedScenes = (name) => {
     visitedScenes.push(name);
 };
 
+const achievementOneUnlocked = () => {
+    //
+};
+
+const achievementTwoUnlocked = () => {
+    const isArrayEqual = arrayEquals(allScenes, visitedScenes);
+    if (isArrayEqual === true) {
+        DUMMY_ACHIEVEMENTS[1].unlocked = true;
+        const achievementTwo = document.getElementById('js--achievement--1');
+        achievementTwo.classList.add('achievements__achievement--unlocked');
+    }
+};
+
+const achievementThreeUnlocked = () => {
+    //
+};
+
+const achievementFourUnlocked = () => {
+    //
+};
+
 this.setInterval(() => {
     for (let index = 0; index < viewer.scene.children.length; index++) {
         if (viewer.scene.children[index].active === true) {
@@ -204,15 +225,7 @@ this.setInterval(() => {
                 setVisitedScenes(viewer.scene.children[index].name);
             }
 
-            const isArrayEqual = arrayEquals(allScenes, visitedScenes);
-            if (isArrayEqual === true) {
-                DUMMY_ACHIEVEMENTS[1].unlocked = true;
-                const achievementTwo =
-                    document.getElementById('js--achievement--1');
-                achievementTwo.classList.add(
-                    'achievements__achievement--unlocked'
-                );
-            }
+            achievementTwoUnlocked();
         }
     }
 }, 1000);
