@@ -1,22 +1,20 @@
-localStorage.setItem('progress', '50');
-
 const DUMMY_ACHIEVEMENTS = [
     {
         title: 'Voltooi de tour',
-        unlocked: false
+        unlocked: false,
     },
     {
         title: 'Bezoek alle ruimtes',
-        unlocked: false
+        unlocked: false,
     },
     {
         title: 'Vind drie voorwerpen',
-        unlocked: false
+        unlocked: false,
     },
     {
         title: 'Vind alle voorwerpen',
-        unlocked: false
-    }
+        unlocked: false,
+    },
 ];
 
 const achievements = document.getElementById('js--achievements');
@@ -40,12 +38,6 @@ const renderAchievements = () => {
 
 renderAchievements();
 
-const progressBar = document.getElementById('js--progress--bar');
-const amountOfProgress = localStorage.getItem('progress');
-
-progressBar.textContent = `${amountOfProgress}%`;
-progressBar.style.width = `${amountOfProgress}%`;
-
 const myInfoSpot1 = document.getElementById('infospot--1');
 
 //infospots
@@ -66,7 +58,7 @@ const information = [
     'Hier zit het Café waar je wat drinken kan bestellen',
     'Dit is de grote hal van de nieuwbouw',
     'dit is een studieruimte',
-    'hier zitten de lokalen van de opleiding informatica'
+    'hier zitten de lokalen van de opleiding informatica',
 ];
 //panolens select container
 
@@ -90,7 +82,7 @@ const panorama6 = new PANOLENS.ImagePanorama(img6);
 const panorama7 = new PANOLENS.ImagePanorama(img7);
 const viewer = new PANOLENS.Viewer({
     container: pan,
-    output: 'console'
+    output: 'console',
 });
 
 // roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
@@ -152,15 +144,7 @@ panorama.add(infoSpot1);
 panorama2.add(infoSpot2);
 
 //adding to objects
-viewer.add(
-    panorama,
-    panorama2,
-    panorama3,
-    panorama4,
-    panorama5,
-    panorama6,
-    panorama7
-);
+viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
 
 console.log(viewer);
 
