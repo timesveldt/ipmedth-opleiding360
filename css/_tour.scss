@@ -394,22 +394,66 @@ body {
     }
 
     &__title {
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
     }
 
     &__list {
         list-style-type: none;
         display: grid;
         grid-template-columns: repeat(2, minmax(10rem, 1fr));
-        column-gap: 1rem;
-        row-gap: 0.5rem;
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
     }
 
     &__achievement {
-        border: 0.1rem solid #000;
+        position: relative;
+        border-width: 0.2rem;
+        border-style: solid;
+        border-radius: 0.5rem;
+        padding-block: 1rem;
+        padding-inline: 0.5rem;
+        text-align: center;
 
         &--unlocked {
+            &::before {
+                content: '\2713';
+                display: block;
+                position: absolute;
+                top: -42%;
+                right: -10%;
+                font-size: 1.5rem;
+                border-width: 0.2rem;
+                border-style: solid;
+                border-radius: 50%;
+                box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+                padding-inline: 0.5rem;
+            }
+        }
+
+        &:nth-child(odd) {
+            border-color: #45bccb;
+        }
+
+        &--unlocked:nth-child(odd) {
             background-color: #45bccb;
+
+            &::before {
+                border-color: #45bccb;
+                background-color: #45bccb;
+            }
+        }
+
+        &:nth-child(even) {
+            border-color: #ffa500;
+        }
+
+        &--unlocked:nth-child(even) {
+            background-color: #ffa500;
+
+            &::before {
+                border-color: #ffa500;
+                background-color: #ffa500;
+            }
         }
     }
 }

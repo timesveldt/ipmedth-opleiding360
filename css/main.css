@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 * {
   margin: 0;
@@ -407,21 +408,57 @@ body {
   pointer-events: all;
 }
 .achievements__title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 .achievements__list {
   list-style-type: none;
   display: grid;
   grid-template-columns: repeat(2, minmax(10rem, 1fr));
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
-  row-gap: 0.5rem;
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+  row-gap: 1.5rem;
 }
 .achievements__achievement {
-  border: 0.1rem solid #000;
+  position: relative;
+  border-width: 0.2rem;
+  border-style: solid;
+  border-radius: 0.5rem;
+  padding-block: 1rem;
+  padding-inline: 0.5rem;
+  text-align: center;
 }
-.achievements__achievement--unlocked {
+.achievements__achievement--unlocked::before {
+  content: "✓";
+  display: block;
+  position: absolute;
+  top: -42%;
+  right: -10%;
+  font-size: 1.5rem;
+  border-width: 0.2rem;
+  border-style: solid;
+  border-radius: 50%;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+  padding-inline: 0.5rem;
+}
+.achievements__achievement:nth-child(odd) {
+  border-color: #45bccb;
+}
+.achievements__achievement--unlocked:nth-child(odd) {
   background-color: #45bccb;
+}
+.achievements__achievement--unlocked:nth-child(odd)::before {
+  border-color: #45bccb;
+  background-color: #45bccb;
+}
+.achievements__achievement:nth-child(even) {
+  border-color: #ffa500;
+}
+.achievements__achievement--unlocked:nth-child(even) {
+  background-color: #ffa500;
+}
+.achievements__achievement--unlocked:nth-child(even)::before {
+  border-color: #ffa500;
+  background-color: #ffa500;
 }
 
 @keyframes mousemove {
