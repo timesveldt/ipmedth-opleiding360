@@ -5,6 +5,11 @@ const myInfoSpot1 = document.getElementById('infospot--1');
 const infoSpot1 = new PANOLENS.Infospot(2000 , './img/Gijs_Zwaait.png', false);
 infoSpot1.position.set(3000, -300, 0);
 infoSpot1.addHoverElement(myInfoSpot1, 150);
+// infoSpot1.addEventListener( 'click', function(){
+//     infoSpot1.onHoverStart();
+// })
+infoSpot1.onClick();
+
 
 const infoSpot2 = new PANOLENS.Infospot(2000 , './img/Gijs_duimpje.png', false);
 infoSpot2.position.set(-1000, -300, 3000);
@@ -44,6 +49,7 @@ const panorama7 = new PANOLENS.ImagePanorama(img7);
 const viewer = new PANOLENS.Viewer({
     container: pan,
     output: 'console',
+    autoHideInfospot: false,
 });
 
 // roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
