@@ -52,6 +52,7 @@ const information = [
     'Dit is de grote hal van de nieuwbouw',
     'dit is een studieruimte',
     'hier zitten de lokalen van de opleiding informatica',
+    'dit is het lab van de opleiding informatica'
 ];
 //panolens select container
 
