@@ -1,3 +1,5 @@
+const resetButton = document.getElementById('js--reset--button');
+
 const DUMMY_ACHIEVEMENTS = [
     {
         title: 'Voltooi de tour',
