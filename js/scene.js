@@ -20,9 +20,14 @@ const DUMMY_ACHIEVEMENTS = [
 const achievements = document.getElementById('js--achievements');
 const achievementsList = document.getElementById('js--achievements--list');
 const achievemensButton = document.getElementById('js--achievements--button');
+const achievementsCloseButton = document.getElementById('js--achievements--close--button');
 
 achievemensButton.addEventListener('click', () => {
     achievements.classList.toggle('achievements--open');
+});
+
+achievementsCloseButton.addEventListener('click', () => {
+    achievements.classList.remove('achievements--open');
 });
 
 const renderAchievements = () => {
