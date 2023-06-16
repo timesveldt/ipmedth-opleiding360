@@ -51,32 +51,60 @@ infoSpot1.position.set(3000, -300, 0);
 infoSpot1.addHoverElement(myInfoSpot1, 150);
 infoSpot1.onClick();
 
+const foundObjects = [];
+
 //items als infospots
 //laptop
 const laptop = new PANOLENS.Infospot(500, './img/laptop.png', false);
 laptop.position.set(4000, -1400, -1500);
 laptop.addHoverElement(laptopInfo, 150);
-laptop.onClick();
+laptop.name = 'PANO_laptop';
+
+laptop.addEventListener('click', () => {
+    foundObjects.push(laptop.name);
+});
+
 //boeken
 const boeken = new PANOLENS.Infospot(500, './img/boeken.png', false);
 boeken.position.set(1000, -800, -5000);
 boeken.addHoverElement(boekenInfo, 150);
-boeken.onClick();
+boeken.name = 'PANO_boeken';
+
+boeken.addEventListener('click', () => {
+    foundObjects.push(boeken.name);
+});
+
 //bierglas
 const bierGlas = new PANOLENS.Infospot(400, './img/bierGlas.png', false);
 bierGlas.position.set(-5000, -100, 0);
 bierGlas.addHoverElement(bierInfo, 150);
-bierGlas.onClick();
+bierGlas.name = 'PANO_bierGlas';
+
+bierGlas.addEventListener('click', () => {
+    foundObjects.push(bierGlas.name);
+});
+
 //raspberry Pi
 const raspberryPi = new PANOLENS.Infospot(400, './img/raspberryPi.png', false);
 raspberryPi.position.set(5000, -800, 2000);
 raspberryPi.addHoverElement(raspberryPiInfo, 150);
-raspberryPi.onClick();
+raspberryPi.name = 'PANO_raspberryPi';
+
+raspberryPi.addEventListener('click', () => {
+    foundObjects.push(raspberryPi.name);
+});
+
 //hardware box
 const hardwareBox = new PANOLENS.Infospot(1000, './img/hardwareBox.png', false);
 hardwareBox.position.set(-5000, -900, -2500);
 hardwareBox.addHoverElement(hardwareBoxInfo, 150);
-hardwareBox.onClick();
+hardwareBox.name = 'PANO_hardwareBox';
+
+hardwareBox.addEventListener('click', () => {
+    foundObjects.push(hardwareBox.name);
+});
+
+const allObjects = [laptop.name, boeken.name, bierGlas.name, raspberryPi.name, hardwareBox.name];
 
 const infoSpot2 = new PANOLENS.Infospot(2000, './img/Gijs_duimpje.png', false);
 infoSpot2.position.set(-1000, -300, 3000);
@@ -232,8 +260,8 @@ const achievementOneUnlocked = () => {
 };
 
 const achievementTwoUnlocked = () => {
-    const isArrayEqual = arrayEquals(allScenes, visitedScenes);
-    if (isArrayEqual === true) {
+    const hasUserVisitedAllRooms = arrayEquals(allScenes, visitedScenes);
+    if (hasUserVisitedAllRooms === true) {
         DUMMY_ACHIEVEMENTS[1].unlocked = true;
         const achievementTwo = document.getElementById('js--achievement--1');
         achievementTwo.classList.add('achievements__achievement--unlocked');
@@ -241,7 +269,9 @@ const achievementTwoUnlocked = () => {
 };
 
 const achievementThreeUnlocked = () => {
-    //
+    DUMMY_ACHIEVEMENTS[2].unlocked = true;
+    const achievementThree = document.getElementById('js--achievement--2');
+    achievementThree.classList.add('achievements__achievement--unlocked');
 };
 
 const achievementFourUnlocked = () => {
@@ -258,6 +288,10 @@ this.setInterval(() => {
             }
 
             achievementTwoUnlocked();
+        }
+
+        if (foundObjects.length === 3) {
+            achievementThreeUnlocked();
         }
     }
 }, 1000);
