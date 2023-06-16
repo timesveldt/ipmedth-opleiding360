@@ -409,6 +409,25 @@ body {
 .achievements__title {
   margin-bottom: 1rem;
 }
+.achievements__close {
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: #45bccb;
+  border-radius: 50%;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+.achievements__close:hover {
+  background-color: #ffa500;
+}
 .achievements__list {
   list-style-type: none;
   display: grid;
