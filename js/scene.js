@@ -39,11 +39,44 @@ const renderAchievements = () => {
 renderAchievements();
 
 const myInfoSpot1 = document.getElementById('infospot--1');
+const laptopInfo = document.getElementById('laptopInfo');
+const boekenInfo = document.getElementById('boekenInfo');
+const bierInfo = document.getElementById('bierInfo');
+const raspberryPiInfo = document.getElementById('raspberryPiInfo');
+const hardwareBoxInfo = document.getElementById('hardwareBoxInfo');
 
 //infospots
 const infoSpot1 = new PANOLENS.Infospot(2000, './img/Gijs_Zwaait.png', false);
 infoSpot1.position.set(3000, -300, 0);
 infoSpot1.addHoverElement(myInfoSpot1, 150);
+infoSpot1.onClick();
+
+//items als infospots
+//laptop
+const laptop = new PANOLENS.Infospot(500, './img/laptop.png', false);
+laptop.position.set(4000, -1400, -1500);
+laptop.addHoverElement(laptopInfo, 150);
+laptop.onClick();
+//boeken
+const boeken = new PANOLENS.Infospot(500, './img/boeken.png', false);
+boeken.position.set(1000, -800, -5000);
+boeken.addHoverElement(boekenInfo, 150);
+boeken.onClick();
+//bierglas
+const bierGlas = new PANOLENS.Infospot(400, './img/bierGlas.png', false);
+bierGlas.position.set(-5000, -100, 0);
+bierGlas.addHoverElement(bierInfo, 150);
+bierGlas.onClick();
+//raspberry Pi
+const raspberryPi = new PANOLENS.Infospot(400, './img/raspberryPi.png', false);
+raspberryPi.position.set(5000, -800, 2000);
+raspberryPi.addHoverElement(raspberryPiInfo, 150);
+raspberryPi.onClick();
+//hardware box
+const hardwareBox = new PANOLENS.Infospot(1000, './img/hardwareBox.png', false);
+hardwareBox.position.set(-5000, -900, -2500);
+hardwareBox.addHoverElement(hardwareBoxInfo, 150);
+hardwareBox.onClick();
 
 const infoSpot2 = new PANOLENS.Infospot(2000, './img/Gijs_duimpje.png', false);
 infoSpot2.position.set(-1000, -300, 3000);
@@ -59,6 +92,7 @@ const information = [
     'Dit is de grote hal van de nieuwbouw',
     'dit is een studieruimte',
     'hier zitten de lokalen van de opleiding informatica',
+    'dit is het lab van de opleiding informatica',
 ];
 //panolens select container
 
@@ -83,6 +117,7 @@ const panorama7 = new PANOLENS.ImagePanorama(img7);
 const viewer = new PANOLENS.Viewer({
     container: pan,
     output: 'console',
+    autoHideInfospot: false,
 });
 
 // roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
@@ -140,8 +175,13 @@ panorama6.link(panorama5, new THREE.Vector3(-5000, 100, -1000));
 panorama7.link(panorama5, new THREE.Vector3(-2000, 100, 5000));
 
 //infospots of the panorama's
-panorama.add(infoSpot1);
-panorama2.add(infoSpot2);
+panorama.add(infoSpot1, laptop);
+panorama2.add(infoSpot2, boeken);
+panorama3.add(bierGlas);
+
+panorama5.add(raspberryPi);
+
+panorama7.add(hardwareBox);
 
 //adding to objects
 viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
