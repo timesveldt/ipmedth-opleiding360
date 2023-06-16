@@ -275,7 +275,9 @@ const achievementThreeUnlocked = () => {
 };
 
 const achievementFourUnlocked = () => {
-    //
+    DUMMY_ACHIEVEMENTS[3].unlocked = true;
+    const achievementFour = document.getElementById('js--achievement--3');
+    achievementFour.classList.add('achievements__achievement--unlocked');
 };
 
 this.setInterval(() => {
@@ -292,6 +294,11 @@ this.setInterval(() => {
 
         if (foundObjects.length === 3) {
             achievementThreeUnlocked();
+        }
+
+        const hasUserFoundAllObjects = arrayEquals(allObjects, foundObjects);
+        if (hasUserFoundAllObjects === true) {
+            achievementFourUnlocked();
         }
     }
 }, 1000);
