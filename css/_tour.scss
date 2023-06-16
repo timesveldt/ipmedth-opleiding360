@@ -459,24 +459,24 @@ body {
 
 @keyframes mousemove {
     0% {
-        margin-right: 0;
+        transform: translateX(0);
         background: url(/img/mouse-left-click.png) no-repeat;
     }
     30% {
-        margin-right: 12rem;
+        transform: translateX(12rem);
     }
     60% {
-        margin-right: -12rem;
+        transform: translateX(-12rem);
     }
     80% {
         background: url(/img/mouse-left-click.png) no-repeat;
     }
     100% {
-        margin-right: 0;
+        transform: translateX(0);
     }
 }
 
-@media (orientation: portrait){
+@media (orientation: portrait) {
     .orientatie {
         display: block;
         position: fixed;
@@ -494,21 +494,23 @@ body {
     }
 }
 
-@media (orientation: landscape){
+@media (orientation: landscape) {
     .orientatie {
         display: none;
     }
 }
 
-@media screen and (max-height: 600px){
-    h1, h2, h3 {
+@media screen and (max-height: 600px) {
+    h1,
+    h2,
+    h3 {
         font-size: 1rem;
     }
 
     .header {
         padding-top: 12px;
     }
-    .header__title{
+    .header__title {
         font-size: 1rem;
         padding: 0;
     }

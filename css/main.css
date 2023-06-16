@@ -462,20 +462,20 @@ body {
 
 @keyframes mousemove {
   0% {
-    margin-right: 0;
+    transform: translateX(0);
     background: url(/img/mouse-left-click.png) no-repeat;
   }
   30% {
-    margin-right: 12rem;
+    transform: translateX(12rem);
   }
   60% {
-    margin-right: -12rem;
+    transform: translateX(-12rem);
   }
   80% {
     background: url(/img/mouse-left-click.png) no-repeat;
   }
   100% {
-    margin-right: 0;
+    transform: translateX(0);
   }
 }
 @media (orientation: portrait) {
@@ -501,7 +501,9 @@ body {
   }
 }
 @media screen and (max-height: 600px) {
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-size: 1rem;
   }
   .header {
