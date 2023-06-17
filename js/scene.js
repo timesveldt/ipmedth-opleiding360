@@ -21,7 +21,7 @@ infoSpot1.onClick();
 
 const navInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
 navInfospot.position.set(0, 850, 5000);
-navInfospot.addHoverElement(navInfo, 150);
+navInfospot.addHoverElement(navInfo, 100);
 navInfospot.onClick();
 
 const poolInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
