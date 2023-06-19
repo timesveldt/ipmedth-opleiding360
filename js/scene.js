@@ -254,8 +254,6 @@ panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot);
 //adding to objects
 viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
 
-console.log(viewer);
-
 resetButton.addEventListener('click', () => {
     endEl.classList.add('end--open');
 });
