@@ -1,3 +1,6 @@
+$header-min-height: 5vh;
+$subtle-box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+
 body {
     overflow: hidden;
 }
@@ -58,7 +61,7 @@ body {
 }
 
 .startButton {
-    grid-area:  2 / 2;
+    grid-area: 2 / 2;
     background-color: green;
     color: white;
     padding: 10px 15px;
@@ -85,7 +88,9 @@ body {
     opacity: 0.8;
 }
 
-.startFooterImage, .startSettingsImage, .startOptionsImage {
+.startFooterImage,
+.startSettingsImage,
+.startOptionsImage {
     max-width: 3rem;
     max-height: 3rem;
 }
@@ -101,7 +106,6 @@ body {
 .startOptionsImage {
     transform: rotate(20deg);
 }
-
 
 .startFooterTekst {
     font-size: 1.2rem;
@@ -264,17 +268,12 @@ body {
     display: block;
 }
 
-:root {
-    --header-min-height: 5vh;
-    --subtle-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
-}
-
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    min-height: var(--header-min-height);
+    min-height: $header-min-height;
     padding-left: 1rem;
     padding-right: 1rem;
 }
@@ -313,7 +312,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+    box-shadow: $subtle-box-shadow;
 
     &:hover {
         animation-name: breathe;
@@ -378,7 +377,7 @@ body {
 .infospot {
     background-color: #fff;
     padding: 1rem;
-    box-shadow: var(--subtle-shadow);
+    box-shadow: $subtle-box-shadow;
 }
 
 .infospot__title {
@@ -461,7 +460,7 @@ body {
                 border-width: 0.2rem;
                 border-style: solid;
                 border-radius: 50%;
-                box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+                box-shadow: $subtle-box-shadow;
                 padding-inline: 0.5rem;
             }
         }
@@ -489,6 +488,89 @@ body {
             &::before {
                 border-color: #ffa500;
                 background-color: #ffa500;
+            }
+        }
+    }
+}
+
+.end {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    opacity: 0;
+    pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+
+    &--open {
+        opacity: 0.8;
+        pointer-events: all;
+    }
+
+    &__content {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 2rem;
+        max-width: 55ch;
+        box-shadow: $subtle-box-shadow;
+        transition: all 0.4s ease-in-out;
+        z-index: 99;
+    }
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    &__buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    &__button {
+        border: none;
+        background: none;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 400;
+        color: #fff;
+        padding: 1rem 4rem;
+        cursor: pointer;
+
+        &--red {
+            background-color: #ff0000;
+            border-style: solid;
+            border-width: 0.25rem;
+            border-color: #ff0000;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                background-color: #fff;
+                color: #ff0000;
+            }
+        }
+
+        &--green {
+            background-color: #008000;
+            border-style: solid;
+            border-width: 0.25rem;
+            border-color: #008000;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+                background-color: #fff;
+                color: #008000;
             }
         }
     }
@@ -578,7 +660,8 @@ body {
         row-gap: 12px;
     }
 
-    .startIntructions, .startFooter {
+    .startIntructions,
+    .startFooter {
         padding: 12px;
         width: 25rem;
         height: auto;
@@ -597,10 +680,10 @@ body {
     .startImage {
         width: 2rem;
         height: 2rem;
-        
     }
 
-    .startSettings, .startOptions {
+    .startSettings,
+    .startOptions {
         width: 8rem;
         height: auto;
         padding: 12px;
@@ -614,15 +697,17 @@ body {
         margin-top: 12px;
     }
 
-    .startSettings > .startTekst, .startFooter > .startTekst {
+    .startSettings > .startTekst,
+    .startFooter > .startTekst {
         margin-bottom: 12px;
     }
 
-    .startFooterImage, .startSettingsImage, .startOptionsImage {
+    .startFooterImage,
+    .startSettingsImage,
+    .startOptionsImage {
         max-width: 2rem;
         max-height: 2rem;
     }
-    
 
     .header {
         padding-top: 12px;
@@ -632,12 +717,12 @@ body {
         padding: 0;
     }
 
-    .progress{
+    .progress {
         height: 1.5rem;
         padding: 3px;
     }
 
-    .infospot__content{
+    .infospot__content {
         font-size: 14px;
     }
 

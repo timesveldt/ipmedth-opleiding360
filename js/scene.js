@@ -1,4 +1,7 @@
 const resetButton = document.getElementById('js--reset--button');
+const endButton = document.getElementById('js--end--button');
+const continueButton = document.getElementById('js--continue--button');
+const endEl = document.getElementById('js--end');
 
 const DUMMY_ACHIEVEMENTS = [
     {
@@ -252,6 +255,20 @@ panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot);
 viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
 
 console.log(viewer);
+
+resetButton.addEventListener('click', () => {
+    endEl.classList.add('end--open');
+});
+
+endButton.addEventListener('click', () => {
+    console.log(viewer);
+    viewer.setPanorama(panorama);
+    endEl.classList.remove('end--open');
+});
+
+continueButton.addEventListener('click', () => {
+    endEl.classList.remove('end--open');
+});
 
 //navigation indexing
 for (let index = 0; index < viewer.scene.children.length; index++) {
