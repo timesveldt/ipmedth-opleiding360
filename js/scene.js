@@ -44,6 +44,14 @@ const renderAchievements = () => {
 renderAchievements();
 
 const myInfoSpot1 = document.getElementById('infospot--1');
+const navInfo = document.getElementById('navInfo');
+const poolInfo = document.getElementById('poolInfo');
+const balustradeInfo = document.getElementById('balustradeInfo');
+const challengeInfo = document.getElementById('challengeInfo');
+const studiepuntenInfo = document.getElementById('studiepuntenInfo');
+const printerInfo = document.getElementById('printerInfo');
+const soldeerInfo = document.getElementById('soldeerInfo');
+const hardwareInfo = document.getElementById('hardwareInfo');
 const laptopInfo = document.getElementById('laptopInfo');
 const boekenInfo = document.getElementById('boekenInfo');
 const bierInfo = document.getElementById('bierInfo');
@@ -57,6 +65,45 @@ infoSpot1.addHoverElement(myInfoSpot1, 150);
 infoSpot1.onClick();
 
 const foundObjects = [];
+const navInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
+navInfospot.position.set(0, 850, 5000);
+navInfospot.addHoverElement(navInfo, 100);
+navInfospot.onClick();
+
+const poolInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
+poolInfospot.position.set(2500, -1000, -5000);
+poolInfospot.addHoverElement(poolInfo, 150);
+poolInfospot.onClick();
+
+const balustradeInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
+balustradeInfospot.position.set(-5000, 1000, 1400);
+balustradeInfospot.addHoverElement(balustradeInfo, 150);
+balustradeInfospot.onClick();
+
+const challengeInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
+challengeInfospot.position.set(-1400, 100, -5000);
+challengeInfospot.addHoverElement(challengeInfo, 150);
+challengeInfospot.onClick();
+
+const studiepuntenInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
+studiepuntenInfospot.position.set(4400, 0, 5000);
+studiepuntenInfospot.addHoverElement(studiepuntenInfo, 150);
+studiepuntenInfospot.onClick();
+
+const printerInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
+printerInfospot.position.set(2500, -500, 5000);
+printerInfospot.addHoverElement(printerInfo, 150);
+printerInfospot.onClick();
+
+const soldeerInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
+soldeerInfospot.position.set(5000, -300, 2500);
+soldeerInfospot.addHoverElement(soldeerInfo, 150);
+soldeerInfospot.onClick();
+
+const hardwareInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
+hardwareInfospot.position.set(5000, -1000, -1000);
+hardwareInfospot.addHoverElement(hardwareInfo, 150);
+hardwareInfospot.onClick();
 
 //items als infospots
 //laptop
@@ -114,8 +161,6 @@ const allObjects = [laptop.name, boeken.name, bierGlas.name, raspberryPi.name, h
 const infoSpot2 = new PANOLENS.Infospot(2000, './img/Gijs_duimpje.png', false);
 infoSpot2.position.set(-1000, -300, 3000);
 
-const vrbutton = document.getElementById('vr-button');
-
 var place = document.getElementById('place');
 const locationInfo = document.getElementById('informatie');
 const information = [
@@ -167,21 +212,6 @@ panorama6.addEventListener('enter-fade-start', function () {
     viewer.tweenControlCenter(new THREE.Vector3(5000, 0, 2500), 0);
 });
 
-var vrtoggled = false;
-
-//toggle on/off vr mode
-function vrtoggle() {
-    if (vrtoggled === false) {
-        viewer.enableEffect(PANOLENS.MODES.CARDBOARD);
-        vrtoggled = true;
-    } else {
-        viewer.disableEffect();
-        vrtoggled = false;
-    }
-}
-
-vrbutton.addEventListener('click', vrtoggle);
-
 //linking foto's van de panorama's deze moeten boven de links staan anders werken ze niet.
 panorama.setLinkingImage('./img/buitenIcoon.png', 500);
 panorama2.setLinkingImage('./img/hoofdingangIcoon.png', 500);
@@ -209,12 +239,12 @@ panorama7.link(panorama5, new THREE.Vector3(-2000, 100, 5000));
 
 //infospots of the panorama's
 panorama.add(infoSpot1, laptop);
-panorama2.add(infoSpot2, boeken);
-panorama3.add(bierGlas);
-
+panorama2.add(infoSpot2, navInfospot, boeken);
+panorama3.add(poolInfospot, bierGlas);
+panorama4.add(balustradeInfospot);
 panorama5.add(raspberryPi);
-
-panorama7.add(hardwareBox);
+panorama6.add(challengeInfospot, studiepuntenInfospot);
+panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot);
 
 //adding to objects
 viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
