@@ -40,10 +40,10 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     background: url(/img/generic-mouse.png) no-repeat;
+    background-size: contain;
     width: 5rem; /* Width of new image */
     height: 5rem; /* Height of new image */
-    margin-left: 2rem;
-    animation-name: mousemove, mousemovey;
+    animation-name: mousemove;
     animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-delay: 1s;
@@ -463,10 +463,10 @@ body {
         background-size: contain;
     }
     30% {
-        transform: translateX(12rem);
+        transform: translateX(200%);
     }
     60% {
-        transform: translateX(-12rem);
+        transform: translateX(-200%);
     }
     80% {
         background: url(/img/mouse-left-click.png) no-repeat;
@@ -532,7 +532,7 @@ body {
     .startImage {
         width: 2rem;
         height: 2rem;
-        background-size: contain;
+        
     }
 
     .startSettings, .startOptions {

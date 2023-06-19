@@ -156,8 +156,6 @@ const allObjects = [laptop.name, boeken.name, bierGlas.name, raspberryPi.name, h
 const infoSpot2 = new PANOLENS.Infospot(2000, './img/Gijs_duimpje.png', false);
 infoSpot2.position.set(-1000, -300, 3000);
 
-const vrbutton = document.getElementById('vr-button');
-
 var place = document.getElementById('place');
 const locationInfo = document.getElementById('informatie');
 const information = [
@@ -208,21 +206,6 @@ panorama5.addEventListener('enter-fade-start', function () {
 panorama6.addEventListener('enter-fade-start', function () {
     viewer.tweenControlCenter(new THREE.Vector3(5000, 0, 2500), 0);
 });
-
-var vrtoggled = false;
-
-//toggle on/off vr mode
-function vrtoggle() {
-    if (vrtoggled === false) {
-        viewer.enableEffect(PANOLENS.MODES.CARDBOARD);
-        vrtoggled = true;
-    } else {
-        viewer.disableEffect();
-        vrtoggled = false;
-    }
-}
-
-vrbutton.addEventListener('click', vrtoggle);
 
 //linking foto's van de panorama's deze moeten boven de links staan anders werken ze niet.
 panorama.setLinkingImage('./img/buitenIcoon.png', 500);
