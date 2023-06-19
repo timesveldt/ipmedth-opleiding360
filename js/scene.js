@@ -49,6 +49,7 @@ const renderAchievements = () => {
 renderAchievements();
 
 const myInfoSpot1 = document.getElementById('infospot--1');
+const myEndInfospot = document.getElementById('js--infospot--end');
 const navInfo = document.getElementById('navInfo');
 const poolInfo = document.getElementById('poolInfo');
 const balustradeInfo = document.getElementById('balustradeInfo');
@@ -166,6 +167,10 @@ const allObjects = [laptop.name, boeken.name, bierGlas.name, raspberryPi.name, h
 const infoSpot2 = new PANOLENS.Infospot(2000, './img/Gijs_duimpje.png', false);
 infoSpot2.position.set(-1000, -300, 3000);
 
+const endInfospot = new PANOLENS.Infospot(2000, '../img/Gijs_duimpje.png');
+endInfospot.position.set(3000, -300, 0);
+endInfospot.addHoverElement(myEndInfospot, 150);
+
 var place = document.getElementById('place');
 const locationInfo = document.getElementById('informatie');
 const information = [
@@ -197,6 +202,7 @@ const panorama4 = new PANOLENS.ImagePanorama(img4);
 const panorama5 = new PANOLENS.ImagePanorama(img5);
 const panorama6 = new PANOLENS.ImagePanorama(img6);
 const panorama7 = new PANOLENS.ImagePanorama(img7);
+const panorama8 = new PANOLENS.ImagePanorama(img);
 const viewer = new PANOLENS.Viewer({
     container: pan,
     output: 'console',
@@ -250,18 +256,20 @@ panorama4.add(balustradeInfospot);
 panorama5.add(raspberryPi);
 panorama6.add(challengeInfospot, studiepuntenInfospot);
 panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot);
+panorama8.add(endInfospot);
 
 //adding to objects
-viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
+viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7, panorama8);
 
 resetButton.addEventListener('click', () => {
     endEl.classList.add('end--open');
 });
 
 endButton.addEventListener('click', () => {
-    console.log(viewer);
-    viewer.setPanorama(panorama);
+    endEl.style.display = 'none';
     endEl.classList.remove('end--open');
+
+    viewer.setPanorama(panorama8);
 });
 
 continueButton.addEventListener('click', () => {
@@ -291,6 +299,9 @@ for (let index = 0; index < viewer.scene.children.length; index++) {
             break;
         case 6:
             viewer.scene.children[index].name = 'Lab';
+            break;
+        case 7:
+            viewer.scene.children[index].name = 'Buiten';
             break;
         default:
             break;
