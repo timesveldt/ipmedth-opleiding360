@@ -338,6 +338,17 @@ body {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
+.button--quit {
+  text-decoration-line: none;
+  border-radius: unset;
+  max-width: unset;
+  max-height: unset;
+  margin-top: 1rem;
+  transition: all 0.2s ease-in-out;
+}
+.button--quit:hover {
+  background-color: #ffa500;
+}
 
 .button:hover {
   cursor: pointer;

@@ -329,6 +329,19 @@ body {
             animation-iteration-count: infinite;
         }
     }
+
+    &--quit {
+        text-decoration-line: none;
+        border-radius: unset;
+        max-width: unset;
+        max-height: unset;
+        margin-top: 1rem;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+            background-color: #ffa500;
+        }
+    }
 }
 
 .button:hover {
