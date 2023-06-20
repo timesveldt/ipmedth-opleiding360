@@ -1,3 +1,4 @@
 # Ignore img folder
-img/
+/img/
 /icons/
+/audio/
