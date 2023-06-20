@@ -97,7 +97,9 @@ body {
   opacity: 0.8;
 }
 
-.startFooterImage, .startSettingsImage, .startOptionsImage {
+.startFooterImage,
+.startSettingsImage,
+.startOptionsImage {
   max-width: 3rem;
   max-height: 3rem;
 }
@@ -477,6 +479,25 @@ body {
   background-color: #ffa500;
 }
 
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  padding-block: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease-in-out;
+}
+.message--open {
+  opacity: 1;
+  pointer-events: all;
+}
+.message__title {
+  text-align: center;
+}
+
 @keyframes mousemove {
   0% {
     transform: translateX(0);
@@ -529,7 +550,8 @@ body {
     padding: 16px;
     row-gap: 12px;
   }
-  .startIntructions, .startFooter {
+  .startIntructions,
+  .startFooter {
     padding: 12px;
     width: 25rem;
     height: auto;
@@ -546,7 +568,8 @@ body {
     width: 2rem;
     height: 2rem;
   }
-  .startSettings, .startOptions {
+  .startSettings,
+  .startOptions {
     width: 8rem;
     height: auto;
     padding: 12px;
@@ -557,10 +580,13 @@ body {
   .startOptions > .startTekst {
     margin-top: 12px;
   }
-  .startSettings > .startTekst, .startFooter > .startTekst {
+  .startSettings > .startTekst,
+  .startFooter > .startTekst {
     margin-bottom: 12px;
   }
-  .startFooterImage, .startSettingsImage, .startOptionsImage {
+  .startFooterImage,
+  .startSettingsImage,
+  .startOptionsImage {
     max-width: 2rem;
     max-height: 2rem;
   }

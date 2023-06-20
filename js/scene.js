@@ -17,6 +17,12 @@ const DUMMY_ACHIEVEMENTS = [
     },
 ];
 
+const pathToAchievementAudio = '../audio/cartoon_cowbell.mp3';
+const achievementUnlockedAudio = new Audio(pathToAchievementAudio);
+
+const message = document.getElementById('js--message');
+const messageTitle = document.getElementById('js--message--title');
+
 const achievements = document.getElementById('js--achievements');
 const achievementsList = document.getElementById('js--achievements--list');
 const achievemensButton = document.getElementById('js--achievements--button');
@@ -299,20 +305,59 @@ const achievementTwoUnlocked = () => {
     if (hasUserVisitedAllRooms === true) {
         DUMMY_ACHIEVEMENTS[1].unlocked = true;
         const achievementTwo = document.getElementById('js--achievement--1');
-        achievementTwo.classList.add('achievements__achievement--unlocked');
+
+        if (!achievementTwo.classList.contains('achievements__achievement--unlocked')) {
+            message.classList.add('message--open');
+            messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[1].title}`;
+            achievementUnlockedAudio.play();
+
+            setTimeout(() => {
+                message.classList.remove('message--open');
+            }, 3000);
+
+            achievementTwo.classList.add('achievements__achievement--unlocked');
+        } else {
+            return;
+        }
     }
 };
 
 const achievementThreeUnlocked = () => {
     DUMMY_ACHIEVEMENTS[2].unlocked = true;
     const achievementThree = document.getElementById('js--achievement--2');
-    achievementThree.classList.add('achievements__achievement--unlocked');
+
+    if (!achievementThree.classList.contains('achievements__achievement--unlocked')) {
+        message.classList.add('message--open');
+        messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[2].title}`;
+        achievementUnlockedAudio.play();
+
+        setTimeout(() => {
+            message.classList.remove('message--open');
+        }, 3000);
+
+        achievementThree.classList.add('achievements__achievement--unlocked');
+    } else {
+        return;
+    }
 };
 
 const achievementFourUnlocked = () => {
     DUMMY_ACHIEVEMENTS[3].unlocked = true;
     const achievementFour = document.getElementById('js--achievement--3');
-    achievementFour.classList.add('achievements__achievement--unlocked');
+
+    if (!achievementFour.classList.contains('achievements__achievement--unlocked')) {
+        message.classList.add('message--open');
+        messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[3].title}`;
+        achievementUnlockedAudio.play();
+
+        setTimeout(() => {
+            message.classList.remove('message--open');
+        }, 3000);
+
+        achievementFour.classList.add('achievements__achievement--unlocked');
+    } else {
+        return;
+    }
 };
 
 this.setInterval(() => {
