@@ -4,7 +4,7 @@ const DUMMY_ACHIEVEMENTS = [
         unlocked: false,
     },
     {
-        title: 'Bezoek alle ruimtes',
+        title: 'Bezoek elke ruimte',
         unlocked: false,
     },
     {
@@ -297,7 +297,24 @@ const setVisitedScenes = (name) => {
 };
 
 const achievementOneUnlocked = () => {
-    //
+    if (DUMMY_ACHIEVEMENTS[1].unlocked === true && DUMMY_ACHIEVEMENTS[3].unlocked === true) {
+        DUMMY_ACHIEVEMENTS[0].unlocked = true;
+        const achievementOne = document.getElementById('js--achievement--0');
+
+        if (!achievementOne.classList.contains('achievements__achievement--unlocked')) {
+            message.classList.add('message--open');
+            messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[0].title}`;
+            achievementUnlockedAudio.play();
+
+            setTimeout(() => {
+                message.classList.remove('message--open');
+            }, 3000);
+
+            achievementOne.classList.add('achievements__achievement--unlocked');
+        } else {
+            return;
+        }
+    }
 };
 
 const achievementTwoUnlocked = () => {
