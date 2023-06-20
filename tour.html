@@ -41,6 +41,20 @@
             </div>
         </div>
 
+        <div class="end" id="js--end">
+            <div class="end__content">
+                <h3 class="end__title">Weet je zeker dat je de tour wilt beëindigen?</h3>
+                <div class="end__buttons">
+                    <button id="js--end--button" class="end__button end__button--red">
+                        Beëindig
+                    </button>
+                    <button id="js--continue--button" class="end__button end__button--green">
+                        Doorgaan
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- main panorama -->
         <main class="pan">
             <header class="header">
@@ -56,6 +70,9 @@
                     <div class="header__buttons">
                         <button class="button" id="js--achievements--button">
                             <img src="icons/achievement_icon.svg" alt="" />
+                        </button>
+                        <button class="button button--reset" id="js--reset--button">
+                            <img src="icons/reset_icon.svg" alt="" />
                         </button>
                     </div>
                 </div>
@@ -183,6 +200,15 @@
                 <p class="infospot__content" id="infospot__content">
                     Welkom in het Lab! Hier is alles te vinden wat een informatica student nodig heeft als het gaat om hardware. Ook word hier de minor: “robotica” gegeven.
                 </div> 
+            </article>
+
+            <article class="infospot" id="js--infospot--end" style="display: none">
+                <h2 class="infospot__title">Dit was het dan!</h2>
+                <p class="infospot__content">
+                    Hey goed gedaan! je hebt nu alles gezien over de opleiding informatica. Kijk
+                    gerust nog even rond of ga opzoek naar nog niet gevonden voorwerpen.
+                </p>
+                <a class="button button--quit" href="index.html">Verlaat Tour</a>
             </article>
 
             <!-- navigatie tekst -->
