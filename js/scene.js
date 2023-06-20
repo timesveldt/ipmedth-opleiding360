@@ -363,7 +363,7 @@ panorama5.add(raspberryPi, infoSpot8);
 panorama6.add(challengeInfospot, studiepuntenInfospot, infoSpot9, infoSpot10);
 panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot, infoSpot11);
 panorama.add(infoSpot1, laptop);
-panorama2.add(infoSpot2, navInfospot, boeken);
+panorama2.add(navInfospot, boeken);
 panorama3.add(poolInfospot, bierGlas);
 panorama4.add(balustradeInfospot);
 panorama5.add(raspberryPi);
@@ -372,7 +372,7 @@ panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot);
 panorama8.add(endInfospot);
 
 //adding to objects
-viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7, panorama8);
+viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
 
 resetButton.addEventListener('click', () => {
     endEl.classList.add('end--open');
@@ -449,6 +449,9 @@ const achievementOneUnlocked = () => {
         } else {
             return;
         }
+
+        viewer.add(panorama8);
+        viewer.setPanorama(panorama8);
     }
 };
 
