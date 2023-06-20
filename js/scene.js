@@ -532,6 +532,8 @@ this.setInterval(() => {
         if (hasUserFoundAllObjects === true) {
             achievementFourUnlocked();
         }
+
+        achievementOneUnlocked();
     }
 }, 1000);
 
