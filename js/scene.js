@@ -1,8 +1,5 @@
 const progressBar = document.getElementById('js--progress--bar');
-const amountOfProgress = localStorage.getItem('progress');
-
-progressBar.style.width = `${amountOfProgress}%`;
-progressBar.textContent = `${amountOfProgress}%`;
+let amountOfProgress;
 
 const DUMMY_ACHIEVEMENTS = [
     {
@@ -454,6 +451,7 @@ const achievementOneUnlocked = () => {
         DUMMY_ACHIEVEMENTS[3].unlocked === true
     ) {
         DUMMY_ACHIEVEMENTS[0].unlocked = true;
+        localStorage.setItem('progress', '100');
         const achievementOne = document.getElementById('js--achievement--0');
 
         if (
@@ -475,6 +473,8 @@ const achievementOneUnlocked = () => {
         }
     }
 };
+
+achievementOneUnlocked();
 
 const achievementTwoUnlocked = () => {
     const hasUserVisitedAllRooms = arrayEquals(allScenes, visitedScenes);
@@ -549,12 +549,17 @@ const achievementFourUnlocked = () => {
 };
 
 this.setInterval(() => {
+    const amountOfProgress = localStorage.getItem('progress');
+    progressBar.style.width = `${amountOfProgress}%`;
+    progressBar.textContent = `${amountOfProgress}%`;
+
     for (let index = 0; index < viewer.scene.children.length; index++) {
         if (viewer.scene.children[index].active === true) {
             place.textContent = viewer.scene.children[index].name;
             locationInfo.textContent = information[index];
             if (!visitedScenes.includes(viewer.scene.children[index].name)) {
                 setVisitedScenes(viewer.scene.children[index].name);
+                setProgressBy(5);
             }
 
             achievementTwoUnlocked();
@@ -583,10 +588,26 @@ startButton.addEventListener('click', () => {
     infoSpot4.hide();
 });
 
+function setProgressBy(amount) {
+    amountOfProgress = localStorage.getItem('progress');
+    const ADD_PROGRESS_BY = amount;
+    const currentProgress = parseInt(amountOfProgress);
+    const updatedProgress = ADD_PROGRESS_BY + currentProgress;
+    localStorage.setItem('progress', updatedProgress.toString());
+}
+
 function arrayEquals(arr1, arr2) {
     return JSON.stringify(arr1.sort()) === JSON.stringify(arr2.sort());
 }
 
 window.addEventListener('load', () => {
-    localStorage.setItem('progress', '0');
+    if (localStorage.getItem('progress') === null) {
+        amountOfProgress = localStorage.setItem('progress', '0');
+        progressBar.style.width = `${amountOfProgress}%`;
+        progressBar.textContent = `${amountOfProgress}%`;
+    } else {
+        amountOfProgress = localStorage.getItem('progress');
+        progressBar.style.width = `${amountOfProgress}%`;
+        progressBar.textContent = `${amountOfProgress}%`;
+    }
 });
