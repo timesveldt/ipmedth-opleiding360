@@ -607,6 +607,16 @@ body {
         pointer-events: all;
     }
 
+    &--end {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    &--continue {
+        opacity: 0;
+        pointer-events: none;
+    }
+
     &__content {
         display: block;
         position: absolute;

@@ -589,6 +589,14 @@ body {
   opacity: 0.8;
   pointer-events: all;
 }
+.finish--end {
+  opacity: 0;
+  pointer-events: none;
+}
+.finish--continue {
+  opacity: 0;
+  pointer-events: none;
+}
 .finish__content {
   display: block;
   position: absolute;

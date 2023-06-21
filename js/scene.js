@@ -4,28 +4,26 @@ const continueButton = document.getElementById('js--continue--button');
 const endEl = document.getElementById('js--end');
 
 const finishEl = document.getElementById('js--finish');
-const finishContinueButton = document.getElementById(
-    'js--finish--continue--button'
-);
+const finishContinueButton = document.getElementById('js--finish--continue--button');
 const finishEndButton = document.getElementById('js--finish--end--button');
 
 const DUMMY_ACHIEVEMENTS = [
     {
         title: 'Voltooi de tour',
-        unlocked: false
+        unlocked: false,
     },
     {
         title: 'Bezoek elke ruimte',
-        unlocked: false
+        unlocked: false,
     },
     {
         title: 'Vind drie voorwerpen',
-        unlocked: false
+        unlocked: false,
     },
     {
         title: 'Vind alle voorwerpen',
-        unlocked: false
-    }
+        unlocked: false,
+    },
 ];
 
 const pathToAchievementAudio = '../audio/cartoon_cowbell.mp3';
@@ -37,9 +35,7 @@ const messageTitle = document.getElementById('js--message--title');
 const achievements = document.getElementById('js--achievements');
 const achievementsList = document.getElementById('js--achievements--list');
 const achievemensButton = document.getElementById('js--achievements--button');
-const achievementsCloseButton = document.getElementById(
-    'js--achievements--close--button'
-);
+const achievementsCloseButton = document.getElementById('js--achievements--close--button');
 
 achievemensButton.addEventListener('click', () => {
     achievements.classList.toggle('achievements--open');
@@ -203,13 +199,7 @@ hardwareBox.addEventListener('click', () => {
     }
 });
 
-const allObjects = [
-    laptop.name,
-    boeken.name,
-    bierGlas.name,
-    raspberryPi.name,
-    hardwareBox.name
-];
+const allObjects = [laptop.name, boeken.name, bierGlas.name, raspberryPi.name, hardwareBox.name];
 
 //infospots story gijs
 
@@ -240,11 +230,7 @@ infoSpot5.position.set(-1581.97, -339.46, 2000.0);
 infoSpot5.addHoverElement(myInfoSpot5, 280);
 
 //pano3
-const infoSpot6 = new PANOLENS.Infospot(
-    1800,
-    './img/gijs-laptopduimpie.png',
-    false
-);
+const infoSpot6 = new PANOLENS.Infospot(1800, './img/gijs-laptopduimpie.png', false);
 infoSpot6.position.set(-1581.97, -339.46, 2000.0);
 infoSpot6.addHoverElement(myInfoSpot6, 280);
 
@@ -312,7 +298,7 @@ const information = [
     'Dit is de grote hal van de nieuwbouw',
     'dit is een studieruimte',
     'hier zitten de lokalen van de opleiding informatica',
-    'dit is het lab van de opleiding informatica'
+    'dit is het lab van de opleiding informatica',
 ];
 //panolens select container
 
@@ -338,7 +324,7 @@ const panorama8 = new PANOLENS.ImagePanorama(img);
 const viewer = new PANOLENS.Viewer({
     container: pan,
     output: 'console',
-    autoHideInfospot: false
+    autoHideInfospot: false,
 });
 
 // roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
@@ -407,24 +393,10 @@ panorama3.add(poolInfospot, bierGlas, infoSpot6);
 panorama4.add(balustradeInfospot, infoSpot7);
 panorama5.add(raspberryPi, infoSpot8);
 panorama6.add(challengeInfospot, studiepuntenInfospot, infoSpot9, infoSpot10);
-panorama7.add(
-    hardwareBox,
-    printerInfospot,
-    soldeerInfospot,
-    hardwareInfospot,
-    infoSpot11
-);
+panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot, infoSpot11);
 
 //adding to objects
-viewer.add(
-    panorama,
-    panorama2,
-    panorama3,
-    panorama4,
-    panorama5,
-    panorama6,
-    panorama7
-);
+viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
 
 resetButton.addEventListener('click', () => {
     endEl.classList.add('end--open');
@@ -434,6 +406,7 @@ endButton.addEventListener('click', () => {
     endEl.style.display = 'none';
     endEl.classList.remove('end--open');
 
+    viewer.add(panorama8);
     viewer.setPanorama(panorama8);
 });
 
@@ -484,18 +457,26 @@ const setVisitedScenes = (name) => {
 };
 
 const achievementOneUnlocked = () => {
-    if (
-        DUMMY_ACHIEVEMENTS[1].unlocked === true &&
-        DUMMY_ACHIEVEMENTS[3].unlocked === true
-    ) {
+    if (DUMMY_ACHIEVEMENTS[1].unlocked === true && DUMMY_ACHIEVEMENTS[3].unlocked === true) {
         DUMMY_ACHIEVEMENTS[0].unlocked = true;
+
         const achievementOne = document.getElementById('js--achievement--0');
 
-        if (
-            !achievementOne.classList.contains(
-                'achievements__achievement--unlocked'
-            )
-        ) {
+        finishEl.classList.add('finish--open');
+        finishContinueButton.addEventListener('click', () => {
+            finishEl.classList.remove('finish--open');
+            finishEl.classList.add('finish--continue');
+        });
+
+        finishEndButton.addEventListener('click', () => {
+            finishEl.classList.remove('finish--open');
+            finishEl.classList.add('finish--end');
+
+            viewer.add(panorama8);
+            viewer.setPanorama(panorama8);
+        });
+
+        if (!achievementOne.classList.contains('achievements__achievement--unlocked')) {
             message.classList.add('message--open');
             messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[0].title}`;
             achievementUnlockedAudio.play();
@@ -505,17 +486,6 @@ const achievementOneUnlocked = () => {
             }, 3000);
 
             achievementOne.classList.add('achievements__achievement--unlocked');
-
-            finishEl.classList.add('finish--open');
-            finishContinueButton.addEventListener('click', () => {
-                finishEl.classList.remove('finish--open');
-            });
-
-            finishEndButton.addEventListener('click', () => {
-                finishEl.classList.remove('finish--open');
-                viewer.add(panorama8);
-                viewer.setPanorama(panorama8);
-            });
         } else {
             return;
         }
@@ -528,11 +498,7 @@ const achievementTwoUnlocked = () => {
         DUMMY_ACHIEVEMENTS[1].unlocked = true;
         const achievementTwo = document.getElementById('js--achievement--1');
 
-        if (
-            !achievementTwo.classList.contains(
-                'achievements__achievement--unlocked'
-            )
-        ) {
+        if (!achievementTwo.classList.contains('achievements__achievement--unlocked')) {
             message.classList.add('message--open');
             messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[1].title}`;
             achievementUnlockedAudio.play();
@@ -552,11 +518,7 @@ const achievementThreeUnlocked = () => {
     DUMMY_ACHIEVEMENTS[2].unlocked = true;
     const achievementThree = document.getElementById('js--achievement--2');
 
-    if (
-        !achievementThree.classList.contains(
-            'achievements__achievement--unlocked'
-        )
-    ) {
+    if (!achievementThree.classList.contains('achievements__achievement--unlocked')) {
         message.classList.add('message--open');
         messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[2].title}`;
         achievementUnlockedAudio.play();
@@ -575,11 +537,7 @@ const achievementFourUnlocked = () => {
     DUMMY_ACHIEVEMENTS[3].unlocked = true;
     const achievementFour = document.getElementById('js--achievement--3');
 
-    if (
-        !achievementFour.classList.contains(
-            'achievements__achievement--unlocked'
-        )
-    ) {
+    if (!achievementFour.classList.contains('achievements__achievement--unlocked')) {
         message.classList.add('message--open');
         messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[3].title}`;
         achievementUnlockedAudio.play();
@@ -615,7 +573,7 @@ this.setInterval(() => {
             achievementFourUnlocked();
         }
 
-        // achievementOneUnlocked();
+        achievementOneUnlocked();
     }
 }, 1000);
 
