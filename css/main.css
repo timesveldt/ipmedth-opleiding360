@@ -378,6 +378,8 @@ body {
   background-color: #fff;
   padding: 1rem;
   box-shadow: var(--subtle-shadow);
+  border-radius: 1rem;
+  
 }
 
 .infospot__title {
@@ -386,6 +388,29 @@ body {
 
 .infospot__content {
   color: #45bccb;
+}
+
+.infospot__nav{
+  display: flex;
+  justify-content: right;
+  margin-top: .7rem;
+}
+.infospot__nxtpage{
+  width: 	5rem;
+  height: 1.3rem;
+  border: none;
+  background-color: #ffa500;
+  border-radius: 1rem;
+  
+}
+
+.infospot__prvpage:hover{
+  cursor: pointer;
+  background-color: #45bccb;
+}
+.infospot__nxtpage:hover{
+  cursor: pointer;
+  background-color: #45bccb;
 }
 
 .achievements {
