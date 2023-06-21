@@ -386,6 +386,7 @@ body {
 
 .progress__bar {
   background-color: #45bccb;
+  color: #fff;
   border-radius: 1rem;
   text-align: center;
   transition: all 0.2s ease-in-out;
@@ -591,6 +592,107 @@ body {
   color: #008000;
 }
 
+.finish {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000;
+  opacity: 0;
+  pointer-events: none;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}
+.finish--open {
+  opacity: 0.8;
+  pointer-events: all;
+}
+.finish--end {
+  opacity: 0;
+  pointer-events: none;
+}
+.finish--continue {
+  opacity: 0;
+  pointer-events: none;
+}
+.finish__content {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 2rem;
+  max-width: 55ch;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+  transition: all 0.4s ease-in-out;
+  z-index: 99;
+}
+.finish__title {
+  margin-bottom: 1rem;
+}
+.finish__buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.finish__button {
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 400;
+  color: #fff;
+  padding: 1rem 4rem;
+  cursor: pointer;
+}
+.finish__button--red {
+  background-color: #ff0000;
+  border-style: solid;
+  border-width: 0.25rem;
+  border-color: #ff0000;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+.finish__button--red:hover {
+  background-color: #fff;
+  color: #ff0000;
+}
+.finish__button--green {
+  background-color: #008000;
+  border-style: solid;
+  border-width: 0.25rem;
+  border-color: #008000;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+}
+.finish__button--green:hover {
+  background-color: #fff;
+  color: #008000;
+}
+
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  width: 100%;
+  padding-block: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease-in-out;
+}
+.message--open {
+  opacity: 1;
+  pointer-events: all;
+}
+.message__title {
+  text-align: center;
+}
+
 @keyframes mousemove {
   0% {
     transform: translateX(0);
@@ -725,6 +827,10 @@ body {
   .button {
     max-width: 2rem;
     max-height: 2rem;
+  }
+  .button--quit {
+    max-width: unset;
+    max-height: unset;
   }
   .progressBar {
     max-width: 300px;
