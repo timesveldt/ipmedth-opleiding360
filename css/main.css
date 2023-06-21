@@ -97,7 +97,9 @@ body {
   opacity: 0.8;
 }
 
-.startFooterImage, .startSettingsImage, .startOptionsImage {
+.startFooterImage,
+.startSettingsImage,
+.startOptionsImage {
   max-width: 3rem;
   max-height: 3rem;
 }
@@ -377,11 +379,9 @@ body {
   padding: 1rem;
   box-shadow: var(--subtle-shadow);
 }
-
 .infospot__title {
   color: #ffa500;
 }
-
 .infospot__content {
   color: #45bccb;
 }
@@ -510,7 +510,8 @@ body {
     padding: 16px;
     row-gap: 12px;
   }
-  .startIntructions, .startFooter {
+  .startIntructions,
+  .startFooter {
     padding: 12px;
     width: 25rem;
     height: auto;
@@ -527,7 +528,8 @@ body {
     width: 2rem;
     height: 2rem;
   }
-  .startSettings, .startOptions {
+  .startSettings,
+  .startOptions {
     width: 8rem;
     height: auto;
     padding: 12px;
@@ -538,10 +540,13 @@ body {
   .startOptions > .startTekst {
     margin-top: 12px;
   }
-  .startSettings > .startTekst, .startFooter > .startTekst {
+  .startSettings > .startTekst,
+  .startFooter > .startTekst {
     margin-bottom: 12px;
   }
-  .startFooterImage, .startSettingsImage, .startOptionsImage {
+  .startFooterImage,
+  .startSettingsImage,
+  .startOptionsImage {
     max-width: 2rem;
     max-height: 2rem;
   }
@@ -584,6 +589,7 @@ body.u-overflow {
 
 .main {
   padding-block: 1rem;
+  padding-inline: 1rem;
   max-width: 75rem;
   margin-inline: auto;
 }
@@ -688,4 +694,10 @@ body.u-overflow {
   background-color: #e76f51;
   color: #fff;
   border-radius: 0.5rem;
+}
+
+@media screen and (min-width: 75em) {
+  .main {
+    padding-inline: 0;
+  }
 }/*# sourceMappingURL=main.css.map */
