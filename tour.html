@@ -86,13 +86,116 @@
                 <ul class="achievements__list" id="js--achievements--list"></ul>
             </section>
 
-            <!-- infospots -->
+            <!-- infospots story-->
             <article class="infospot" id="infospot--1" style="display: none">
                 <h2 class="infospot__title">Welkom!</h2>
-                <p class="infospot__content">
-                    Deze experience is bedoeld om mensen een indruk te geven van een school en een
-                    opleiding. Dit wordt gedaan met het gebruik van 360° camera- en videobeelden.
+                <p class="infospot__content" id="infospot__content">
+                    Hey toekomstige student! Welkom op de Hogeschool Leiden. Ik ben Gijs en ik zal je vandaag een kijkje geven in een dag van een informatica student. Als je op 'volgende' klikt verdwijn ik en kun je mij ergens anders weer vinden!
                 </p>
+                <!-- <p class="infospot__content" id="infospot__content1" style="display: none;">
+                    Tijdens deze rondleiding zullen er dit soort informatiepunten te vinden zijn. Door erop te klikken komt er wat informatie tevoorschijn over de desbetreffende locatie. Ook zijn er voorwerpen te vinden welke je kan zoeken tijdens de rondleiding!
+                </p>
+                <p class="infospot__content" id="infospot__content2" style="display: none;">
+                    we staan nu voor de ingang van het hoofdgebouw. De Hogeschool Leiden heeft meerdere gebouwen, maar vaak zullen de lessen hier plaatsvinden. Kijk gerust even rond!
+                </p>
+                <p class="infospot__content" id="infospot__content3" style="display: none;">
+                    laten we naar binnen gaan! Door op de ronde foto te klikken kan je navigeren naar een andere ruimte, probeer het maar!
+                </p>
+                 -->
+
+                <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div>
+            </article>
+
+            <article class="infospot" id="infospot--2" style="display: none">
+                <h2 class="infospot__title">informatiepunten!</h2>
+                <p class="infospot__content" id="infospot__content">
+                    Tijdens deze rondleiding zullen er dit soort informatiepunten te vinden zijn. Door erop te klikken komt er wat informatie tevoorschijn over de desbetreffende locatie. Ook zijn er voorwerpen te vinden welke je kan zoeken tijdens de rondleiding!
+                </p>
+                <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div>
+            </article>
+
+            <article class="infospot" id="infospot--3" style="display: none">
+                <h2 class="infospot__title">hoofdingang!</h2>
+                <p class="infospot__content" id="infospot__content">
+                    we staan nu voor de ingang van het hoofdgebouw. De Hogeschool Leiden heeft meerdere gebouwen, maar vaak zullen de lessen hier plaatsvinden. Kijk gerust even rond!
+                </p>
+                <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div>
+            </article>
+
+            <article class="infospot" id="infospot--4" style="display: none">
+                <h2 class="infospot__title">Entree!</h2>
+                <p class="infospot__content" id="infospot__content">
+                    laten we naar binnen gaan! Door op de ronde foto te klikken kan je navigeren naar een andere ruimte, probeer het maar!
+                </p>
+                <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div>
+            </article>
+
+            <article class="infospot" id="infospot--5" style="display: none">
+                <h2 class="infospot__title">Kernen</h2>
+                <p class="infospot__content" id="infospot__content">
+                    We zijn binnen! Vanaf de hoofdingang kan je naar alle kernen lopen in de hogeschool. Informatica zit in kern E. Deze is te bereiken via de grote hal. Vanaf hier kan je ook naar het Grand Cafe, waar je na een lange dag studeren lekker wat eten en drinken kan halen.
+                </p>
+                <!-- <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div> -->
+            </article>
+
+            <article class="infospot" id="infospot--6" style="display: none">
+                <h2 class="infospot__title">Grand Cafe</h2>
+                <p class="infospot__content" id="infospot__content">
+                    Welkom in het Grand Cafe, hier komen studenten samen om gezellig met elkaar wat te eten of te drinken. Het cafe is van maandag tot vrijdag open tot de school zijn deuren sluit.                </p>
+                <!-- <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div> -->
+            </article>
+
+            <article class="infospot" id="infospot--7" style="display: none">
+                <h2 class="infospot__title">Hal</h2>
+                <p class="infospot__content" id="infospot__content">
+                    De grote hal verbind de kernen aan elkaar, dit is verder een open ruimte om te studeren of te chillen met je vrienden.                
+                    <!-- <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div> -->
+            </article>
+
+            <article class="infospot" id="infospot--8" style="display: none">
+                <h2 class="infospot__title">Vrije Ruimte</h2>
+                <p class="infospot__content" id="infospot__content">
+                    We staan nu op een van de verbindingsstukken van de hogeschool. Dit word vaak gebruikt als vrije studieruimte.                    <!-- <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div> -->
+            </article>
+
+            <article class="infospot" id="infospot--9" style="display: none">
+                <h2 class="infospot__title">Modules</h2>
+                <p class="infospot__content" id="infospot__content">
+                    Welkom in een van de leslokalen, hier worden colleges geven over de vele modules die de opleiding aanbied. Deze modules kun je zien als vakken waar allerlei onderwerpen aan bod komen. Hier zit je met je klas of jaargang aan tafel waar je werkt aan je projecten, verslagen of een hoorcollege bijwoont.                   
+                <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div>
+            </article>
+
+            <article class="infospot" id="infospot--10" style="display: none">
+                <h2 class="infospot__title">Specialisaties</h2>
+                <p class="infospot__content" id="infospot__content">
+                    De opleiding informatica bied 4 specialisaties: Forensisch ICT, Interactie technologie, Software engineering en Business data and management. De specialisatie kies je aan het einde van je eerste jaar.                      <!-- <div class="infospot__nav">
+                    <button class="infospot__nxtpage" onclick="nextPage()">Volgende</button>
+                </div> -->
+            </article>
+
+            <article class="infospot" id="infospot--11" style="display: none">
+                <h2 class="infospot__title">Fab-Lab</h2>
+                <p class="infospot__content" id="infospot__content">
+                    Welkom in het Lab! Hier is alles te vinden wat een informatica student nodig heeft als het gaat om hardware. Ook word hier de minor: “robotica” gegeven.
+                </div> 
             </article>
 
             <article class="infospot" id="js--infospot--end" style="display: none">
