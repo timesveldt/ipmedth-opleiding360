@@ -251,15 +251,6 @@ function nextPage(){
     console.log(story1);
 }
 
-
-
-
-
-
-
-
-
-
 var place = document.getElementById('place');
 const locationInfo = document.getElementById('informatie');
 const information = [
@@ -296,10 +287,6 @@ const viewer = new PANOLENS.Viewer({
     output: 'console',
     autoHideInfospot: false,
 });
-
-
-
-
 
 // roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
 panorama.addEventListener('enter-fade-start', function () {
