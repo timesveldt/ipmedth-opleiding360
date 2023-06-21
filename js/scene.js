@@ -1,28 +1,40 @@
+const resetButton = document.getElementById('js--reset--button');
+const endButton = document.getElementById('js--end--button');
+const continueButton = document.getElementById('js--continue--button');
+const endEl = document.getElementById('js--end');
+
 const DUMMY_ACHIEVEMENTS = [
     {
         title: 'Voltooi de tour',
-        unlocked: false,
+        unlocked: false
     },
     {
         title: 'Bezoek alle ruimtes',
-        unlocked: false,
+        unlocked: false
     },
     {
         title: 'Vind drie voorwerpen',
-        unlocked: false,
+        unlocked: false
     },
     {
         title: 'Vind alle voorwerpen',
-        unlocked: false,
-    },
+        unlocked: false
+    }
 ];
 
 const achievements = document.getElementById('js--achievements');
 const achievementsList = document.getElementById('js--achievements--list');
 const achievemensButton = document.getElementById('js--achievements--button');
+const achievementsCloseButton = document.getElementById(
+    'js--achievements--close--button'
+);
 
 achievemensButton.addEventListener('click', () => {
     achievements.classList.toggle('achievements--open');
+});
+
+achievementsCloseButton.addEventListener('click', () => {
+    achievements.classList.remove('achievements--open');
 });
 
 const renderAchievements = () => {
@@ -39,6 +51,7 @@ const renderAchievements = () => {
 renderAchievements();
 
 const myInfoSpot1 = document.getElementById('infospot--1');
+const myEndInfospot = document.getElementById('js--infospot--end');
 const myInfoSpot2 = document.getElementById('infospot--2');
 const myInfoSpot3 = document.getElementById('infospot--3');
 const myInfoSpot4 = document.getElementById('infospot--4');
@@ -49,9 +62,6 @@ const myInfoSpot8 = document.getElementById('infospot--8');
 const myInfoSpot9 = document.getElementById('infospot--9');
 const myInfoSpot10 = document.getElementById('infospot--10');
 const myInfoSpot11 = document.getElementById('infospot--11');
-
-
-
 
 const navInfo = document.getElementById('navInfo');
 const poolInfo = document.getElementById('poolInfo');
@@ -68,7 +78,6 @@ const raspberryPiInfo = document.getElementById('raspberryPiInfo');
 const hardwareBoxInfo = document.getElementById('hardwareBoxInfo');
 
 //infospots
-
 
 const foundObjects = [];
 const navInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
@@ -162,87 +171,94 @@ hardwareBox.addEventListener('click', () => {
     foundObjects.push(hardwareBox.name);
 });
 
-
-
-const allObjects = [laptop.name, boeken.name, bierGlas.name, raspberryPi.name, hardwareBox.name];
+const allObjects = [
+    laptop.name,
+    boeken.name,
+    bierGlas.name,
+    raspberryPi.name,
+    hardwareBox.name
+];
 
 //infospots story gijs
 
 //pano1
 const infoSpot1 = new PANOLENS.Infospot(2000, './img/Gijs_Zwaait.png', false);
 infoSpot1.position.set(3000, -300, 0);
-infoSpot1.addHoverElement(myInfoSpot1, 290,);
+infoSpot1.addHoverElement(myInfoSpot1, 290);
 
 const infoSpot2 = new PANOLENS.Infospot(2000, './img/gijs-wijzen.png', false);
-infoSpot2.position.set(681.13, -752.51, -3000.00);
-infoSpot2.addHoverElement(myInfoSpot2, 340,);
+infoSpot2.position.set(681.13, -752.51, -3000.0);
+infoSpot2.addHoverElement(myInfoSpot2, 340);
 
 const infoSpot3 = new PANOLENS.Infospot(2000, './img/Gijs_duimpje.png', false);
-infoSpot3.position.set(5000.00, -220.40, -3000);
-infoSpot3.addHoverElement(myInfoSpot3, 200,);
+infoSpot3.position.set(5000.0, -220.4, -3000);
+infoSpot3.addHoverElement(myInfoSpot3, 200);
 
 const infoSpot4 = new PANOLENS.Infospot(2000, './img/gijs-achter.png', false);
 infoSpot4.position.set(4909.62, -385.95, -3738.77);
-infoSpot4.addHoverElement(myInfoSpot4, 200,);
+infoSpot4.addHoverElement(myInfoSpot4, 200);
 
 const testInfoSpot = new PANOLENS.Infospot(500, './img/infospot.png');
-testInfoSpot.position.set(2455.41, -186.60, -5000.00);
-testInfoSpot.addHoverText("Dit is een informatiepunt! ", 50);
+testInfoSpot.position.set(2455.41, -186.6, -5000.0);
+testInfoSpot.addHoverText('Dit is een informatiepunt! ', 50);
 
 //pano2
 const infoSpot5 = new PANOLENS.Infospot(1800, './img/Gijs_Zwaait2.png', false);
-infoSpot5.position.set(-1581.97, -339.46, 2000.00);
-infoSpot5.addHoverElement(myInfoSpot5, 280,);
+infoSpot5.position.set(-1581.97, -339.46, 2000.0);
+infoSpot5.addHoverElement(myInfoSpot5, 280);
 
 //pano3
-const infoSpot6 = new PANOLENS.Infospot(1800, './img/gijs-laptopduimpie.png', false);
-infoSpot6.position.set(-1581.97, -339.46, 2000.00);
-infoSpot6.addHoverElement(myInfoSpot6, 280,);
+const infoSpot6 = new PANOLENS.Infospot(
+    1800,
+    './img/gijs-laptopduimpie.png',
+    false
+);
+infoSpot6.position.set(-1581.97, -339.46, 2000.0);
+infoSpot6.addHoverElement(myInfoSpot6, 280);
 
 //pano4
 const infoSpot7 = new PANOLENS.Infospot(1800, './img/gijs-wijzen2.png', false);
-infoSpot7.position.set(-1581.97, -339.46, 2000.00);
-infoSpot7.addHoverElement(myInfoSpot7, 280,);
+infoSpot7.position.set(-1581.97, -339.46, 2000.0);
+infoSpot7.addHoverElement(myInfoSpot7, 280);
 
 //pano5
 const infoSpot8 = new PANOLENS.Infospot(2500, './img/Gijs_Zwaait3.png', false);
-infoSpot8.position.set(1544.90, -500.83, 5000.00);
-infoSpot8.addHoverElement(myInfoSpot8, 200,);
+infoSpot8.position.set(1544.9, -500.83, 5000.0);
+infoSpot8.addHoverElement(myInfoSpot8, 200);
 
 //pano6
 const infoSpot9 = new PANOLENS.Infospot(2500, './img/Gijs_Zwaait4.png', false);
-infoSpot9.position.set(1941.67, -856.36, 4732.70);
-infoSpot9.addHoverElement(myInfoSpot9, 200,);
+infoSpot9.position.set(1941.67, -856.36, 4732.7);
+infoSpot9.addHoverElement(myInfoSpot9, 200);
 
 const infoSpot10 = new PANOLENS.Infospot(3500, './img/gijs-laptop.png', false);
 infoSpot10.position.set(4626.66, -1453.12, 3387.41);
-infoSpot10.addHoverElement(myInfoSpot10, 200,);
+infoSpot10.addHoverElement(myInfoSpot10, 200);
 
 //pano7
 const infoSpot11 = new PANOLENS.Infospot(3500, './img/Gijs_Zwaait5.png', false);
-infoSpot11.position.set(3791.86, -802.15, 5000.00);
-infoSpot11.addHoverElement(myInfoSpot11, 200,);
+infoSpot11.position.set(3791.86, -802.15, 5000.0);
+infoSpot11.addHoverElement(myInfoSpot11, 200);
 
 let story1 = 0;
 
-function nextPage(){
-    if(story1 == 0){
-        infoSpot1.hide();  
+function nextPage() {
+    if (story1 == 0) {
+        infoSpot1.hide();
         infoSpot2.show();
-        story1++
-    }else if(story1 == 1){
-        infoSpot2.hide(); 
-        testInfoSpot.hide(); 
+        story1++;
+    } else if (story1 == 1) {
+        infoSpot2.hide();
+        testInfoSpot.hide();
         infoSpot3.show();
-        story1++
-    }else if(story1 == 2){
-        
-        infoSpot3.hide();  
+        story1++;
+    } else if (story1 == 2) {
+        infoSpot3.hide();
         infoSpot4.show();
-        story1++
-    } else if(story1 == 3){
+        story1++;
+    } else if (story1 == 3) {
         infoSpot4.hide();
-        story1++
+        story1++;
     } else {
         infoSpot9.hide();
         viewer.addUpdateCallback(Update2);
@@ -250,6 +266,10 @@ function nextPage(){
 
     console.log(story1);
 }
+
+const endInfospot = new PANOLENS.Infospot(2000, '../img/Gijs_duimpje.png');
+endInfospot.position.set(3000, -300, 0);
+endInfospot.addHoverElement(myEndInfospot, 150);
 
 var place = document.getElementById('place');
 const locationInfo = document.getElementById('informatie');
@@ -260,7 +280,7 @@ const information = [
     'Dit is de grote hal van de nieuwbouw',
     'dit is een studieruimte',
     'hier zitten de lokalen van de opleiding informatica',
-    'dit is het lab van de opleiding informatica',
+    'dit is het lab van de opleiding informatica'
 ];
 //panolens select container
 
@@ -282,10 +302,11 @@ const panorama4 = new PANOLENS.ImagePanorama(img4);
 const panorama5 = new PANOLENS.ImagePanorama(img5);
 const panorama6 = new PANOLENS.ImagePanorama(img6);
 const panorama7 = new PANOLENS.ImagePanorama(img7);
+const panorama8 = new PANOLENS.ImagePanorama(img);
 const viewer = new PANOLENS.Viewer({
     container: pan,
     output: 'console',
-    autoHideInfospot: false,
+    autoHideInfospot: false
 });
 
 // roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
@@ -294,28 +315,25 @@ panorama.addEventListener('enter-fade-start', function () {
 });
 panorama2.addEventListener('enter-fade-start', function () {
     viewer.tweenControlCenter(new THREE.Vector3(-1000, 0, 5000), 0);
-    
 });
 panorama5.addEventListener('enter-fade-start', function () {
     viewer.tweenControlCenter(new THREE.Vector3(5000, 0, 1500), 0);
 });
 panorama6.addEventListener('enter-fade-start', function () {
     viewer.tweenControlCenter(new THREE.Vector3(5000, 0, 2500), 0);
-    
 });
 
 panorama6.addEventListener('enter-complete', function () {
     viewer.addUpdateCallback(Update);
 });
 
-function Update(){
+function Update() {
     infoSpot10.hide();
 }
 
-function Update2(){
+function Update2() {
     infoSpot10.show();
 }
-
 
 //linking foto's van de panorama's deze moeten boven de links staan anders werken ze niet.
 panorama.setLinkingImage('./img/buitenIcoon.png', 500);
@@ -343,18 +361,54 @@ panorama6.link(panorama5, new THREE.Vector3(-5000, 100, -1000));
 panorama7.link(panorama5, new THREE.Vector3(-2000, 100, 5000));
 
 //infospots of the panorama's
+panorama.add(infoSpot1, laptop);
+panorama2.add(infoSpot2, navInfospot, boeken);
+panorama3.add(poolInfospot, bierGlas);
+panorama4.add(balustradeInfospot);
+panorama5.add(raspberryPi);
+panorama6.add(challengeInfospot, studiepuntenInfospot);
+panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot);
+panorama8.add(endInfospot);
 panorama.add(infoSpot1, laptop, testInfoSpot, infoSpot2, infoSpot3, infoSpot4);
 panorama2.add(navInfospot, infoSpot5, boeken);
 panorama3.add(poolInfospot, bierGlas, infoSpot6);
 panorama4.add(balustradeInfospot, infoSpot7);
 panorama5.add(raspberryPi, infoSpot8);
 panorama6.add(challengeInfospot, studiepuntenInfospot, infoSpot9, infoSpot10);
-panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot, infoSpot11);
+panorama7.add(
+    hardwareBox,
+    printerInfospot,
+    soldeerInfospot,
+    hardwareInfospot,
+    infoSpot11
+);
 
 //adding to objects
-viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
+viewer.add(
+    panorama,
+    panorama2,
+    panorama3,
+    panorama4,
+    panorama5,
+    panorama6,
+    panorama7,
+    panorama8
+);
 
-console.log(viewer);
+resetButton.addEventListener('click', () => {
+    endEl.classList.add('end--open');
+});
+
+endButton.addEventListener('click', () => {
+    endEl.style.display = 'none';
+    endEl.classList.remove('end--open');
+
+    viewer.setPanorama(panorama8);
+});
+
+continueButton.addEventListener('click', () => {
+    endEl.classList.remove('end--open');
+});
 
 //navigation indexing
 for (let index = 0; index < viewer.scene.children.length; index++) {
@@ -379,6 +433,9 @@ for (let index = 0; index < viewer.scene.children.length; index++) {
             break;
         case 6:
             viewer.scene.children[index].name = 'Lab';
+            break;
+        case 7:
+            viewer.scene.children[index].name = 'Buiten';
             break;
         default:
             break;
@@ -451,7 +508,6 @@ startButton.addEventListener('click', () => {
     infoSpot2.hide();
     infoSpot3.hide();
     infoSpot4.hide();
-    
 });
 
 function arrayEquals(arr1, arr2) {
