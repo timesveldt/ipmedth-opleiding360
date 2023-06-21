@@ -3,6 +3,12 @@ const endButton = document.getElementById('js--end--button');
 const continueButton = document.getElementById('js--continue--button');
 const endEl = document.getElementById('js--end');
 
+const finishEl = document.getElementById('js--finish');
+const finishContinueButton = document.getElementById(
+    'js--finish--continue--button'
+);
+const finishEndButton = document.getElementById('js--finish--end--button');
+
 const DUMMY_ACHIEVEMENTS = [
     {
         title: 'Voltooi de tour',
@@ -312,13 +318,13 @@ const information = [
 
 //init externat constances
 const pan = document.querySelector('.pan');
-const img = './img/PANO_buiten.jpg';
-const img2 = './img/PANO_hoofdingang.jpg';
-const img3 = './img/PANO_cafe.jpg';
-const img4 = './img/PANO_hal.jpg';
-const img5 = './img/PANO_studieruimte.jpg';
-const img6 = './img/PANO_klaslokaal.jpg';
-const img7 = './img/PANO_lab.jpg';
+const img = '../img/PANO_buiten.jpg';
+const img2 = '../img/PANO_hoofdingang.jpg';
+const img3 = '../img/PANO_cafe.jpg';
+const img4 = '../img/PANO_hal.jpg';
+const img5 = '../img/PANO_studieruimte.jpg';
+const img6 = '../img/PANO_klaslokaal.jpg';
+const img7 = '../img/PANO_lab.jpg';
 
 //init panorama + viewer
 const panorama = new PANOLENS.ImagePanorama(img);
@@ -362,21 +368,21 @@ function Update2() {
 }
 
 //linking foto's van de panorama's deze moeten boven de links staan anders werken ze niet.
-panorama.setLinkingImage('./img/buitenIcoon.png', 500);
-panorama2.setLinkingImage('./img/hoofdingangIcoon.png', 500);
-panorama3.setLinkingImage('./img/cafeIcoon.png', 500);
-panorama4.setLinkingImage('./img/halIcoon.png', 500);
-panorama5.setLinkingImage('./img/studieruimteIcoon.png', 500);
-panorama6.setLinkingImage('./img/lokaalIcoon.png', 500);
-panorama7.setLinkingImage('./img/labIcoon.png', 500);
+panorama.setLinkingImage('../img/buitenIcoon.png', 500);
+panorama2.setLinkingImage('../img/hoofdingangIcoon.png', 500);
+panorama3.setLinkingImage('../img/cafeIcoon.png', 500);
+panorama4.setLinkingImage('../img/halIcoon.png', 500);
+panorama5.setLinkingImage('../img/studieruimteIcoon.png', 500);
+panorama6.setLinkingImage('../img/lokaalIcoon.png', 500);
+panorama7.setLinkingImage('../img/labIcoon.png', 500);
 
 //linking between panorama's
 panorama.link(panorama2, new THREE.Vector3(3000, 0, -3000));
 panorama2.link(panorama, new THREE.Vector3(5000, 100, 0));
 panorama2.link(panorama3, new THREE.Vector3(-5000, 200, 3000));
 panorama2.link(panorama4, new THREE.Vector3(-5000, 200, -2000));
-panorama3.link(panorama4, new THREE.Vector3(-3000, 200, -3000));
 panorama3.link(panorama2, new THREE.Vector3(5000, 0, -2000));
+panorama3.link(panorama4, new THREE.Vector3(-3000, 200, -3000));
 panorama4.link(panorama2, new THREE.Vector3(5000, 100, 0));
 panorama4.link(panorama3, new THREE.Vector3(500, 0, 5000));
 panorama4.link(panorama5, new THREE.Vector3(-5000, 1000, -1000));
@@ -417,8 +423,7 @@ viewer.add(
     panorama4,
     panorama5,
     panorama6,
-    panorama7,
-    panorama8
+    panorama7
 );
 
 resetButton.addEventListener('click', () => {
@@ -500,6 +505,17 @@ const achievementOneUnlocked = () => {
             }, 3000);
 
             achievementOne.classList.add('achievements__achievement--unlocked');
+
+            finishEl.classList.add('finish--open');
+            finishContinueButton.addEventListener('click', () => {
+                finishEl.classList.remove('finish--open');
+            });
+
+            finishEndButton.addEventListener('click', () => {
+                finishEl.classList.remove('finish--open');
+                viewer.add(panorama8);
+                viewer.setPanorama(panorama8);
+            });
         } else {
             return;
         }
@@ -599,7 +615,7 @@ this.setInterval(() => {
             achievementFourUnlocked();
         }
 
-        achievementOneUnlocked();
+        // achievementOneUnlocked();
     }
 }, 1000);
 
@@ -616,3 +632,7 @@ startButton.addEventListener('click', () => {
 function arrayEquals(arr1, arr2) {
     return JSON.stringify(arr1.sort()) === JSON.stringify(arr2.sort());
 }
+
+setTimeout(() => {
+    achievementOneUnlocked();
+}, 3000);
