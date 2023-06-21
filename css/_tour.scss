@@ -2,11 +2,16 @@ body {
     overflow: hidden;
 }
 
-.startScherm,
-.stopScherm {
+.startScherm {
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
+    padding: 50px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2fr 1fr 2fr;
+    justify-items: center;
+    align-items: center;
     background-color: black;
     opacity: 0.8;
     z-index: 99;
@@ -17,11 +22,9 @@ body {
 }
 
 .startIntructions {
-    position: absolute;
+    grid-area: 1 / 2;
     margin: 0;
-    top: 10%;
     width: 50rem;
-    transform: translatex(70%);
     height: 20rem;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 2rem;
@@ -37,10 +40,10 @@ body {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     background: url(/img/generic-mouse.png) no-repeat;
+    background-size: contain;
     width: 5rem; /* Width of new image */
     height: 5rem; /* Height of new image */
-    margin-left: 2rem;
-    animation-name: mousemove, mousemovey;
+    animation-name: mousemove;
     animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-delay: 1s;
@@ -55,10 +58,7 @@ body {
 }
 
 .startButton {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    grid-area:  2 / 2;
     background-color: green;
     color: white;
     padding: 10px 15px;
@@ -71,11 +71,9 @@ body {
 }
 
 .startFooter {
-    position: absolute;
+    grid-area: 3 / 2;
     margin: 0;
-    bottom: 8%;
     width: 40rem;
-    transform: translatex(100%);
     height: 8rem;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 2rem;
@@ -87,21 +85,33 @@ body {
     opacity: 0.8;
 }
 
-.startFooterImage {
+.startFooterImage, .startSettingsImage, .startOptionsImage {
     max-width: 3rem;
     max-height: 3rem;
+}
+
+.startFooterImage {
     transform: rotate(180deg);
 }
+
+.startSettingsImage {
+    transform: rotate(145deg);
+}
+
+.startOptionsImage {
+    transform: rotate(20deg);
+}
+
 
 .startFooterTekst {
     font-size: 1.2rem;
 }
 
 .startSettings {
-    position: absolute;
+    grid-area: 3 / 3;
+    justify-self: end;
+    align-self: end;
     margin: 0;
-    bottom: 5%;
-    right: 0;
     width: 10rem;
     height: 8rem;
     background-color: rgba(255, 255, 255, 0.9);
@@ -112,19 +122,13 @@ body {
     flex-direction: column;
     align-items: center;
     opacity: 0.8;
-}
-
-.startSettingsImage {
-    max-width: 3rem;
-    max-height: 3rem;
-    transform: rotate(145deg);
 }
 
 .startOptions {
-    position: absolute;
+    grid-area: 1 / 3;
+    justify-self: end;
+    align-self: start;
     margin: 0;
-    top: 8%;
-    right: 0;
     width: 10rem;
     height: 8rem;
     background-color: rgba(255, 255, 255, 0.9);
@@ -135,12 +139,6 @@ body {
     flex-direction: column;
     align-items: center;
     opacity: 0.8;
-}
-
-.startOptionsImage {
-    max-width: 3rem;
-    max-height: 3rem;
-    transform: rotate(20deg);
 }
 
 .topBar,
@@ -221,8 +219,8 @@ body {
 }
 
 .infoBtn {
-    width: 30px;
-    height: 30px;
+    width: 2rem;
+    height: 2rem;
     padding: 0;
     font-size: 24px;
     font-weight: 700;
@@ -374,21 +372,229 @@ body {
     color: #45bccb;
 }
 
+.achievements {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    top: 10%;
+    right: 1%;
+    transform: translateY(-10%);
+    background-color: #fff;
+    padding-block: 1rem;
+    padding-inline: 3rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease-in-out;
+
+    &--open {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    &__list {
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(10rem, 1fr));
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+    }
+
+    &__achievement {
+        position: relative;
+        border-width: 0.2rem;
+        border-style: solid;
+        border-radius: 0.5rem;
+        padding-block: 1rem;
+        padding-inline: 0.5rem;
+        text-align: center;
+
+        &--unlocked {
+            &::before {
+                content: '\2713';
+                display: block;
+                position: absolute;
+                top: -42%;
+                right: -10%;
+                font-size: 1.5rem;
+                border-width: 0.2rem;
+                border-style: solid;
+                border-radius: 50%;
+                box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+                padding-inline: 0.5rem;
+            }
+        }
+
+        &:nth-child(odd) {
+            border-color: #45bccb;
+        }
+
+        &--unlocked:nth-child(odd) {
+            background-color: #45bccb;
+
+            &::before {
+                border-color: #45bccb;
+                background-color: #45bccb;
+            }
+        }
+
+        &:nth-child(even) {
+            border-color: #ffa500;
+        }
+
+        &--unlocked:nth-child(even) {
+            background-color: #ffa500;
+
+            &::before {
+                border-color: #ffa500;
+                background-color: #ffa500;
+            }
+        }
+    }
+}
+
 @keyframes mousemove {
     0% {
-        margin-right: 0;
+        transform: translateX(0);
         background: url(/img/mouse-left-click.png) no-repeat;
+        background-size: contain;
     }
     30% {
-        margin-right: 12rem;
+        transform: translateX(200%);
     }
     60% {
-        margin-right: -12rem;
+        transform: translateX(-200%);
     }
     80% {
         background: url(/img/mouse-left-click.png) no-repeat;
+        background-size: contain;
     }
     100% {
-        margin-right: 0;
+        transform: translateX(0);
+    }
+}
+
+@media (orientation: portrait) {
+    .orientatie {
+        display: block;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: white;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (orientation: landscape) {
+    .orientatie {
+        display: none;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    h1,
+    h2,
+    h3 {
+        font-size: 1rem;
+    }
+
+    .startScherm {
+        padding: 16px;
+        row-gap: 12px;
+    }
+
+    .startIntructions, .startFooter {
+        padding: 12px;
+        width: 25rem;
+        height: auto;
+    }
+
+    .startTitle {
+        font-size: 18px;
+    }
+
+    .startTekst {
+        font-size: 14px;
+        text-align: center;
+        margin: 0 12px;
+    }
+
+    .startImage {
+        width: 2rem;
+        height: 2rem;
+        
+    }
+
+    .startSettings, .startOptions {
+        width: 8rem;
+        height: auto;
+        padding: 12px;
+    }
+
+    .startIntructions > .startTekst {
+        margin: 12px;
+    }
+
+    .startOptions > .startTekst {
+        margin-top: 12px;
+    }
+
+    .startSettings > .startTekst, .startFooter > .startTekst {
+        margin-bottom: 12px;
+    }
+
+    .startFooterImage, .startSettingsImage, .startOptionsImage {
+        max-width: 2rem;
+        max-height: 2rem;
+    }
+    
+
+    .header {
+        padding-top: 12px;
+    }
+    .header__title {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    .progress{
+        height: 1.5rem;
+        padding: 3px;
+    }
+
+    .infospot__content{
+        font-size: 14px;
+    }
+
+    .button {
+        max-width: 2rem;
+        max-height: 2rem;
+    }
+
+    .progressBar {
+        max-width: 300px;
+        padding: 14px;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    #place {
+        margin: 0;
+    }
+
+    .infoBtn {
+        height: 1.5rem;
+        width: 1.5rem;
+        font-size: 16px;
     }
 }
