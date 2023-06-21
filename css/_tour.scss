@@ -58,7 +58,7 @@ body {
 }
 
 .startButton {
-    grid-area:  2 / 2;
+    grid-area: 2 / 2;
     background-color: green;
     color: white;
     padding: 10px 15px;
@@ -85,7 +85,9 @@ body {
     opacity: 0.8;
 }
 
-.startFooterImage, .startSettingsImage, .startOptionsImage {
+.startFooterImage,
+.startSettingsImage,
+.startOptionsImage {
     max-width: 3rem;
     max-height: 3rem;
 }
@@ -101,7 +103,6 @@ body {
 .startOptionsImage {
     transform: rotate(20deg);
 }
-
 
 .startFooterTekst {
     font-size: 1.2rem;
@@ -378,9 +379,9 @@ body {
     opacity: 0;
     pointer-events: none;
     position: absolute;
-    top: 10%;
+    top: 15%;
     right: 1%;
-    transform: translateY(-10%);
+    transform: translateY(-15%);
     background-color: #fff;
     padding-block: 1rem;
     padding-inline: 3rem;
@@ -394,6 +395,27 @@ body {
 
     &__title {
         margin-bottom: 1rem;
+    }
+
+    &__close {
+        background: none;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        width: 2rem;
+        height: 2rem;
+        background-color: #45bccb;
+        border-radius: 50%;
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #ffa500;
+        }
     }
 
     &__list {
@@ -457,6 +479,27 @@ body {
     }
 }
 
+.message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    padding-block: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease-in-out;
+
+    &--open {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &__title {
+        text-align: center;
+    }
+}
+
 @keyframes mousemove {
     0% {
         transform: translateX(0);
@@ -514,7 +557,8 @@ body {
         row-gap: 12px;
     }
 
-    .startIntructions, .startFooter {
+    .startIntructions,
+    .startFooter {
         padding: 12px;
         width: 25rem;
         height: auto;
@@ -533,10 +577,10 @@ body {
     .startImage {
         width: 2rem;
         height: 2rem;
-        
     }
 
-    .startSettings, .startOptions {
+    .startSettings,
+    .startOptions {
         width: 8rem;
         height: auto;
         padding: 12px;
@@ -550,15 +594,17 @@ body {
         margin-top: 12px;
     }
 
-    .startSettings > .startTekst, .startFooter > .startTekst {
+    .startSettings > .startTekst,
+    .startFooter > .startTekst {
         margin-bottom: 12px;
     }
 
-    .startFooterImage, .startSettingsImage, .startOptionsImage {
+    .startFooterImage,
+    .startSettingsImage,
+    .startOptionsImage {
         max-width: 2rem;
         max-height: 2rem;
     }
-    
 
     .header {
         padding-top: 12px;
@@ -568,12 +614,12 @@ body {
         padding: 0;
     }
 
-    .progress{
+    .progress {
         height: 1.5rem;
         padding: 3px;
     }
 
-    .infospot__content{
+    .infospot__content {
         font-size: 14px;
     }
 
