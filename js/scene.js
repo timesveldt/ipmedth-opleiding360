@@ -9,7 +9,7 @@ const DUMMY_ACHIEVEMENTS = [
         unlocked: false
     },
     {
-        title: 'Bezoek alle ruimtes',
+        title: 'Bezoek elke ruimte',
         unlocked: false
     },
     {
@@ -21,6 +21,12 @@ const DUMMY_ACHIEVEMENTS = [
         unlocked: false
     }
 ];
+
+const pathToAchievementAudio = '../audio/cartoon_cowbell.mp3';
+const achievementUnlockedAudio = new Audio(pathToAchievementAudio);
+
+const message = document.getElementById('js--message');
+const messageTitle = document.getElementById('js--message--title');
 
 const achievements = document.getElementById('js--achievements');
 const achievementsList = document.getElementById('js--achievements--list');
@@ -128,7 +134,11 @@ laptop.addHoverElement(laptopInfo, 150);
 laptop.name = 'PANO_laptop';
 
 laptop.addEventListener('click', () => {
-    foundObjects.push(laptop.name);
+    if (!foundObjects.includes(laptop.name)) {
+        foundObjects.push(laptop.name);
+    } else {
+        return;
+    }
 });
 
 //boeken
@@ -138,7 +148,11 @@ boeken.addHoverElement(boekenInfo, 150);
 boeken.name = 'PANO_boeken';
 
 boeken.addEventListener('click', () => {
-    foundObjects.push(boeken.name);
+    if (!foundObjects.includes(boeken.name)) {
+        foundObjects.push(boeken.name);
+    } else {
+        return;
+    }
 });
 
 //bierglas
@@ -148,7 +162,11 @@ bierGlas.addHoverElement(bierInfo, 150);
 bierGlas.name = 'PANO_bierGlas';
 
 bierGlas.addEventListener('click', () => {
-    foundObjects.push(bierGlas.name);
+    if (!foundObjects.includes(bierGlas.name)) {
+        foundObjects.push(bierGlas.name);
+    } else {
+        return;
+    }
 });
 
 //raspberry Pi
@@ -158,7 +176,11 @@ raspberryPi.addHoverElement(raspberryPiInfo, 150);
 raspberryPi.name = 'PANO_raspberryPi';
 
 raspberryPi.addEventListener('click', () => {
-    foundObjects.push(raspberryPi.name);
+    if (!foundObjects.includes(raspberryPi.name)) {
+        foundObjects.push(raspberryPi.name);
+    } else {
+        return;
+    }
 });
 
 //hardware box
@@ -168,7 +190,11 @@ hardwareBox.addHoverElement(hardwareBoxInfo, 150);
 hardwareBox.name = 'PANO_hardwareBox';
 
 hardwareBox.addEventListener('click', () => {
-    foundObjects.push(hardwareBox.name);
+    if (!foundObjects.includes(hardwareBox.name)) {
+        foundObjects.push(hardwareBox.name);
+    } else {
+        return;
+    }
 });
 
 const allObjects = [
@@ -453,7 +479,31 @@ const setVisitedScenes = (name) => {
 };
 
 const achievementOneUnlocked = () => {
-    //
+    if (
+        DUMMY_ACHIEVEMENTS[1].unlocked === true &&
+        DUMMY_ACHIEVEMENTS[3].unlocked === true
+    ) {
+        DUMMY_ACHIEVEMENTS[0].unlocked = true;
+        const achievementOne = document.getElementById('js--achievement--0');
+
+        if (
+            !achievementOne.classList.contains(
+                'achievements__achievement--unlocked'
+            )
+        ) {
+            message.classList.add('message--open');
+            messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[0].title}`;
+            achievementUnlockedAudio.play();
+
+            setTimeout(() => {
+                message.classList.remove('message--open');
+            }, 3000);
+
+            achievementOne.classList.add('achievements__achievement--unlocked');
+        } else {
+            return;
+        }
+    }
 };
 
 const achievementTwoUnlocked = () => {
@@ -461,20 +511,71 @@ const achievementTwoUnlocked = () => {
     if (hasUserVisitedAllRooms === true) {
         DUMMY_ACHIEVEMENTS[1].unlocked = true;
         const achievementTwo = document.getElementById('js--achievement--1');
-        achievementTwo.classList.add('achievements__achievement--unlocked');
+
+        if (
+            !achievementTwo.classList.contains(
+                'achievements__achievement--unlocked'
+            )
+        ) {
+            message.classList.add('message--open');
+            messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[1].title}`;
+            achievementUnlockedAudio.play();
+
+            setTimeout(() => {
+                message.classList.remove('message--open');
+            }, 3000);
+
+            achievementTwo.classList.add('achievements__achievement--unlocked');
+        } else {
+            return;
+        }
     }
 };
 
 const achievementThreeUnlocked = () => {
     DUMMY_ACHIEVEMENTS[2].unlocked = true;
     const achievementThree = document.getElementById('js--achievement--2');
-    achievementThree.classList.add('achievements__achievement--unlocked');
+
+    if (
+        !achievementThree.classList.contains(
+            'achievements__achievement--unlocked'
+        )
+    ) {
+        message.classList.add('message--open');
+        messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[2].title}`;
+        achievementUnlockedAudio.play();
+
+        setTimeout(() => {
+            message.classList.remove('message--open');
+        }, 3000);
+
+        achievementThree.classList.add('achievements__achievement--unlocked');
+    } else {
+        return;
+    }
 };
 
 const achievementFourUnlocked = () => {
     DUMMY_ACHIEVEMENTS[3].unlocked = true;
     const achievementFour = document.getElementById('js--achievement--3');
-    achievementFour.classList.add('achievements__achievement--unlocked');
+
+    if (
+        !achievementFour.classList.contains(
+            'achievements__achievement--unlocked'
+        )
+    ) {
+        message.classList.add('message--open');
+        messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[3].title}`;
+        achievementUnlockedAudio.play();
+
+        setTimeout(() => {
+            message.classList.remove('message--open');
+        }, 3000);
+
+        achievementFour.classList.add('achievements__achievement--unlocked');
+    } else {
+        return;
+    }
 };
 
 this.setInterval(() => {
@@ -497,6 +598,8 @@ this.setInterval(() => {
         if (hasUserFoundAllObjects === true) {
             achievementFourUnlocked();
         }
+
+        achievementOneUnlocked();
     }
 }, 1000);
 
