@@ -1,20 +1,20 @@
 const DUMMY_ACHIEVEMENTS = [
     {
         title: 'Voltooi de tour',
-        unlocked: false,
+        unlocked: false
     },
     {
         title: 'Bezoek elke ruimte',
-        unlocked: false,
+        unlocked: false
     },
     {
         title: 'Vind drie voorwerpen',
-        unlocked: false,
+        unlocked: false
     },
     {
         title: 'Vind alle voorwerpen',
-        unlocked: false,
-    },
+        unlocked: false
+    }
 ];
 
 const pathToAchievementAudio = '../audio/cartoon_cowbell.mp3';
@@ -26,7 +26,9 @@ const messageTitle = document.getElementById('js--message--title');
 const achievements = document.getElementById('js--achievements');
 const achievementsList = document.getElementById('js--achievements--list');
 const achievemensButton = document.getElementById('js--achievements--button');
-const achievementsCloseButton = document.getElementById('js--achievements--close--button');
+const achievementsCloseButton = document.getElementById(
+    'js--achievements--close--button'
+);
 
 achievemensButton.addEventListener('click', () => {
     achievements.classList.toggle('achievements--open');
@@ -61,9 +63,6 @@ const myInfoSpot9 = document.getElementById('infospot--9');
 const myInfoSpot10 = document.getElementById('infospot--10');
 const myInfoSpot11 = document.getElementById('infospot--11');
 
-
-
-
 const navInfo = document.getElementById('navInfo');
 const poolInfo = document.getElementById('poolInfo');
 const balustradeInfo = document.getElementById('balustradeInfo');
@@ -79,7 +78,6 @@ const raspberryPiInfo = document.getElementById('raspberryPiInfo');
 const hardwareBoxInfo = document.getElementById('hardwareBoxInfo');
 
 //infospots
-
 
 const foundObjects = [];
 const navInfospot = new PANOLENS.Infospot(500, './img/infospot.png');
@@ -130,7 +128,11 @@ laptop.addHoverElement(laptopInfo, 150);
 laptop.name = 'PANO_laptop';
 
 laptop.addEventListener('click', () => {
-    foundObjects.push(laptop.name);
+    if (!foundObjects.includes(laptop.name)) {
+        foundObjects.push(laptop.name);
+    } else {
+        return;
+    }
 });
 
 //boeken
@@ -140,7 +142,11 @@ boeken.addHoverElement(boekenInfo, 150);
 boeken.name = 'PANO_boeken';
 
 boeken.addEventListener('click', () => {
-    foundObjects.push(boeken.name);
+    if (!foundObjects.includes(boeken.name)) {
+        foundObjects.push(boeken.name);
+    } else {
+        return;
+    }
 });
 
 //bierglas
@@ -150,7 +156,11 @@ bierGlas.addHoverElement(bierInfo, 150);
 bierGlas.name = 'PANO_bierGlas';
 
 bierGlas.addEventListener('click', () => {
-    foundObjects.push(bierGlas.name);
+    if (!foundObjects.includes(bierGlas.name)) {
+        foundObjects.push(bierGlas.name);
+    } else {
+        return;
+    }
 });
 
 //raspberry Pi
@@ -160,7 +170,11 @@ raspberryPi.addHoverElement(raspberryPiInfo, 150);
 raspberryPi.name = 'PANO_raspberryPi';
 
 raspberryPi.addEventListener('click', () => {
-    foundObjects.push(raspberryPi.name);
+    if (!foundObjects.includes(raspberryPi.name)) {
+        foundObjects.push(raspberryPi.name);
+    } else {
+        return;
+    }
 });
 
 //hardware box
@@ -170,90 +184,101 @@ hardwareBox.addHoverElement(hardwareBoxInfo, 150);
 hardwareBox.name = 'PANO_hardwareBox';
 
 hardwareBox.addEventListener('click', () => {
-    foundObjects.push(hardwareBox.name);
+    if (!foundObjects.includes(hardwareBox.name)) {
+        foundObjects.push(hardwareBox.name);
+    } else {
+        return;
+    }
 });
 
-
-
-const allObjects = [laptop.name, boeken.name, bierGlas.name, raspberryPi.name, hardwareBox.name];
+const allObjects = [
+    laptop.name,
+    boeken.name,
+    bierGlas.name,
+    raspberryPi.name,
+    hardwareBox.name
+];
 
 //infospots story gijs
 
 //pano1
 const infoSpot1 = new PANOLENS.Infospot(2000, './img/Gijs_Zwaait.png', false);
 infoSpot1.position.set(3000, -300, 0);
-infoSpot1.addHoverElement(myInfoSpot1, 290,);
+infoSpot1.addHoverElement(myInfoSpot1, 290);
 
 const infoSpot2 = new PANOLENS.Infospot(2000, './img/gijs-wijzen.png', false);
-infoSpot2.position.set(681.13, -752.51, -3000.00);
-infoSpot2.addHoverElement(myInfoSpot2, 340,);
+infoSpot2.position.set(681.13, -752.51, -3000.0);
+infoSpot2.addHoverElement(myInfoSpot2, 340);
 
 const infoSpot3 = new PANOLENS.Infospot(2000, './img/Gijs_duimpje.png', false);
-infoSpot3.position.set(5000.00, -220.40, -3000);
-infoSpot3.addHoverElement(myInfoSpot3, 200,);
+infoSpot3.position.set(5000.0, -220.4, -3000);
+infoSpot3.addHoverElement(myInfoSpot3, 200);
 
 const infoSpot4 = new PANOLENS.Infospot(2000, './img/gijs-achter.png', false);
 infoSpot4.position.set(4909.62, -385.95, -3738.77);
-infoSpot4.addHoverElement(myInfoSpot4, 200,);
+infoSpot4.addHoverElement(myInfoSpot4, 200);
 
 const testInfoSpot = new PANOLENS.Infospot(500, './img/infospot.png');
-testInfoSpot.position.set(2455.41, -186.60, -5000.00);
-testInfoSpot.addHoverText("Dit is een informatiepunt! ", 50);
+testInfoSpot.position.set(2455.41, -186.6, -5000.0);
+testInfoSpot.addHoverText('Dit is een informatiepunt! ', 50);
 
 //pano2
 const infoSpot5 = new PANOLENS.Infospot(1800, './img/Gijs_Zwaait2.png', false);
-infoSpot5.position.set(-1581.97, -339.46, 2000.00);
-infoSpot5.addHoverElement(myInfoSpot5, 280,);
+infoSpot5.position.set(-1581.97, -339.46, 2000.0);
+infoSpot5.addHoverElement(myInfoSpot5, 280);
 
 //pano3
-const infoSpot6 = new PANOLENS.Infospot(1800, './img/gijs-laptopduimpie.png', false);
-infoSpot6.position.set(-1581.97, -339.46, 2000.00);
-infoSpot6.addHoverElement(myInfoSpot6, 280,);
+const infoSpot6 = new PANOLENS.Infospot(
+    1800,
+    './img/gijs-laptopduimpie.png',
+    false
+);
+infoSpot6.position.set(-1581.97, -339.46, 2000.0);
+infoSpot6.addHoverElement(myInfoSpot6, 280);
 
 //pano4
 const infoSpot7 = new PANOLENS.Infospot(1800, './img/gijs-wijzen2.png', false);
-infoSpot7.position.set(-1581.97, -339.46, 2000.00);
-infoSpot7.addHoverElement(myInfoSpot7, 280,);
+infoSpot7.position.set(-1581.97, -339.46, 2000.0);
+infoSpot7.addHoverElement(myInfoSpot7, 280);
 
 //pano5
 const infoSpot8 = new PANOLENS.Infospot(2500, './img/Gijs_Zwaait3.png', false);
-infoSpot8.position.set(1544.90, -500.83, 5000.00);
-infoSpot8.addHoverElement(myInfoSpot8, 200,);
+infoSpot8.position.set(1544.9, -500.83, 5000.0);
+infoSpot8.addHoverElement(myInfoSpot8, 200);
 
 //pano6
 const infoSpot9 = new PANOLENS.Infospot(2500, './img/Gijs_Zwaait4.png', false);
-infoSpot9.position.set(1941.67, -856.36, 4732.70);
-infoSpot9.addHoverElement(myInfoSpot9, 200,);
+infoSpot9.position.set(1941.67, -856.36, 4732.7);
+infoSpot9.addHoverElement(myInfoSpot9, 200);
 
 const infoSpot10 = new PANOLENS.Infospot(3500, './img/gijs-laptop.png', false);
 infoSpot10.position.set(4626.66, -1453.12, 3387.41);
-infoSpot10.addHoverElement(myInfoSpot10, 200,);
+infoSpot10.addHoverElement(myInfoSpot10, 200);
 
 //pano7
 const infoSpot11 = new PANOLENS.Infospot(3500, './img/Gijs_Zwaait5.png', false);
-infoSpot11.position.set(3791.86, -802.15, 5000.00);
-infoSpot11.addHoverElement(myInfoSpot11, 200,);
+infoSpot11.position.set(3791.86, -802.15, 5000.0);
+infoSpot11.addHoverElement(myInfoSpot11, 200);
 
 let story1 = 0;
 
-function nextPage(){
-    if(story1 == 0){
-        infoSpot1.hide();  
+function nextPage() {
+    if (story1 == 0) {
+        infoSpot1.hide();
         infoSpot2.show();
-        story1++
-    }else if(story1 == 1){
-        infoSpot2.hide(); 
-        testInfoSpot.hide(); 
+        story1++;
+    } else if (story1 == 1) {
+        infoSpot2.hide();
+        testInfoSpot.hide();
         infoSpot3.show();
-        story1++
-    }else if(story1 == 2){
-        
-        infoSpot3.hide();  
+        story1++;
+    } else if (story1 == 2) {
+        infoSpot3.hide();
         infoSpot4.show();
-        story1++
-    } else if(story1 == 3){
+        story1++;
+    } else if (story1 == 3) {
         infoSpot4.hide();
-        story1++
+        story1++;
     } else {
         infoSpot9.hide();
         viewer.addUpdateCallback(Update2);
@@ -261,15 +286,6 @@ function nextPage(){
 
     console.log(story1);
 }
-
-
-
-
-
-
-
-
-
 
 var place = document.getElementById('place');
 const locationInfo = document.getElementById('informatie');
@@ -280,7 +296,7 @@ const information = [
     'Dit is de grote hal van de nieuwbouw',
     'dit is een studieruimte',
     'hier zitten de lokalen van de opleiding informatica',
-    'dit is het lab van de opleiding informatica',
+    'dit is het lab van de opleiding informatica'
 ];
 //panolens select container
 
@@ -305,12 +321,8 @@ const panorama7 = new PANOLENS.ImagePanorama(img7);
 const viewer = new PANOLENS.Viewer({
     container: pan,
     output: 'console',
-    autoHideInfospot: false,
+    autoHideInfospot: false
 });
-
-
-
-
 
 // roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
 panorama.addEventListener('enter-fade-start', function () {
@@ -318,28 +330,25 @@ panorama.addEventListener('enter-fade-start', function () {
 });
 panorama2.addEventListener('enter-fade-start', function () {
     viewer.tweenControlCenter(new THREE.Vector3(-1000, 0, 5000), 0);
-    
 });
 panorama5.addEventListener('enter-fade-start', function () {
     viewer.tweenControlCenter(new THREE.Vector3(5000, 0, 1500), 0);
 });
 panorama6.addEventListener('enter-fade-start', function () {
     viewer.tweenControlCenter(new THREE.Vector3(5000, 0, 2500), 0);
-    
 });
 
 panorama6.addEventListener('enter-complete', function () {
     viewer.addUpdateCallback(Update);
 });
 
-function Update(){
+function Update() {
     infoSpot10.hide();
 }
 
-function Update2(){
+function Update2() {
     infoSpot10.show();
 }
-
 
 //linking foto's van de panorama's deze moeten boven de links staan anders werken ze niet.
 panorama.setLinkingImage('./img/buitenIcoon.png', 500);
@@ -373,10 +382,24 @@ panorama3.add(poolInfospot, bierGlas, infoSpot6);
 panorama4.add(balustradeInfospot, infoSpot7);
 panorama5.add(raspberryPi, infoSpot8);
 panorama6.add(challengeInfospot, studiepuntenInfospot, infoSpot9, infoSpot10);
-panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot, infoSpot11);
+panorama7.add(
+    hardwareBox,
+    printerInfospot,
+    soldeerInfospot,
+    hardwareInfospot,
+    infoSpot11
+);
 
 //adding to objects
-viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
+viewer.add(
+    panorama,
+    panorama2,
+    panorama3,
+    panorama4,
+    panorama5,
+    panorama6,
+    panorama7
+);
 
 console.log(viewer);
 
@@ -420,11 +443,18 @@ const setVisitedScenes = (name) => {
 };
 
 const achievementOneUnlocked = () => {
-    if (DUMMY_ACHIEVEMENTS[1].unlocked === true && DUMMY_ACHIEVEMENTS[3].unlocked === true) {
+    if (
+        DUMMY_ACHIEVEMENTS[1].unlocked === true &&
+        DUMMY_ACHIEVEMENTS[3].unlocked === true
+    ) {
         DUMMY_ACHIEVEMENTS[0].unlocked = true;
         const achievementOne = document.getElementById('js--achievement--0');
 
-        if (!achievementOne.classList.contains('achievements__achievement--unlocked')) {
+        if (
+            !achievementOne.classList.contains(
+                'achievements__achievement--unlocked'
+            )
+        ) {
             message.classList.add('message--open');
             messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[0].title}`;
             achievementUnlockedAudio.play();
@@ -446,7 +476,11 @@ const achievementTwoUnlocked = () => {
         DUMMY_ACHIEVEMENTS[1].unlocked = true;
         const achievementTwo = document.getElementById('js--achievement--1');
 
-        if (!achievementTwo.classList.contains('achievements__achievement--unlocked')) {
+        if (
+            !achievementTwo.classList.contains(
+                'achievements__achievement--unlocked'
+            )
+        ) {
             message.classList.add('message--open');
             messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[1].title}`;
             achievementUnlockedAudio.play();
@@ -466,7 +500,11 @@ const achievementThreeUnlocked = () => {
     DUMMY_ACHIEVEMENTS[2].unlocked = true;
     const achievementThree = document.getElementById('js--achievement--2');
 
-    if (!achievementThree.classList.contains('achievements__achievement--unlocked')) {
+    if (
+        !achievementThree.classList.contains(
+            'achievements__achievement--unlocked'
+        )
+    ) {
         message.classList.add('message--open');
         messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[2].title}`;
         achievementUnlockedAudio.play();
@@ -485,7 +523,11 @@ const achievementFourUnlocked = () => {
     DUMMY_ACHIEVEMENTS[3].unlocked = true;
     const achievementFour = document.getElementById('js--achievement--3');
 
-    if (!achievementFour.classList.contains('achievements__achievement--unlocked')) {
+    if (
+        !achievementFour.classList.contains(
+            'achievements__achievement--unlocked'
+        )
+    ) {
         message.classList.add('message--open');
         messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[3].title}`;
         achievementUnlockedAudio.play();
@@ -533,7 +575,6 @@ startButton.addEventListener('click', () => {
     infoSpot2.hide();
     infoSpot3.hide();
     infoSpot4.hide();
-    
 });
 
 function arrayEquals(arr1, arr2) {
