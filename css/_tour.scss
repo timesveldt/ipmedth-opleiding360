@@ -380,6 +380,7 @@ body {
 
 .progress__bar {
     background-color: #45bccb;
+    color: #fff;
     border-radius: 1rem;
     text-align: center;
     transition: all 0.2s ease-in-out;
@@ -586,6 +587,27 @@ body {
                 color: #008000;
             }
         }
+    }
+}
+
+.message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    padding-block: 1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease-in-out;
+
+    &--open {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &__title {
+        text-align: center;
     }
 }
 

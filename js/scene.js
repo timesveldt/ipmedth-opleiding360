@@ -2,6 +2,8 @@ const resetButton = document.getElementById('js--reset--button');
 const endButton = document.getElementById('js--end--button');
 const continueButton = document.getElementById('js--continue--button');
 const endEl = document.getElementById('js--end');
+const progressBar = document.getElementById('js--progress--bar');
+let amountOfProgress;
 
 const DUMMY_ACHIEVEMENTS = [
     {
@@ -9,7 +11,7 @@ const DUMMY_ACHIEVEMENTS = [
         unlocked: false
     },
     {
-        title: 'Bezoek alle ruimtes',
+        title: 'Bezoek elke ruimte',
         unlocked: false
     },
     {
@@ -21,6 +23,12 @@ const DUMMY_ACHIEVEMENTS = [
         unlocked: false
     }
 ];
+
+const pathToAchievementAudio = '../audio/cartoon_cowbell.mp3';
+const achievementUnlockedAudio = new Audio(pathToAchievementAudio);
+
+const message = document.getElementById('js--message');
+const messageTitle = document.getElementById('js--message--title');
 
 const achievements = document.getElementById('js--achievements');
 const achievementsList = document.getElementById('js--achievements--list');
@@ -128,7 +136,11 @@ laptop.addHoverElement(laptopInfo, 150);
 laptop.name = 'PANO_laptop';
 
 laptop.addEventListener('click', () => {
-    foundObjects.push(laptop.name);
+    if (!foundObjects.includes(laptop.name)) {
+        foundObjects.push(laptop.name);
+    } else {
+        return;
+    }
 });
 
 //boeken
@@ -138,7 +150,11 @@ boeken.addHoverElement(boekenInfo, 150);
 boeken.name = 'PANO_boeken';
 
 boeken.addEventListener('click', () => {
-    foundObjects.push(boeken.name);
+    if (!foundObjects.includes(boeken.name)) {
+        foundObjects.push(boeken.name);
+    } else {
+        return;
+    }
 });
 
 //bierglas
@@ -148,7 +164,11 @@ bierGlas.addHoverElement(bierInfo, 150);
 bierGlas.name = 'PANO_bierGlas';
 
 bierGlas.addEventListener('click', () => {
-    foundObjects.push(bierGlas.name);
+    if (!foundObjects.includes(bierGlas.name)) {
+        foundObjects.push(bierGlas.name);
+    } else {
+        return;
+    }
 });
 
 //raspberry Pi
@@ -158,7 +178,11 @@ raspberryPi.addHoverElement(raspberryPiInfo, 150);
 raspberryPi.name = 'PANO_raspberryPi';
 
 raspberryPi.addEventListener('click', () => {
-    foundObjects.push(raspberryPi.name);
+    if (!foundObjects.includes(raspberryPi.name)) {
+        foundObjects.push(raspberryPi.name);
+    } else {
+        return;
+    }
 });
 
 //hardware box
@@ -168,7 +192,11 @@ hardwareBox.addHoverElement(hardwareBoxInfo, 150);
 hardwareBox.name = 'PANO_hardwareBox';
 
 hardwareBox.addEventListener('click', () => {
-    foundObjects.push(hardwareBox.name);
+    if (!foundObjects.includes(hardwareBox.name)) {
+        foundObjects.push(hardwareBox.name);
+    } else {
+        return;
+    }
 });
 
 const allObjects = [
@@ -263,8 +291,6 @@ function nextPage() {
         infoSpot9.hide();
         viewer.addUpdateCallback(Update2);
     }
-
-    console.log(story1);
 }
 
 const endInfospot = new PANOLENS.Infospot(2000, '../img/Gijs_duimpje.png');
@@ -453,37 +479,119 @@ const setVisitedScenes = (name) => {
 };
 
 const achievementOneUnlocked = () => {
-    //
+    if (
+        DUMMY_ACHIEVEMENTS[1].unlocked === true &&
+        DUMMY_ACHIEVEMENTS[3].unlocked === true
+    ) {
+        DUMMY_ACHIEVEMENTS[0].unlocked = true;
+        localStorage.setItem('progress', '100');
+        const achievementOne = document.getElementById('js--achievement--0');
+
+        if (
+            !achievementOne.classList.contains(
+                'achievements__achievement--unlocked'
+            )
+        ) {
+            message.classList.add('message--open');
+            messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[0].title}`;
+            achievementUnlockedAudio.play();
+
+            setTimeout(() => {
+                message.classList.remove('message--open');
+            }, 3000);
+
+            achievementOne.classList.add('achievements__achievement--unlocked');
+        } else {
+            return;
+        }
+    }
 };
+
+achievementOneUnlocked();
 
 const achievementTwoUnlocked = () => {
     const hasUserVisitedAllRooms = arrayEquals(allScenes, visitedScenes);
     if (hasUserVisitedAllRooms === true) {
         DUMMY_ACHIEVEMENTS[1].unlocked = true;
         const achievementTwo = document.getElementById('js--achievement--1');
-        achievementTwo.classList.add('achievements__achievement--unlocked');
+
+        if (
+            !achievementTwo.classList.contains(
+                'achievements__achievement--unlocked'
+            )
+        ) {
+            message.classList.add('message--open');
+            messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[1].title}`;
+            achievementUnlockedAudio.play();
+
+            setTimeout(() => {
+                message.classList.remove('message--open');
+            }, 3000);
+
+            achievementTwo.classList.add('achievements__achievement--unlocked');
+        } else {
+            return;
+        }
     }
 };
 
 const achievementThreeUnlocked = () => {
     DUMMY_ACHIEVEMENTS[2].unlocked = true;
     const achievementThree = document.getElementById('js--achievement--2');
-    achievementThree.classList.add('achievements__achievement--unlocked');
+
+    if (
+        !achievementThree.classList.contains(
+            'achievements__achievement--unlocked'
+        )
+    ) {
+        message.classList.add('message--open');
+        messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[2].title}`;
+        achievementUnlockedAudio.play();
+
+        setTimeout(() => {
+            message.classList.remove('message--open');
+        }, 3000);
+
+        achievementThree.classList.add('achievements__achievement--unlocked');
+    } else {
+        return;
+    }
 };
 
 const achievementFourUnlocked = () => {
     DUMMY_ACHIEVEMENTS[3].unlocked = true;
     const achievementFour = document.getElementById('js--achievement--3');
-    achievementFour.classList.add('achievements__achievement--unlocked');
+
+    if (
+        !achievementFour.classList.contains(
+            'achievements__achievement--unlocked'
+        )
+    ) {
+        message.classList.add('message--open');
+        messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[3].title}`;
+        achievementUnlockedAudio.play();
+
+        setTimeout(() => {
+            message.classList.remove('message--open');
+        }, 3000);
+
+        achievementFour.classList.add('achievements__achievement--unlocked');
+    } else {
+        return;
+    }
 };
 
 this.setInterval(() => {
+    const amountOfProgress = localStorage.getItem('progress');
+    progressBar.style.width = `${amountOfProgress}%`;
+
     for (let index = 0; index < viewer.scene.children.length; index++) {
         if (viewer.scene.children[index].active === true) {
             place.textContent = viewer.scene.children[index].name;
             locationInfo.textContent = information[index];
             if (!visitedScenes.includes(viewer.scene.children[index].name)) {
                 setVisitedScenes(viewer.scene.children[index].name);
+                setProgressBy(5);
             }
 
             achievementTwoUnlocked();
@@ -497,6 +605,8 @@ this.setInterval(() => {
         if (hasUserFoundAllObjects === true) {
             achievementFourUnlocked();
         }
+
+        achievementOneUnlocked();
     }
 }, 1000);
 
@@ -510,6 +620,24 @@ startButton.addEventListener('click', () => {
     infoSpot4.hide();
 });
 
+function setProgressBy(amount) {
+    amountOfProgress = localStorage.getItem('progress');
+    const ADD_PROGRESS_BY = amount;
+    const currentProgress = parseInt(amountOfProgress);
+    const updatedProgress = ADD_PROGRESS_BY + currentProgress;
+    localStorage.setItem('progress', updatedProgress.toString());
+}
+
 function arrayEquals(arr1, arr2) {
     return JSON.stringify(arr1.sort()) === JSON.stringify(arr2.sort());
 }
+
+window.addEventListener('load', () => {
+    if (localStorage.getItem('progress') === null) {
+        amountOfProgress = localStorage.setItem('progress', '0');
+        progressBar.style.width = `${amountOfProgress}%`;
+    } else {
+        amountOfProgress = localStorage.getItem('progress');
+        progressBar.style.width = `${amountOfProgress}%`;
+    }
+});
