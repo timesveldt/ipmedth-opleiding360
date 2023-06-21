@@ -286,8 +286,6 @@ function nextPage() {
         infoSpot9.hide();
         viewer.addUpdateCallback(Update2);
     }
-
-    console.log(story1);
 }
 
 var place = document.getElementById('place');
@@ -403,8 +401,6 @@ viewer.add(
     panorama6,
     panorama7
 );
-
-console.log(viewer);
 
 //navigation indexing
 for (let index = 0; index < viewer.scene.children.length; index++) {
@@ -551,7 +547,6 @@ const achievementFourUnlocked = () => {
 this.setInterval(() => {
     const amountOfProgress = localStorage.getItem('progress');
     progressBar.style.width = `${amountOfProgress}%`;
-    progressBar.textContent = `${amountOfProgress}%`;
 
     for (let index = 0; index < viewer.scene.children.length; index++) {
         if (viewer.scene.children[index].active === true) {
@@ -604,10 +599,8 @@ window.addEventListener('load', () => {
     if (localStorage.getItem('progress') === null) {
         amountOfProgress = localStorage.setItem('progress', '0');
         progressBar.style.width = `${amountOfProgress}%`;
-        progressBar.textContent = `${amountOfProgress}%`;
     } else {
         amountOfProgress = localStorage.getItem('progress');
         progressBar.style.width = `${amountOfProgress}%`;
-        progressBar.textContent = `${amountOfProgress}%`;
     }
 });
