@@ -11,6 +11,7 @@ body.u-overflow {
 
 .main {
     padding-block: 1rem;
+    padding-inline: 1rem;
     max-width: 75rem;
     margin-inline: auto;
 }
@@ -130,5 +131,11 @@ body.u-overflow {
             color: $white-color;
             border-radius: $base-radius;
         }
+    }
+}
+
+@media screen and (min-width: 75em) {
+    .main {
+        padding-inline: 0;
     }
 }
