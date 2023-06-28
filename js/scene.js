@@ -617,3 +617,22 @@ window.addEventListener('load', () => {
         progressBar.style.width = `${amountOfProgress}%`;
     }
 });
+
+const testCustomButton = viewer.widget.createCustomItem({
+    onTap: () => {
+        // alert('testCustomButton');
+        endEl.classList.add('end--open');
+    },
+    style: {
+        color: '#000',
+        'background-color': '#000',
+        'background-image': 'url(../icons/reset_icon.svg)',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '3rem',
+        height: '3rem',
+    },
+});
+
+pan.appendChild(testCustomButton);
