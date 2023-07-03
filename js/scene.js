@@ -1,4 +1,3 @@
-const resetButton = document.getElementById('js--reset--button');
 const endButton = document.getElementById('js--end--button');
 const continueButton = document.getElementById('js--continue--button');
 const endEl = document.getElementById('js--end');
@@ -36,12 +35,7 @@ const messageTitle = document.getElementById('js--message--title');
 
 const achievements = document.getElementById('js--achievements');
 const achievementsList = document.getElementById('js--achievements--list');
-const achievemensButton = document.getElementById('js--achievements--button');
 const achievementsCloseButton = document.getElementById('js--achievements--close--button');
-
-achievemensButton.addEventListener('click', () => {
-    achievements.classList.toggle('achievements--open');
-});
 
 achievementsCloseButton.addEventListener('click', () => {
     achievements.classList.remove('achievements--open');
@@ -396,11 +390,7 @@ panorama6.add(challengeInfospot, studiepuntenInfospot, infoSpot9, infoSpot10);
 panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot, infoSpot11);
 
 //adding to objects
-viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
-
-resetButton.addEventListener('click', () => {
-    endEl.classList.add('end--open');
-});
+viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7, panorama8);
 
 endButton.addEventListener('click', () => {
     endEl.style.display = 'none';
@@ -558,6 +548,7 @@ const achievementFourUnlocked = () => {
 };
 
 this.setInterval(() => {
+    checkProgress();
     const amountOfProgress = localStorage.getItem('progress');
     progressBar.style.width = `${amountOfProgress}%`;
 
@@ -608,7 +599,17 @@ function arrayEquals(arr1, arr2) {
     return JSON.stringify(arr1.sort()) === JSON.stringify(arr2.sort());
 }
 
+function checkProgress() {
+    amountOfProgress = parseInt(localStorage.getItem('progress'));
+    if (amountOfProgress > 100) {
+        localStorage.setItem('progress', '100');
+        progressBar.style.width = '100%';
+    }
+}
+
 window.addEventListener('load', () => {
+    checkProgress();
+
     if (localStorage.getItem('progress') === null) {
         amountOfProgress = localStorage.setItem('progress', '0');
         progressBar.style.width = `${amountOfProgress}%`;
@@ -618,21 +619,46 @@ window.addEventListener('load', () => {
     }
 });
 
-const testCustomButton = viewer.widget.createCustomItem({
+const theResetButton = viewer.widget.createCustomItem({
     onTap: () => {
-        // alert('testCustomButton');
         endEl.classList.add('end--open');
     },
+    element: document.createElement('button'),
     style: {
+        border: 'none',
+        'border-radius': '0.5rem',
         color: '#000',
-        'background-color': '#000',
+        'background-color': '#45bccb',
         'background-image': 'url(../icons/reset_icon.svg)',
         position: 'absolute',
-        bottom: 0,
-        left: 0,
+        top: 0,
+        right: 0,
         width: '3rem',
         height: '3rem',
+        'margin-top': '1rem',
+        'margin-right': '1rem',
     },
 });
 
-pan.appendChild(testCustomButton);
+const theAchievementsButton = viewer.widget.createCustomItem({
+    onTap: () => {
+        achievements.classList.toggle('achievements--open');
+    },
+    element: document.createElement('button'),
+    style: {
+        border: 'none',
+        'border-radius': '0.5rem',
+        'background-color': '#45bccb',
+        'background-image': 'url(../icons/achievement_icon.svg)',
+        position: 'absolute',
+        top: 0,
+        right: '5%',
+        width: '3rem',
+        height: '3rem',
+        'margin-top': '1rem',
+        'margin-right': '1rem',
+    },
+});
+
+pan.appendChild(theResetButton);
+pan.appendChild(theAchievementsButton);
