@@ -390,7 +390,7 @@ panorama6.add(challengeInfospot, studiepuntenInfospot, infoSpot9, infoSpot10);
 panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot, infoSpot11);
 
 //adding to objects
-viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7, panorama8);
+viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7);
 
 endButton.addEventListener('click', () => {
     endEl.style.display = 'none';
