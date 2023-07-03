@@ -1,4 +1,3 @@
-const resetButton = document.getElementById('js--reset--button');
 const endButton = document.getElementById('js--end--button');
 const continueButton = document.getElementById('js--continue--button');
 const endEl = document.getElementById('js--end');
@@ -8,20 +7,20 @@ let amountOfProgress;
 const DUMMY_ACHIEVEMENTS = [
     {
         title: 'Voltooi de tour',
-        unlocked: false
+        unlocked: false,
     },
     {
         title: 'Bezoek elke ruimte',
-        unlocked: false
+        unlocked: false,
     },
     {
         title: 'Vind drie voorwerpen',
-        unlocked: false
+        unlocked: false,
     },
     {
         title: 'Vind alle voorwerpen',
-        unlocked: false
-    }
+        unlocked: false,
+    },
 ];
 
 const pathToAchievementAudio = '../audio/cartoon_cowbell.mp3';
@@ -32,14 +31,7 @@ const messageTitle = document.getElementById('js--message--title');
 
 const achievements = document.getElementById('js--achievements');
 const achievementsList = document.getElementById('js--achievements--list');
-const achievemensButton = document.getElementById('js--achievements--button');
-const achievementsCloseButton = document.getElementById(
-    'js--achievements--close--button'
-);
-
-achievemensButton.addEventListener('click', () => {
-    achievements.classList.toggle('achievements--open');
-});
+const achievementsCloseButton = document.getElementById('js--achievements--close--button');
 
 achievementsCloseButton.addEventListener('click', () => {
     achievements.classList.remove('achievements--open');
@@ -199,13 +191,7 @@ hardwareBox.addEventListener('click', () => {
     }
 });
 
-const allObjects = [
-    laptop.name,
-    boeken.name,
-    bierGlas.name,
-    raspberryPi.name,
-    hardwareBox.name
-];
+const allObjects = [laptop.name, boeken.name, bierGlas.name, raspberryPi.name, hardwareBox.name];
 
 //infospots story gijs
 
@@ -236,11 +222,7 @@ infoSpot5.position.set(-1581.97, -339.46, 2000.0);
 infoSpot5.addHoverElement(myInfoSpot5, 280);
 
 //pano3
-const infoSpot6 = new PANOLENS.Infospot(
-    1800,
-    './img/gijs-laptopduimpie.png',
-    false
-);
+const infoSpot6 = new PANOLENS.Infospot(1800, './img/gijs-laptopduimpie.png', false);
 infoSpot6.position.set(-1581.97, -339.46, 2000.0);
 infoSpot6.addHoverElement(myInfoSpot6, 280);
 
@@ -306,7 +288,7 @@ const information = [
     'Dit is de grote hal van de nieuwbouw',
     'dit is een studieruimte',
     'hier zitten de lokalen van de opleiding informatica',
-    'dit is het lab van de opleiding informatica'
+    'dit is het lab van de opleiding informatica',
 ];
 //panolens select container
 
@@ -332,7 +314,7 @@ const panorama8 = new PANOLENS.ImagePanorama(img);
 const viewer = new PANOLENS.Viewer({
     container: pan,
     output: 'console',
-    autoHideInfospot: false
+    autoHideInfospot: false,
 });
 
 // roteer de positie van de viewer bij het enteren van een panorama naar de goede positie
@@ -401,29 +383,10 @@ panorama3.add(poolInfospot, bierGlas, infoSpot6);
 panorama4.add(balustradeInfospot, infoSpot7);
 panorama5.add(raspberryPi, infoSpot8);
 panorama6.add(challengeInfospot, studiepuntenInfospot, infoSpot9, infoSpot10);
-panorama7.add(
-    hardwareBox,
-    printerInfospot,
-    soldeerInfospot,
-    hardwareInfospot,
-    infoSpot11
-);
+panorama7.add(hardwareBox, printerInfospot, soldeerInfospot, hardwareInfospot, infoSpot11);
 
 //adding to objects
-viewer.add(
-    panorama,
-    panorama2,
-    panorama3,
-    panorama4,
-    panorama5,
-    panorama6,
-    panorama7,
-    panorama8
-);
-
-resetButton.addEventListener('click', () => {
-    endEl.classList.add('end--open');
-});
+viewer.add(panorama, panorama2, panorama3, panorama4, panorama5, panorama6, panorama7, panorama8);
 
 endButton.addEventListener('click', () => {
     endEl.style.display = 'none';
@@ -479,19 +442,12 @@ const setVisitedScenes = (name) => {
 };
 
 const achievementOneUnlocked = () => {
-    if (
-        DUMMY_ACHIEVEMENTS[1].unlocked === true &&
-        DUMMY_ACHIEVEMENTS[3].unlocked === true
-    ) {
+    if (DUMMY_ACHIEVEMENTS[1].unlocked === true && DUMMY_ACHIEVEMENTS[3].unlocked === true) {
         DUMMY_ACHIEVEMENTS[0].unlocked = true;
         localStorage.setItem('progress', '100');
         const achievementOne = document.getElementById('js--achievement--0');
 
-        if (
-            !achievementOne.classList.contains(
-                'achievements__achievement--unlocked'
-            )
-        ) {
+        if (!achievementOne.classList.contains('achievements__achievement--unlocked')) {
             message.classList.add('message--open');
             messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[0].title}`;
             achievementUnlockedAudio.play();
@@ -515,11 +471,7 @@ const achievementTwoUnlocked = () => {
         DUMMY_ACHIEVEMENTS[1].unlocked = true;
         const achievementTwo = document.getElementById('js--achievement--1');
 
-        if (
-            !achievementTwo.classList.contains(
-                'achievements__achievement--unlocked'
-            )
-        ) {
+        if (!achievementTwo.classList.contains('achievements__achievement--unlocked')) {
             message.classList.add('message--open');
             messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[1].title}`;
             achievementUnlockedAudio.play();
@@ -539,11 +491,7 @@ const achievementThreeUnlocked = () => {
     DUMMY_ACHIEVEMENTS[2].unlocked = true;
     const achievementThree = document.getElementById('js--achievement--2');
 
-    if (
-        !achievementThree.classList.contains(
-            'achievements__achievement--unlocked'
-        )
-    ) {
+    if (!achievementThree.classList.contains('achievements__achievement--unlocked')) {
         message.classList.add('message--open');
         messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[2].title}`;
         achievementUnlockedAudio.play();
@@ -562,11 +510,7 @@ const achievementFourUnlocked = () => {
     DUMMY_ACHIEVEMENTS[3].unlocked = true;
     const achievementFour = document.getElementById('js--achievement--3');
 
-    if (
-        !achievementFour.classList.contains(
-            'achievements__achievement--unlocked'
-        )
-    ) {
+    if (!achievementFour.classList.contains('achievements__achievement--unlocked')) {
         message.classList.add('message--open');
         messageTitle.textContent = `Prestatie ontgrendeld: ${DUMMY_ACHIEVEMENTS[3].title}`;
         achievementUnlockedAudio.play();
@@ -582,6 +526,7 @@ const achievementFourUnlocked = () => {
 };
 
 this.setInterval(() => {
+    checkProgress();
     const amountOfProgress = localStorage.getItem('progress');
     progressBar.style.width = `${amountOfProgress}%`;
 
@@ -632,7 +577,17 @@ function arrayEquals(arr1, arr2) {
     return JSON.stringify(arr1.sort()) === JSON.stringify(arr2.sort());
 }
 
+function checkProgress() {
+    amountOfProgress = parseInt(localStorage.getItem('progress'));
+    if (amountOfProgress > 100) {
+        localStorage.setItem('progress', '100');
+        progressBar.style.width = '100%';
+    }
+}
+
 window.addEventListener('load', () => {
+    checkProgress();
+
     if (localStorage.getItem('progress') === null) {
         amountOfProgress = localStorage.setItem('progress', '0');
         progressBar.style.width = `${amountOfProgress}%`;
@@ -641,3 +596,47 @@ window.addEventListener('load', () => {
         progressBar.style.width = `${amountOfProgress}%`;
     }
 });
+
+const theResetButton = viewer.widget.createCustomItem({
+    onTap: () => {
+        endEl.classList.add('end--open');
+    },
+    element: document.createElement('button'),
+    style: {
+        border: 'none',
+        'border-radius': '0.5rem',
+        color: '#000',
+        'background-color': '#45bccb',
+        'background-image': 'url(../icons/reset_icon.svg)',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        width: '3rem',
+        height: '3rem',
+        'margin-top': '1rem',
+        'margin-right': '1rem',
+    },
+});
+
+const theAchievementsButton = viewer.widget.createCustomItem({
+    onTap: () => {
+        achievements.classList.toggle('achievements--open');
+    },
+    element: document.createElement('button'),
+    style: {
+        border: 'none',
+        'border-radius': '0.5rem',
+        'background-color': '#45bccb',
+        'background-image': 'url(../icons/achievement_icon.svg)',
+        position: 'absolute',
+        top: 0,
+        right: '5%',
+        width: '3rem',
+        height: '3rem',
+        'margin-top': '1rem',
+        'margin-right': '1rem',
+    },
+});
+
+pan.appendChild(theResetButton);
+pan.appendChild(theAchievementsButton);
